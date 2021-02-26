@@ -10,5 +10,5 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-  <van-button type="danger">点点点</van-button>
+  <van-button type="primary">测试</van-button>
 </view>

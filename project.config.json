@@ -23,7 +23,7 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": true,
+    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -46,8 +46,8 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.15.0",
-  "appid": "wx4a6bf28b82a22d3a",
-  "projectname": "mp_lqf",
+  "appid": "wxd8cd49514636c00b",
+  "projectname": "chiliHouseProgram",
   "debugOptions": {
     "hidedInDevtools": []
   },
