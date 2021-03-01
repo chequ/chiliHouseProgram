@@ -1,0 +1,10 @@
+<!--pages/getUserInfo/getInfo.wxml-->
+<view class="container">
+  <view class="authorization-text">
+    <text>需要你的授权才能使用哦！</text>
+  </view>
+  <view class="authorization-btn">
+    <van-button type="primary">立即授权</van-button>
+  </view>
+</view>
+

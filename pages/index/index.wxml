@@ -1,14 +1,63 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-  <van-button type="primary">测试</van-button>
+  <van-nav-bar
+    title="一房一价"
+    left-text="返回"
+    right-text="条件筛选"
+    left-arrow
+    bind:click-left="onClickLeft"
+    bind:click-right="showPopup"
+  />
+  <ivew class="condition">
+    <van-collapse accordion value="{{ activeNames }}" is-link=false>
+      <van-collapse-item title="选择楼栋" name="1">
+        <van-checkbox-group value="{{ checked }}" direction="horizontal">
+          <van-checkbox name="a">复选框 a</van-checkbox>
+          <van-checkbox name="b">复选框 b</van-checkbox>
+        </van-checkbox-group>
+      </van-collapse-item>
+    </van-collapse>
+  </ivew>
+  <van-popup
+    show="{{show}}"
+    round
+    position="right"
+    :style="{
+      height: '98%',
+      width: '60%',
+      padding: '10px 0 5px 10px',
+    }"
+  >
+    <ivew class="condition_box">
+      <ivew class="condition">
+        <van-collapse value="{{ activeNames }}">
+          <van-collapse-item title="选择楼栋" name="1">
+            <van-checkbox-group value="{{ checked }}" direction="horizontal">
+              <van-checkbox name="a">复选框 a</van-checkbox>
+              <van-checkbox name="b">复选框 b</van-checkbox>
+            </van-checkbox-group>
+          </van-collapse-item>
+          <van-collapse-item title="选择房号" name="2">内容</van-collapse-item>
+          <van-collapse-item title="选择建筑面积" name="3"
+            >内容</van-collapse-item
+          >
+          <van-collapse-item title="选择户型" name="4">内容</van-collapse-item>
+          <van-collapse-item title="选择房屋类型" name="5"
+            >内容</van-collapse-item
+          >
+          <van-collapse-item title="选择朝向" name="6">内容</van-collapse-item>
+          <van-collapse-item title="选择日照" name="7">内容</van-collapse-item>
+          <van-collapse-item title="输入均价范围" name="8"
+            >内容</van-collapse-item
+          >
+          <van-collapse-item title="输入总价范围" name="9"
+            >内容</van-collapse-item
+          >
+        </van-collapse>
+      </ivew>
+      <ivew class="condition_btn">
+        <van-button type="primary" round block>确定</van-button>
+      </ivew>
+    </ivew>
+  </van-popup>
 </view>

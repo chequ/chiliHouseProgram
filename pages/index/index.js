@@ -4,9 +4,9 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
+    show: false,
+    activeNames: ['1'],
+    checked: [],
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   // 事件处理函数
@@ -50,5 +50,13 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+  onClickLeft() {
+    wx.showToast({ title: '点击返回', icon: 'none' });
+  },
+  showPopup() {
+    this.setData({
+      show: true
+   })
+  },
 })

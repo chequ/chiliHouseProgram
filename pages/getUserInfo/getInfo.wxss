@@ -1,0 +1,8 @@
+/* pages/getUserInfo/getInfo.wxss */
+.authorization-text{
+  text-align: center;
+  font-size: 40rpx;
+}
+.authorization-btn{
+  text-align: center;
+}
