@@ -1,0 +1,76 @@
+<!--index.wxml-->
+<view class="index-container">
+  <van-nav-bar
+    title="一房一价"
+    right-text="条件筛选"
+    safe-area-inset-top="false"
+    bind:click-right="showPopup"
+    custom-style="padding-top: 0"
+  />
+  <view class="list-box">
+    <view>
+      <view class="list-head-box">
+        <view wx:for="{{3}}" class="list-head">{{index}}</view>
+      </view>
+      <view>
+        <view class="list-body-box" wx:for="{{6}}">
+          <view wx:for="{{3}}" class="list-body">{{index}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="house-list">
+    <van-collapse accordion value="{{ activeNames }}" is-link="false">
+      <van-collapse-item title="选择楼栋" name="{{index}}" wx:for="{{ 8 }}" wx:for-index="index" >
+        <van-checkbox-group value="{{ checked }}" direction="horizontal">
+          <van-checkbox name="a">复选框 a</van-checkbox>
+          <van-checkbox name="b">复选框 b</van-checkbox>
+        </van-checkbox-group>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+  <van-popup
+    round
+    show="{{show}}"
+    position="right"
+    custom-class="house-condition-check"
+    bind:click-overlay="closePopup"
+  >
+    <view class="house-condition_box">
+      <view class="house-condition">
+        <van-collapse value="{{ activeNames }}" bind:change="onChange">
+          <van-collapse-item title="选择楼栋" name="1">
+            <van-checkbox-group value="{{ checked }}" direction="horizontal">
+              <van-checkbox name="a">复选框 a</van-checkbox>
+              <van-checkbox name="b">复选框 b</van-checkbox>
+            </van-checkbox-group>
+          </van-collapse-item>
+          <van-collapse-item title="选择房号" name="2">内容</van-collapse-item>
+          <van-collapse-item title="选择建筑面积" name="3"
+            >内容</van-collapse-item
+          >
+          <van-collapse-item title="选择户型" name="4">内容</van-collapse-item>
+          <van-collapse-item title="选择房屋类型" name="5"
+            >内容</van-collapse-item
+          >
+          <van-collapse-item title="选择朝向" name="6">内容</van-collapse-item>
+          <van-collapse-item title="选择日照" name="7">内容</van-collapse-item>
+          <van-collapse-item title="输入均价范围" name="8"
+            >内容</van-collapse-item
+          >
+          <van-collapse-item title="输入总价范围" name="9"
+            >内容</van-collapse-item
+          >
+        </van-collapse>
+      </view>
+      <view class="house-condition-btn">
+        <view class="reset-btn">
+          <van-button type="warning" round block bind:click=""> 重 置 </van-button>
+        </view>
+        <view class="confirm-btn">
+          <van-button type="primary" round block bind:click="getHouseList"> 确 定 </van-button>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+</view>
