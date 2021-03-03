@@ -1,2 +1,16 @@
 <!--pages/addBuilding/addBuilding.wxml-->
-<text>pages/addBuilding/addBuilding.wxml</text>
+<van-cell-group>
+  <van-field
+    value="{{ sms }}"
+    center
+    clearable
+    label="楼盘验证码"
+    placeholder="请输入楼盘验证码"
+    border="{{ false }}"
+    use-button-slot
+  >
+    <van-button slot="button" round size="small" type="primary">
+      查询添加
+    </van-button>
+  </van-field>
+</van-cell-group>

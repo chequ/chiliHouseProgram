@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="index-container">
   <van-nav-bar
-    title="一房一价"
+    title="xxxx盘一房一价"
     right-text="条件筛选"
     safe-area-inset-top="false"
     bind:click-right="showPopup"

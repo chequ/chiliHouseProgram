@@ -1,13 +1,13 @@
 <!--index.wxml-->
 <view class="index-container">
   <van-nav-bar
-    title="我的一房一价"
+    title="我关注的楼盘"
     right-text="添加楼盘"
     safe-area-inset-top="false"
     bind:click-right="addBuilding"
     custom-style="padding-top: 0"
   />
   <van-grid column-num="3">
-    <van-grid-item icon="photo-o" text="{{item.name}}" wx:for="{{ myBuildingData }}" />
+    <van-grid-item icon="photo-o" text="{{item.name}}" wx:for="{{ myBuildingData }}" data-index='{{item.name}}' bind:click="getBuildingList" />
   </van-grid>
 </view>

@@ -20,7 +20,13 @@ Page({
   },
   addBuilding() {
     wx.navigateTo({
-      url: 'pages/addBuilding/addBuilding'
+      url: '/pages/addBuilding/addBuilding'
+    })
+  },
+  getBuildingList(event) {
+    console.log(event.currentTarget.dataset.index)
+    wx.navigateTo({
+      url: '/pages/buildingList/buildingList'
     })
   }
 })
