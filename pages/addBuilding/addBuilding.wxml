@@ -9,7 +9,7 @@
     border="{{ false }}"
     use-button-slot
   >
-    <van-button slot="button" round size="small" type="primary">
+    <van-button slot="button" round size="small" type="primary" bind:click="addBuilding">
       查询添加
     </van-button>
   </van-field>

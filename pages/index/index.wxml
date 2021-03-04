@@ -8,6 +8,6 @@
     custom-style="padding-top: 0"
   />
   <van-grid column-num="3">
-    <van-grid-item icon="photo-o" text="{{item.name}}" wx:for="{{ myBuildingData }}" data-index='{{item.name}}' bind:click="getBuildingList" />
+    <van-grid-item icon="photo-o" wx:key="index" text="{{ item.name }}" wx:for="{{ myBuildingData }}" data-buildId='{{ item.buildId }}' bind:click="getBuildingList" />
   </van-grid>
 </view>

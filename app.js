@@ -35,5 +35,16 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  getAuthorization(){
+    wx.getSetting({
+      success(res){
+        if(!res.authSetting['scope.userInfo']){
+          wx.navigateTo({
+            url: '/pages/getUserInfo/getInfo',
+          })
+        }
+      }
+    })
   }
 })

@@ -1,8 +1,10 @@
-.log-list {
+.user-box{
   display: flex;
-  flex-direction: column;
-  padding: 40rpx;
 }
-.log-item {
-  margin: 10rpx;
+.user-photo{
+  height: 200rpx;
+  width: 200rpx;
+}
+.user-name{
+  flex:1;
 }

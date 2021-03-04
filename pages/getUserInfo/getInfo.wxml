@@ -4,7 +4,7 @@
     <text>需要你的授权才能使用哦！</text>
   </view>
   <view class="authorization-btn">
-    <van-button type="primary">立即授权</van-button>
+    <van-button type="primary" open-type="getUserInfo" bind:getuserinfo="bindGetUserInfo" block round>立即授权</van-button>
   </view>
 </view>
 

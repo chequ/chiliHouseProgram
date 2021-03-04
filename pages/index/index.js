@@ -7,6 +7,7 @@ Page({
     myBuildingData:[]
   },
   onLoad() {
+    app.getAuthorization();
     this.setData({
       myBuildingData: [
         {"name": '山河峯荟',"buildId": '2020001'},
@@ -16,6 +17,17 @@ Page({
         {"name": '招商时代公园',"buildId": '2020101'},
         {"name": '未来公园城',"buildId": '2020102'}
       ]
+    });
+  },
+  getAuthorization(){
+    wx.getSetting({
+      success(res){
+        if(!res.authSetting['scope.userInfo']){
+          wx.navigateTo({
+            url: '/pages/getUserInfo/getInfo',
+          })
+        }
+      }
     })
   },
   addBuilding() {
@@ -25,8 +37,10 @@ Page({
   },
   getBuildingList(event) {
     console.log(event.currentTarget.dataset.index)
-    wx.navigateTo({
-      url: '/pages/buildingList/buildingList'
-    })
+    if(app.globalData.userInfo){
+      wx.navigateTo({
+        url: '/pages/buildingList/buildingList?buildId='+event.currentTarget.dataset.buildId
+      })
+    }
   }
 })

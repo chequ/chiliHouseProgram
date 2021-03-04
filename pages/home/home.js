@@ -1,15 +1,29 @@
-// logs.js
-const util = require('../../utils/util.js')
+// home.js
+const app = getApp()
 
 Page({
   data: {
-    logs: []
+    name: '',
+    photo: '',
+    userList: [
+      {
+        title:'关于我们',
+        id:'aboutUs'
+      },
+      {
+        title:'分享好友',
+        id:'share'
+      }
+    ]
   },
   onLoad() {
-    this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(log => {
-        return util.formatTime(new Date(log))
+    app.getAuthorization();
+    if(app.globalData.userInfo){
+      console.log(app.globalData.userInfo.nickName,app.globalData.userInfo.avatarUrl)
+      this.setData({
+        name: app.globalData.userInfo.nickName,
+        photo: app.globalData.userInfo.avatarUrl
       })
-    })
+    }
   }
 })
