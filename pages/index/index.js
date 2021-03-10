@@ -36,10 +36,9 @@ Page({
     })
   },
   getBuildingList(event) {
-    console.log(event.currentTarget.dataset.index)
     if(app.globalData.userInfo){
       wx.navigateTo({
-        url: '/pages/buildingList/buildingList?buildId='+event.currentTarget.dataset.buildId
+        url: '/pages/buildingList/buildingList?buildId='+event.currentTarget.dataset.buildid+'&name='+event.currentTarget.dataset.name
       })
     }
   }

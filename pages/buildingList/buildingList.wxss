@@ -43,33 +43,37 @@
 }
 
 .list-box{
-  width: 100%;
-  height: 400rpx;
-  padding: 15rpx;
+  width: 98%;
+  height: 100vh;
+  margin: 0 1%;
   overflow: auto;
   background: #cccccc;
 }
-.list-head-box{
+.list-table-box{
+  height: 210rpx;
   white-space: nowrap;
 }
-.list-head{
+.list-table{
   display: inline-block;
   width: 600rpx;
-  height: 100rpx;
   border-bottom: 1rpx solid #dddddd;
   border-right: 1rpx solid #dddddd;
   text-align: center;
-  line-height: 100rpx;
 }
-.list-body-box{
-  white-space: nowrap;
+.list-table-floor{
+  height: 210rpx;
+  line-height: 210rpx;
 }
-.list-body{
-  display: inline-block;
-  width: 600rpx;
-  height: 100rpx;
-  border-bottom: 1rpx solid #dddddd;
-  border-right: 1rpx solid #dddddd;
-  text-align: center;
-  line-height: 100rpx;
+.list-table-house{
+  height: 210rpx;
+}
+.list-table-house view{
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.aa{
+  padding:0
+}
+.bb{
+  padding:0
 }

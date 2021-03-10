@@ -1,31 +1,45 @@
 <!--index.wxml-->
 <view class="index-container">
   <van-nav-bar
-    title="xxxx盘一房一价"
+    title="{{ title }}"
     right-text="条件筛选"
+    left-text="{{ listOrTable }}"
     safe-area-inset-top="false"
     bind:click-right="showPopup"
+    bind:click-left="showChange"
     custom-style="padding-top: 0"
   />
-  <view class="list-box">
-    <view>
-      <view class="list-head-box">
-        <view wx:for="{{3}}" class="list-head">{{index}}</view>
-      </view>
-      <view>
-        <view class="list-body-box" wx:for="{{6}}">
-          <view wx:for="{{3}}" class="list-body">{{index}}</view>
+  <view class="list-box" wx:if="{{!isList}}">
+    <view class="list-table-box" wx:for="{{tableData}}" wx:for-item="FIR" wx:key='FIRIdx' wx:for-index="FIRIdx">
+      <view wx:for="{{FIR.floorData}}" class="list-table" wx:for-item="SEC" wx:key='SECIdx' wx:for-index="SECIdx">
+        <view class="list-table-house" wx:if="{{SEC.floor}}" >
+          <view><text decode="{{true}}">&ensp;</text></view>
+          <view>{{SEC.floor}}</view>
+          <view><text decode="{{true}}">&ensp;</text></view>
+        </view>
+        <view class="list-table-house" wx:if="{{!SEC.floor}}" >
+          <view>{{SEC.houseType}}</view>
+          <view>{{SEC.houseNum}}</view>
+          <view>{{SEC.housePrice}}</view>
         </view>
       </view>
     </view>
   </view>
-  <view class="house-list">
-    <van-collapse accordion value="{{ activeNames }}" is-link="false">
-      <van-collapse-item title="选择楼栋" name="{{index}}" wx:for="{{ 8 }}" wx:for-index="index" >
-        <van-checkbox-group value="{{ checked }}" direction="horizontal">
-          <van-checkbox name="a">复选框 a</van-checkbox>
-          <van-checkbox name="b">复选框 b</van-checkbox>
-        </van-checkbox-group>
+  <view class="house-list" wx:if="{{isList}}">
+    <van-collapse accordion value="{{ listActiveNames }}" is-link="false" bind:change="onListChange">
+      <van-collapse-item custom-class="aa" title="{{'房号：' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
+        <van-grid direction="horizontal" column-num="2">
+          <van-grid-item text="{{ '户型：' + item.houseNum }}" content-class="bb"/>
+          <van-grid-item text="{{ '面积：' + item.houseArea }}" content-class="bb"/>
+        </van-grid>
+        <van-grid direction="horizontal" column-num="2">
+          <van-grid-item text="{{ '住宅性质：' + item.houseType }}" content-class="bb"/>
+          <van-grid-item text="{{ '朝向：' + item.houseDirection }}" content-class="bb"/>
+        </van-grid>
+        <van-grid direction="horizontal" column-num="2">
+          <van-grid-item text="{{ '日照时间：' + item.houseSunshineTime }}" content-class="bb"/>
+          <van-grid-item text="{{ '总价：' + item.housePrice }}" content-class="bb"/>
+        </van-grid>
       </van-collapse-item>
     </van-collapse>
   </view>
@@ -38,11 +52,11 @@
   >
     <view class="house-condition_box">
       <view class="house-condition">
-        <van-collapse value="{{ activeNames }}" bind:change="onChange">
+        <van-collapse value="{{ activeNames }}" bind:change="onCoditionChange">
           <van-collapse-item title="选择楼栋" name="1">
-            <van-checkbox-group value="{{ checked }}" direction="horizontal">
-              <van-checkbox name="a">复选框 a</van-checkbox>
-              <van-checkbox name="b">复选框 b</van-checkbox>
+            <van-checkbox-group value="{{ condtionObj.floor }}" direction="horizontal" bind:change="onFloorChange">
+              <van-checkbox name="1">1栋</van-checkbox>
+              <van-checkbox name="2">2栋</van-checkbox>
             </van-checkbox-group>
           </van-collapse-item>
           <van-collapse-item title="选择房号" name="2">内容</van-collapse-item>
