@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    sms: ''
+    sms: '',
+    show:false,
+    myBuilding:''
   },
 
   /**
@@ -18,7 +20,16 @@ Page({
   addBuilding(){
     app.getAuthorization();
     if(app.globalData.userInfo){
-      console.log('111')
+      this.setData({
+        myBuilding:'天府里',
+        show:true
+      })
     }
+  },
+  onConfirm() {
+    this.setData({ show: false });
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
   }
 })

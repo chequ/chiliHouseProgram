@@ -1,0 +1,9 @@
+/* pages/aboutUs/aboutUs.wxss */
+.about-us{
+  line-height: 60rpx;
+  font-size: 30rpx;
+}
+.about-us-logo{
+  margin-top: 40rpx;
+  text-align: center;
+}

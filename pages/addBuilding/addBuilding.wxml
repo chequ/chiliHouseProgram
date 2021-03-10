@@ -13,4 +13,11 @@
       查询添加
     </van-button>
   </van-field>
+  <van-dialog
+    use-slot
+    show="{{ show }}"
+    bind:confirm="onConfirm"
+  >
+    <view class="confirm-box">已添加楼盘：{{myBuilding}}！</view>
+  </van-dialog>
 </van-cell-group>

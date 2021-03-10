@@ -1,1 +1,4 @@
 /* pages/addBuilding/addBuilding.wxss */
+.confirm-box{
+  margin:50rpx;
+}

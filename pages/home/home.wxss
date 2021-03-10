@@ -7,4 +7,7 @@
 }
 .user-name{
   flex:1;
+  padding:20rpx;
+  line-height: 200rpx;
+  font-size: 36rpx;
 }

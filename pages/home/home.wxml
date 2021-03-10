@@ -2,9 +2,9 @@
 <view>
   <view class="user-box">
     <view class="user-photo">
-      <img src="{{photo}}" alt="" sizes="" srcset=""/>
+      <van-image height="100%" width="100%" src="{{photo}}" lazy-load="true" round/>
     </view>
     <view class="user-name">{{name}}</view>
   </view>
-  <van-cell title="{{item.title}}" data-id="{{item.id}}" wx:key="index" is-link wx:for="{{userList}}"/>
+  <van-cell title="{{item.title}}" data-id="{{item.id}}" data-url="{{item.url}}" wx:key="index" is-link wx:for="{{userList}}" bind:click="go"/>
 </view>

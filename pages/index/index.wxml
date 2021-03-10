@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="index-container">
   <van-nav-bar
-    title="我关注的楼盘"
+    title="我的楼盘"
     right-text="添加楼盘"
     safe-area-inset-top="false"
     bind:click-right="addBuilding"

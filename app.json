@@ -5,7 +5,8 @@
     "pages/home/home",
     "pages/getUserInfo/getInfo",
     "pages/buildingList/buildingList",
-    "pages/addBuilding/addBuilding"
+    "pages/addBuilding/addBuilding",
+    "pages/aboutUs/aboutUs"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -41,6 +42,8 @@
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-grid": "@vant/weapp/grid/index",
-    "van-grid-item": "@vant/weapp/grid-item/index"
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-image": "@vant/weapp/image/index"
   }
 }
