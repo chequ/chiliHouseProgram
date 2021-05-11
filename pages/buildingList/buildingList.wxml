@@ -19,7 +19,7 @@
         </view>
         <view class="list-table-house" wx:if="{{!SEC.floor}}" >
           <view>{{SEC.houseType}}</view>
-          <view>{{SEC.houseNum}}</view>
+          <view>{{SEC.houseRoomNum}}</view>
           <view>{{SEC.housePrice}}</view>
         </view>
       </view>
@@ -27,18 +27,18 @@
   </view>
   <view class="house-list" wx:if="{{isList}}">
     <van-collapse accordion value="{{ listActiveNames }}" is-link="false" bind:change="onListChange">
-      <van-collapse-item custom-class="aa" title="{{'房号：' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
+      <van-collapse-item class="house-detail-box" title="{{'房号：' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
         <van-grid direction="horizontal" column-num="2">
-          <van-grid-item text="{{ '户型：' + item.houseNum }}" content-class="bb"/>
-          <van-grid-item text="{{ '面积：' + item.houseArea }}" content-class="bb"/>
+          <van-grid-item text="{{ '户型：' + item.houseRoomNum }}"/>
+          <van-grid-item text="{{ '面积：' + item.houseArea }}"/>
         </van-grid>
         <van-grid direction="horizontal" column-num="2">
-          <van-grid-item text="{{ '住宅性质：' + item.houseType }}" content-class="bb"/>
-          <van-grid-item text="{{ '朝向：' + item.houseDirection }}" content-class="bb"/>
+          <van-grid-item text="{{ '住宅性质：' + item.houseType }}"/>
+          <van-grid-item text="{{ '朝向：' + item.houseDirection }}"/>
         </van-grid>
         <van-grid direction="horizontal" column-num="2">
-          <van-grid-item text="{{ '日照时间：' + item.houseSunshineTime }}" content-class="bb"/>
-          <van-grid-item text="{{ '总价：' + item.housePrice }}" content-class="bb"/>
+          <van-grid-item text="{{ '日照时间：' + item.houseSunshineTime }}"/>
+          <van-grid-item text="{{ '总价：' + item.housePrice }}"/>
         </van-grid>
       </van-collapse-item>
     </van-collapse>
@@ -54,7 +54,7 @@
       <view class="house-condition">
         <van-collapse value="{{ activeNames }}" bind:change="onCoditionChange">
           <van-collapse-item title="选择楼栋" name="1">
-            <van-checkbox-group value="{{ condtionObj.floor }}" direction="horizontal" bind:change="onFloorChange">
+            <van-checkbox-group value="{{ condtionObj.buildNoList }}" direction="horizontal" bind:change="onFloorChange">
               <van-checkbox name="1">1栋</van-checkbox>
               <van-checkbox name="2">2栋</van-checkbox>
             </van-checkbox-group>

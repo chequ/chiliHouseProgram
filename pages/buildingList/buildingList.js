@@ -1,6 +1,6 @@
 // index.js
 // 获取应用实例
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
@@ -8,245 +8,245 @@ Page({
     listOrTable: '表格',
     isList: true,
     show: false,
-    buildId:'',
+    buildId: '',
     activeNames: ['1'],
     checked: [],
-    tableData:[],
-    listData:[],
-    condtionObj:{
-      floor:[1,2]
+    tableData: [],
+    listData: [],
+    condtionObj: {
+      buildNoList: [1, 2],
     },
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
   },
   onLoad(options) {
     this.setData({
-      title:options.name,
-      buildId:options.buildid,
-      tableData:[
+      title: options.name,
+      buildId: options.buildid,
+      tableData: [
         {
-          floorData:[
+          floorData: [
             {
-              floor:1
+              floor: 1,
             },
             {
-              houseNum: '三室一厅一卫',
+              houseRoomNum: '三室一厅一卫',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
-            }
-          ]
+              housePrice: '2353347',
+            },
+          ],
         },
         {
-          floorData:[
+          floorData: [
             {
-              floor:2
+              floor: 2,
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
-            }
-          ]
+              housePrice: '2353347',
+            },
+          ],
         },
         {
-          floorData:[
+          floorData: [
             {
-              floor:3
+              floor: 3,
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
-            }
-          ]
+              housePrice: '2353347',
+            },
+          ],
         },
         {
-          floorData:[
+          floorData: [
             {
-              floor:4
+              floor: 4,
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
+              housePrice: '2353347',
             },
             {
-              houseNum: '三室一厅',
+              houseRoomNum: '三室一厅',
               houseType: '公寓',
-              housePrice: '2353347'
-            }
-          ]
+              housePrice: '2353347',
+            },
+          ],
         },
       ],
-      listData:[
+      listData: [
         {
           buildNo: '1',
-          buildFloor:'5',
+          buildFloor: '5',
           houseNo: '4',
           houseArea: '125',
-          houseNum: '三室一厅',
+          houseRoomNum: '三室一厅',
           houseType: '公寓',
           houseDirection: '西南',
           houseSunshineTime: '2小时',
-          housePrice:'2357776'
+          housePrice: '2357776',
         },
         {
           buildNo: '1',
-          buildFloor:'5',
+          buildFloor: '5',
           houseNo: '4',
           houseArea: '125',
-          houseNum: '三室一厅',
+          houseRoomNum: '三室一厅',
           houseType: '公寓',
           houseDirection: '西南',
           houseSunshineTime: '2小时',
-          housePrice:'2357776'
+          housePrice: '2357776',
         },
         {
           buildNo: '1',
-          buildFloor:'5',
+          buildFloor: '5',
           houseNo: '4',
           houseArea: '125',
-          houseNum: '三室一厅',
+          houseRoomNum: '三室一厅',
           houseType: '公寓',
           houseDirection: '西南',
           houseSunshineTime: '2小时',
-          housePrice:'2357776'
+          housePrice: '2357776',
         },
         {
           buildNo: '1',
-          buildFloor:'5',
+          buildFloor: '5',
           houseNo: '4',
           houseArea: '125',
-          houseNum: '三室一厅',
+          houseRoomNum: '三室一厅',
           houseType: '公寓',
           houseDirection: '西南',
           houseSunshineTime: '2小时',
-          housePrice:'2357776'
+          housePrice: '2357776',
         },
         {
           buildNo: '1',
-          buildFloor:'5',
+          buildFloor: '5',
           houseNo: '4',
           houseArea: '125',
-          houseNum: '三室一厅',
+          houseRoomNum: '三室一厅',
           houseType: '公寓',
           houseDirection: '西南',
           houseSunshineTime: '2小时',
-          housePrice:'2357776'
+          housePrice: '2357776',
         },
         {
           buildNo: '1',
-          buildFloor:'5',
+          buildFloor: '5',
           houseNo: '4',
           houseArea: '125',
-          houseNum: '三室一厅',
+          houseRoomNum: '三室一厅',
           houseType: '公寓',
           houseDirection: '西南',
           houseSunshineTime: '2小时',
-          housePrice:'2357776'
+          housePrice: '2357776',
         },
         {
           buildNo: '1',
-          buildFloor:'5',
+          buildFloor: '5',
           houseNo: '4',
           houseArea: '125',
-          houseNum: '三室一厅',
+          houseRoomNum: '三室一厅',
           houseType: '公寓',
           houseDirection: '西南',
           houseSunshineTime: '2小时',
-          housePrice:'2357776'
-        }
-      ]
-    })
+          housePrice: '2357776',
+        },
+      ],
+    });
   },
   closePopup() {
     this.setData({
-      show: false
-    })
+      show: false,
+    });
   },
-  showChange(){
-    let temp = this.data.isList
+  showChange() {
+    let temp = this.data.isList;
     this.setData({
       isList: !temp,
-      listOrTable: temp ? "列表" : "表格"
-    })
+      listOrTable: temp ? '列表' : '表格',
+    });
   },
   showPopup() {
     this.setData({
-      show: true
-    })
+      show: true,
+    });
   },
-  onListChange(event){
+  onListChange(event) {
     this.setData({
-      listActiveNames: event.detail
+      listActiveNames: event.detail,
     });
   },
   onCoditionChange(event) {
     this.setData({
-      activeNames: event.detail
+      activeNames: event.detail,
     });
   },
   onFloorChange(event) {
-    const _k1 = `condtionObj.name`
+    const _k1 = `condtionObj.name`;
     this.setData({
-      [_k1]: event.detail
-    })
+      [_k1]: event.detail,
+    });
   },
   getHouseList() {
-    this.closePopup()
-  }
-})
+    this.closePopup();
+  },
+});

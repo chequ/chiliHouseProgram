@@ -1,14 +1,45 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="index-container">
-  <van-nav-bar
-    title="我的楼盘"
-    right-text="添加楼盘"
-    safe-area-inset-top="false"
-    bind:click-right="addBuilding"
-    custom-style="padding-top: 0"
-  />
-  <van-grid column-num="3">
-    <van-grid-item icon="photo-o" wx:key="index" text="{{ item.name }}" wx:for="{{ myBuildingData }}" data-name='{{ item.name }}' 
-    data-buildid='{{ item.buildId }}' bind:click="getBuildingList"/>
-  </van-grid>
+  <van-search value="{{ value }}" placeholder="请输入搜索内容" use-action-slot bind:change="onChange" bind:search="onSearch">
+    <view class="share-btn-icon-box" slot="action" bind:tap="onClick">
+      <view>
+        <image src="../../assets/images/pagesIcon/share.png" class="share-btn-icon" />
+      </view>
+    </view>
+  </van-search>
+  <!-- <van-nav-bar title="我的楼盘" right-text="添加楼盘" safe-area-inset-top="false" bind:click-right="addBuilding" custom-style="padding-top: 0" /> -->
+  <view class="ad-swiper">
+    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" circular="true">
+      <block wx:for="{{ adList }}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{ item.name }}">
+            <image src="{{ item.src }}"></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="count-box">
+    <van-row gutter="10">
+      <van-col span="6">
+        <van-button color="#cccccc" size="small">1062</van-button>
+        <view class="" hover-class="none" hover-stop-propagation="false">已选房</view>
+      </van-col>
+      <van-col span="6">
+        <van-button color="#87CEFA" size="small">5</van-button>
+        <view class="" hover-class="none" hover-stop-propagation="false">选房中</view>
+      </van-col>
+      <van-col span="6">
+        <van-button color="#FFA500" size="small">13</van-button>
+        <view class="" hover-class="none" hover-stop-propagation="false">将选房</view>
+      </van-col>
+      <van-col span="6">
+        <van-button color="green" size="small">23</van-button>
+        <view class="" hover-class="none" hover-stop-propagation="false">已激活</view>
+      </van-col>
+    </van-row>
+  </view>
+  <!-- <van-grid column-num="3">
+    <van-grid-item icon="photo-o" wx:key="index" text="{{ item.name }}" wx:for="{{ myBuildingData }}" data-name='{{ item.name }}' data-buildid='{{ item.buildId }}' bind:click="getBuildingList" />
+  </van-grid> -->
 </view>

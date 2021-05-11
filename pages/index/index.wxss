@@ -1,3 +1,33 @@
-.build-active{
-  background:#a5daef;
+.build-active {
+  background: #a5daef;
+}
+.share-btn-icon-box{
+  text-align: center;
+  font-size: 24rpx;
+}
+.share-btn-icon {
+  height: 48rpx;
+  width: 48rpx;
+}
+.ad-swiper{
+  height: 300rpx;
+  width: 750rpx;
+}
+.swiper{
+  height: 100%;
+  width: 100%;
+}
+.swiper-item{
+  height: 100%;
+  width: 100%;
+}
+.swiper-item image{
+  height: 100%;
+  width: 100%;
+}
+.count-box{
+  margin: 10rpx 0;
+}
+.van-col{
+  text-align: center;
 }

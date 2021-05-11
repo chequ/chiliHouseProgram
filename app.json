@@ -6,7 +6,8 @@
     "pages/getUserInfo/getInfo",
     "pages/buildingList/buildingList",
     "pages/addBuilding/addBuilding",
-    "pages/aboutUs/aboutUs"
+    "pages/aboutUs/aboutUs",
+    "pages/contact/contact"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,17 +16,27 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#000000",
-    "selectedColor": "#90EE90",
+    "color": "#707070",
+    "selectedColor": "#a1cff9",
     "backgroundColor": "#F8F8FF",
     "list": [
       {
+        "iconPath": "assets/images/pagesIcon/house.png",
+        "selectedIconPath": "assets/images/pagesIcon/house-active.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
+        "iconPath": "assets/images/pagesIcon/message.png",
+        "selectedIconPath": "assets/images/pagesIcon/message-active.png",
+        "pagePath": "pages/contact/contact",
+        "text": "联系"
+      },
+      {
+        "iconPath": "assets/images/pagesIcon/myself.png",
+        "selectedIconPath": "assets/images/pagesIcon/myself-active.png",
         "pagePath": "pages/home/home",
-        "text": "个人中心"
+        "text": "我的"
       }
     ]
   },
@@ -44,6 +55,9 @@
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-dialog": "@vant/weapp/dialog/index",
-    "van-image": "@vant/weapp/image/index"
+    "van-image": "@vant/weapp/image/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index"
   }
 }

@@ -55,7 +55,7 @@
 }
 .list-table{
   display: inline-block;
-  width: 600rpx;
+  width: 400rpx;
   border-bottom: 1rpx solid #dddddd;
   border-right: 1rpx solid #dddddd;
   text-align: center;
@@ -71,9 +71,6 @@
   height: 70rpx;
   line-height: 70rpx;
 }
-.aa{
-  padding:0
-}
-.bb{
-  padding:0
+.house-detail-box .van-collapse-item__content{
+  padding:0;
 }
