@@ -1,7 +1,7 @@
 .build-active {
   background: #a5daef;
 }
-.share-btn-icon-box{
+.share-btn-icon-box {
   text-align: center;
   font-size: 24rpx;
 }
@@ -9,25 +9,66 @@
   height: 48rpx;
   width: 48rpx;
 }
-.ad-swiper{
+.ad-swiper {
   height: 300rpx;
   width: 750rpx;
 }
-.swiper{
+.swiper {
   height: 100%;
   width: 100%;
 }
-.swiper-item{
+.swiper-item {
   height: 100%;
   width: 100%;
 }
-.swiper-item image{
+.swiper-item image {
   height: 100%;
   width: 100%;
 }
-.count-box{
+.count-box {
   margin: 10rpx 0;
 }
-.van-col{
+.van-col {
   text-align: center;
+}
+.build-box {
+  width: 100vw;
+}
+.build-list {
+  height: 150rpx;
+  width: 100%;
+  display: flex;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+.build-list-img {
+  width: 200rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.build-list-img image {
+  padding: 5%;
+  width: 90%;
+  height: 90%;
+}
+.build-list-status{
+  position: absolute;
+  top: 6%;
+  right: 6%;
+}
+.build-list-base {
+  flex: 1;
+}
+.build-list-base view{
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.build-list-base view text{
+  border: 1rpx solid #A9A9A9;
+  border-radius: 10rpx;
+  margin-right: 10rpx;
+}
+.build-list-handle {
+  width: 200rpx;  
+  text-align: center;
+  line-height: 150rpx;
 }

@@ -5,6 +5,12 @@ const app = getApp();
 Page({
   data: {
     myBuildingData: [],
+    buttonColor: {
+      houseStatus1:'#cccccc',
+      houseStatus2:'#87CEFA',
+      houseStatus3:'#FFA500',
+      houseStatus4:'green',
+    },
     adList: [
       {
         name: 'ad1',
@@ -17,7 +23,36 @@ Page({
       {
         name: 'ad3',
         src: '../../assets/images/index/ad3.webp',
-      }
+      },
+    ],
+    buildList: [
+      {
+        buildPreview: '../../assets/images/index/yunzhou.jpg',
+        name: '麓湖生态城沄洲二期',
+        houseCount: '335',
+        buildNo: '4、8、9',
+        status: 1,
+        statusName: '已选房',
+        payStatus: true
+      },
+      {
+        buildPreview: '../../assets/images/index/wankeParkCity.jpg',
+        name: '万科公园城二期',
+        houseCount: '454',
+        buildNo: '1、5、8、12',
+        status: 2,
+        statusName: '选房中',
+        payStatus: true
+      },
+      {
+        buildPreview: '../../assets/images/index/nanyang.jpg',
+        name: '南阳御龙府',
+        houseCount: '224',
+        buildNo: '2号楼',
+        status: 3,
+        statusName: '将选房',
+        payStatus: false
+      },
     ],
   },
   onLoad() {
