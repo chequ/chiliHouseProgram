@@ -1,1 +1,13 @@
 /* pages/contact/contact.wxss */
+.ewm-box{
+  height: 500rpx;
+  display: flex;
+}
+.ewm{
+  width: 50%;
+}
+
+.ewm image{
+  height: 100%;
+  width: 100%;
+}

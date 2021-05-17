@@ -10,7 +10,7 @@
   <!-- <van-nav-bar title="我的楼盘" right-text="添加楼盘" safe-area-inset-top="false" bind:click-right="addBuilding" custom-style="padding-top: 0" /> -->
   <view class="ad-swiper">
     <swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" circular="true">
-      <block wx:for="{{ adList }}" wx:key="*this">
+      <block wx:for="{{ adList }}" wx:key="index">
         <swiper-item>
           <view class="swiper-item {{ item.name }}">
             <image src="{{ item.src }}"></image>
@@ -21,26 +21,16 @@
   </view>
   <view class="count-box">
     <van-row gutter="10">
-      <van-col span="6">
-        <van-button color="#cccccc" size="small">1062</van-button>
-        <view>已选房</view>
-      </van-col>
-      <van-col span="6">
-        <van-button color="#87CEFA" size="small">5</van-button>
-        <view>选房中</view>
-      </van-col>
-      <van-col span="6">
-        <van-button color="#FFA500" size="small">13</van-button>
-        <view>将选房</view>
-      </van-col>
-      <van-col span="6">
-        <van-button color="green" size="small">23</van-button>
-        <view>已激活</view>
+      <van-col span="6" wx:for="{{ countData }}" wx:key="index">
+        <van-button color="{{ buttonColor['houseStatus'+(index+1)] }}" size="small" data-item="{{ item }}" bind:click="getCountTypeList">
+          {{ item.count }}
+        </van-button>
+        <view>{{ item.countName }}</view>
       </van-col>
     </van-row>
   </view>
   <view class="build-box">
-    <view class="build-list" wx:for="{{ buildList }}" wx:key="*this">
+    <view class="build-list" wx:for="{{ buildList }}" wx:key="index">
       <view class="build-list-img">
         <image src="{{ item.buildPreview }}" alt=""></image>
         <view class="build-list-status">
@@ -51,11 +41,17 @@
       </view>
       <view class="build-list-base">
         <view>{{ item.name }}</view>
-        <view><text>套数</text>{{ item.houseCount }}套</view>
-        <view><text>楼栋</text>{{ item.buildNo }}</view>
+        <view>
+          <text>套数</text>
+          {{ item.houseCount }}套
+        </view>
+        <view>
+          <text>楼栋</text>
+          {{ item.buildNo }}
+        </view>
       </view>
       <view class="build-list-handle">
-        <van-button color="{{ item.payStatus ? 'green' : '#87CEFA' }}" size="small">
+        <van-button color="{{ item.payStatus ? 'green' : '#87CEFA' }}" data-item="{{item}}" size="small" bind:click="getBuildingList">
           {{ item.payStatus ? '查看' : '预览' }}
         </van-button>
       </view>

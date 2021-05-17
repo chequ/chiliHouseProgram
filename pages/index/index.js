@@ -6,10 +6,10 @@ Page({
   data: {
     myBuildingData: [],
     buttonColor: {
-      houseStatus1:'#cccccc',
-      houseStatus2:'#87CEFA',
-      houseStatus3:'#FFA500',
-      houseStatus4:'green',
+      houseStatus1: '#cccccc',
+      houseStatus2: '#87CEFA',
+      houseStatus3: '#FFA500',
+      houseStatus4: 'green',
     },
     adList: [
       {
@@ -25,33 +25,62 @@ Page({
         src: '../../assets/images/index/ad3.webp',
       },
     ],
+    countData: [
+      {
+        count: 10621,
+        countName: '已选房',
+        type: 'checked',
+        status: 1,
+      },
+      {
+        count: 5,
+        countName: '选房中',
+        type: 'isChecking',
+        status: 2,
+      },
+      {
+        count: 43,
+        countName: '将选房',
+        type: 'goCheck',
+        status: 3,
+      },
+      {
+        count: 23,
+        countName: '已激活',
+        type: 'myBuyCheck',
+        status: 4,
+      },
+    ],
     buildList: [
       {
+        buildId:'11',
         buildPreview: '../../assets/images/index/yunzhou.jpg',
         name: '麓湖生态城沄洲二期',
         houseCount: '335',
         buildNo: '4、8、9',
         status: 1,
         statusName: '已选房',
-        payStatus: true
+        payStatus: true,
       },
       {
+        buildId:'22',
         buildPreview: '../../assets/images/index/wankeParkCity.jpg',
         name: '万科公园城二期',
         houseCount: '454',
         buildNo: '1、5、8、12',
         status: 2,
         statusName: '选房中',
-        payStatus: true
+        payStatus: true,
       },
       {
+        buildId:'33',
         buildPreview: '../../assets/images/index/nanyang.jpg',
         name: '南阳御龙府',
         houseCount: '224',
         buildNo: '2号楼',
         status: 3,
         statusName: '将选房',
-        payStatus: false
+        payStatus: false,
       },
     ],
   },
@@ -119,14 +148,22 @@ Page({
       },
     });
   },
+  getCountTypeList(e) {
+    let temp = this.data.buildList.map(el => {
+      el.status = e.target.dataset.item.status;
+      el.statusName = e.target.dataset.item.countName;
+      return el
+    });
+    this.setData({ buildList: temp });
+  },
   getBuildingList(event) {
     if (app.globalData.userInfo) {
       wx.navigateTo({
         url:
           '/pages/buildingList/buildingList?buildId=' +
-          event.currentTarget.dataset.buildid +
+          event.target.dataset.item.buildid +
           '&name=' +
-          event.currentTarget.dataset.name,
+          event.target.dataset.item.name,
       });
     }
   },

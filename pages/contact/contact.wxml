@@ -1,2 +1,9 @@
 <!--pages/contact/contact.wxml-->
-<text>pages/contact/contact.wxml</text>
+<view class="ewm-box" hover-class="none" hover-stop-propagation="false">
+  <view class="ewm" hover-class="none" hover-stop-propagation="false">
+    <image class="" src="../../assets/images/contact/wx.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+  </view>
+  <view class="ewm" hover-class="none" hover-stop-propagation="false">
+    <image class="" src="../../assets/images/contact/zfb.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+  </view>
+</view>

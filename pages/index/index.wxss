@@ -68,7 +68,7 @@
   margin-right: 10rpx;
 }
 .build-list-handle {
-  width: 200rpx;  
+  width: 130rpx;  
   text-align: center;
   line-height: 150rpx;
 }

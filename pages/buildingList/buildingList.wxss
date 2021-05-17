@@ -1,9 +1,18 @@
-/**index.wxss**/
-.index-container{
+/**buildingList.wxss**/
+.building-list-container{
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+.watermark-box{
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+}
+.watermark-box canvas{
+  height: 100vh;
+  width: 100%;
 }
 .house-list {
   flex: 1;
