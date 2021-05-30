@@ -378,9 +378,9 @@ Page {
 .van-tabbar-item__text {
   font-size: 20rpx !important
 }
-image{
+/* image{
   display: block;
-}
+} */
 .van-dropdown-menu__title {
   font-size:24rpx !important;
   font-weight:400 !important;

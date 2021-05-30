@@ -1,39 +1,13 @@
+<!-- pages/search/search.wxml -->
 <!-- index.wxml -->
 <view class="index-container">
-  <view class="search-box">
-    <view class="search-con" bindtap="goSearch">
-      <van-search disabled placeholder="请输入搜索内容">
-      </van-search>
-    </view>
-    <view class="share-btn-icon-box" bindtap="onShare">
-      <image src="../../assets/images/pagesIcon/share.png" class="share-btn-icon" />
-    </view>
-  </view>
-  
+  <van-search placeholder="请输入搜索内容" show-action clearable model:value="{{ value }}" focus="true" bind:search="onSearch" bind:cancel="onCancel"></van-search>
   <!-- <van-nav-bar title="我的楼盘" right-text="添加楼盘" safe-area-inset-top="false" bind:click-right="addBuilding" custom-style="padding-top: 0" /> -->
-  <view class="ad-swiper">
-    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" circular="true">
-      <block wx:for="{{ adList }}" wx:key="index">
-        <swiper-item>
-          <view class="swiper-item {{ item.name }}">
-            <image src="{{ item.src }}"></image>
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
+  <view class="ad-box">
+    <image src="{{ adList }}"></image>
   </view>
-  <view class="count-box">
-    <van-row gutter="10">
-      <van-col span="6" wx:for="{{ countData }}" wx:key="index">
-        <van-button color="{{ buttonColor['houseStatus'+(index+1)] }}" size="small" data-item="{{ item }}" bind:click="getCountTypeList">
-          {{ item.count }}
-        </van-button>
-        <view>{{ item.countName }}</view>
-      </van-col>
-    </van-row>
-  </view>
-  <view class="build-box">
-    <scroll-view>
+  <view class="build-box" wx:if="{{ searchResult }}">
+    <view wx:if="{{ buildList.length > 0 }}">
       <view class="build-list" wx:for="{{ buildList }}" wx:key="index">
         <view class="build-list-img">
           <image src="{{ item.buildPreview }}" alt=""></image>
@@ -60,16 +34,9 @@
           </van-button>
         </view>
       </view>
-    </scroll-view>
+    </view>
+    <view wx:else class="build-no-data">未找到数据</view>
   </view>
-  <van-share-sheet
-    show="{{ showShare }}"
-    cancel-text=""
-    title="立即分享给好友"
-    options="{{ options }}"
-    bind:select="onSelect"
-    bind:close="onClose"
-  />
   <!-- <van-grid column-num="3">
     <van-grid-item icon="photo-o" wx:key="index" text="{{ item.name }}" wx:for="{{ myBuildingData }}" data-name='{{ item.name }}' data-buildid='{{ item.buildId }}' bind:click="getBuildingList" />
   </van-grid> -->

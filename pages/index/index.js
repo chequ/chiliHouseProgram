@@ -82,6 +82,42 @@ Page({
         statusName: '将选房',
         payStatus: false,
       },
+      {
+        buildId:'44',
+        buildPreview: '../../assets/images/index/yunzhou.jpg',
+        name: '山河玖璋',
+        houseCount: '335',
+        buildNo: '4、8、9',
+        status: 1,
+        statusName: '已选房',
+        payStatus: true,
+      },
+      {
+        buildId:'55',
+        buildPreview: '../../assets/images/index/wankeParkCity.jpg',
+        name: '源滩麒麟荟',
+        houseCount: '454',
+        buildNo: '1、5、8、12',
+        status: 2,
+        statusName: '选房中',
+        payStatus: true,
+      },
+      {
+        buildId:'66',
+        buildPreview: '../../assets/images/index/nanyang.jpg',
+        name: '鑫苑城',
+        houseCount: '224',
+        buildNo: '2号楼',
+        status: 3,
+        statusName: '将选房',
+        payStatus: false,
+      },
+    ],
+    showShare: false,
+    options: [
+      { name: '微信', icon: 'wechat', openType: 'share' },
+      { name: '复制链接', icon: 'link' },
+      { name: '分享海报', icon: 'poster' }
     ],
   },
   onLoad() {
@@ -166,5 +202,22 @@ Page({
           event.target.dataset.item.name,
       });
     }
+  },
+  goSearch() {
+    wx.navigateTo({
+      url: '/pages/search/search',
+    });
+  },
+  onShare() {
+    this.setData({ showShare: true });
+  },
+
+  onClose() {
+    this.setData({ showShare: false });
+  },
+
+  onSelect(e) {
+    Toast(e.detail.name);
+    this.onClose();
   },
 });

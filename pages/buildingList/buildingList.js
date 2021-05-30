@@ -19,6 +19,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
   },
   onLoad(options) {
+    console.log(options)
     this.setData({
       title: options.name,
       buildId: options.buildid,
@@ -215,7 +216,7 @@ Page({
     this.setWatermark();
   },
   setWatermark() {
-    var name_xx = '麻辣选房' + this.buildId;
+    var name_xx = '麻辣选房' + this.data.buildId;
     var ctx = wx.createCanvasContext('watermark');
 
     ctx.rotate((45 * Math.PI) / 180); //设置文字的旋转角度，角度为45°；
