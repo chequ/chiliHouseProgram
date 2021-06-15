@@ -28,7 +28,7 @@
           <view class="salesperson-level"> {{ salespersonLevel }} </view>
         </view>
         <view class="salesperson-serve">
-          <view class="salesperson-title" wx:for="{{ salespersonTitle }}" :key="index"> {{ item }} </view>
+          <view class="salesperson-title" wx:for="{{ salespersonTitle }}" wx:key="index"> {{ item }} </view>
         </view>
       </view>
       <view class="our-ewm">
@@ -36,12 +36,20 @@
       </view>
     </view>
   </view>
-  <view>
-    <view>
-      
+  <view class="building-table-box">
+    <view class="table-head">
+      <view class="" wx:for="{{ defualtChar }}" wx:key="index" >
+        {{ item.name }}
+        <van-icon name="arrow-up" wx:if="{{ condition }}"/>
+        <van-icon name="arrow-down" wx:if="{{ !condition }}" />
+      </view>
     </view>
-    <view>
-      
+    <view class="table-box">
+      <view wx:for="25" class="table-con" wx:key="index">
+        <view class="table" wx:for="{{ tableData }}" wx:key="index" >
+          {{ item.value }}
+        </view>
+      </view>
     </view>
   </view>
   <!-- <view class="list-box" wx:if="{{!isList}}">

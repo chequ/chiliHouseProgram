@@ -91,7 +91,13 @@
   margin-right: 10rpx;
 }
 .build-list-handle {
-  width: 140rpx;
+  color:#ffffff;
   text-align: center;
   line-height: 150rpx;
+}
+.build-list-handle view{
+  display: inline;
+  padding: 10rpx 15rpx;
+  border-radius: 8rpx;
+  margin: 10rpx;
 }

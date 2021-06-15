@@ -61,6 +61,7 @@
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
     "van-share-sheet": "@vant/weapp/share-sheet/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

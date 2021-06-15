@@ -27,7 +27,65 @@ Page({
       buildId: options.buildId,
       salespersonName: '泠大哥',
       salespersonLevel: '特级金牌置业专家',
-      salespersonTitle: ['免费获取激活码','一对一专业咨询','麻辣选房至六折']
+      salespersonTitle: ['免费获取激活码', '一对一专业咨询', '麻辣选房至六折'],
+      defualtChar: [
+        {
+          name: '楼栋',
+          key: 'floor'
+        },
+        {
+          name: '建面',
+          key: 'area'
+        },
+        {
+          name: '总价',
+          key: 'total'
+        },
+        {
+          name: '均价',
+          key: 'price'
+        },
+        {
+          name: '户型',
+          key: 'houseType'
+        },
+        {
+          name: '模拟日照',
+          key: 'sun'
+        }
+      ],
+      tableData: [
+        {
+          name: '楼栋',
+          key: 'floor',
+          value: '27'
+        },
+        {
+          name: '建面',
+          key: 'area',
+          value: '128'
+        },
+        {
+          name: '总价',
+          key: 'total',
+          value: '2734854'
+        },
+        {
+          name: '均价',
+          key: 'price',
+          value: '23566'
+        },
+        {
+          name: '户型',
+          key: 'houseType',
+          value: 'B·套三'
+        },
+        {
+          name: '日照',
+          key: 'sun',
+          value: '2h'
+        }
+      ],
     });
     this.setWatermark();
   },
@@ -70,7 +128,7 @@ Page({
     }
     ctx.draw();
   },
-  sendMessage () {
+  sendMessage() {
     console.log('发送消息给销售')
   },
   closePopup() {

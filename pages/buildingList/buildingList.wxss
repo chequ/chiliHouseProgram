@@ -45,7 +45,7 @@
 }
 
 .sale-ad-box {
-  height: 200rpx;
+  height: 230rpx;
   width: 100vw;
   padding: 15rpx;
   box-sizing: border-box;
@@ -60,12 +60,13 @@
   border-radius: 8rpx;
 }
 .salesperson-profile-photo {
-  height: 170rpx;
-  width: 170rpx;
+  height: 180rpx;
+  width: 180rpx;
   padding: 10rpx;
   box-sizing: border-box;
   border-radius: 50%;
   position: relative;
+  margin-top: 10rpx;
 }
 .salesperson-profile-photo image {
   height: 100%;
@@ -85,7 +86,7 @@
 }
 .sale-feature-list {
   flex: 1;
-  font-size: 12px;
+  font-size: 24rpx;
 }
 .salesperson-info {
   display: flex;
@@ -95,7 +96,7 @@
 }
 .salesperson-name {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 32rpx;
   margin-right: 8rpx;
 }
 .salesperson-serve {
@@ -114,14 +115,52 @@
   margin-top: 10rpx;
 }
 .our-ewm {
-  height: 170rpx;
-  width: 170rpx;
+  height: 180rpx;
+  width: 180rpx;
   padding: 10rpx;
+  margin-top: 10rpx;
   box-sizing: border-box;
 }
 .our-ewm image {
   height: 100%;
   width: 100%;
+}
+.building-table-box{
+  flex: 1;
+  padding: 5rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.building-table-box .table-head{
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  background: #ffffff;
+  display: flex;
+}
+.building-table-box .table-head view{
+  font-size: 24rpx;
+  flex:1;
+  text-align: center;
+}
+.table-box{
+  flex:1;
+  overflow: auto;
+  border-top: 2rpx solid #ccc;
+  border-left: 2rpx solid #ccc;
+}
+.building-table-box .table-con{
+  height: 40rpx;
+  line-height: 40rpx;
+  display: flex;
+}
+.building-table-box .table-con view{
+  font-size: 24rpx;
+  border-right: 2rpx solid #ccc;
+  border-bottom: 2rpx solid #ccc;
+  text-align: center;
+  flex:1;
 }
 /* .house-list {
   flex: 1;

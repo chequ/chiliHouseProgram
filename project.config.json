@@ -45,7 +45,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "1.0.0",
+  "libVersion": "2.16.1",
   "appid": "wxd8cd49514636c00b",
   "projectname": "chiliHouseProgram",
   "debugOptions": {
