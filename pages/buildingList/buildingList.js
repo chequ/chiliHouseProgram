@@ -5,218 +5,34 @@ const app = getApp();
 Page({
   data: {
     title: '一房一价',
-    listOrTable: '表格',
-    isList: true,
-    show: false,
+    salespersonName: '',
+    salespersonLevel: '',
+    salespersonTitle: '',
     buildId: '',
+    user: '',
     activeNames: ['1'],
     checked: [],
     tableData: [],
     listData: [],
-    condtionObj: {
+    conditionObj: {
       buildNoList: [1, 2],
     },
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    backUrl: '#ffffff',
   },
   onLoad(options) {
-    console.log(options)
     this.setData({
       title: options.name,
-      buildId: options.buildid,
-      tableData: [
-        {
-          floorData: [
-            {
-              floor: 1,
-            },
-            {
-              houseRoomNum: '三室一厅一卫',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-          ],
-        },
-        {
-          floorData: [
-            {
-              floor: 2,
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-          ],
-        },
-        {
-          floorData: [
-            {
-              floor: 3,
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-          ],
-        },
-        {
-          floorData: [
-            {
-              floor: 4,
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-            {
-              houseRoomNum: '三室一厅',
-              houseType: '公寓',
-              housePrice: '2353347',
-            },
-          ],
-        },
-      ],
-      listData: [
-        {
-          buildNo: '1',
-          buildFloor: '5',
-          houseNo: '4',
-          houseArea: '125',
-          houseRoomNum: '三室一厅',
-          houseType: '公寓',
-          houseDirection: '西南',
-          houseSunshineTime: '2小时',
-          housePrice: '2357776',
-        },
-        {
-          buildNo: '1',
-          buildFloor: '5',
-          houseNo: '4',
-          houseArea: '125',
-          houseRoomNum: '三室一厅',
-          houseType: '公寓',
-          houseDirection: '西南',
-          houseSunshineTime: '2小时',
-          housePrice: '2357776',
-        },
-        {
-          buildNo: '1',
-          buildFloor: '5',
-          houseNo: '4',
-          houseArea: '125',
-          houseRoomNum: '三室一厅',
-          houseType: '公寓',
-          houseDirection: '西南',
-          houseSunshineTime: '2小时',
-          housePrice: '2357776',
-        },
-        {
-          buildNo: '1',
-          buildFloor: '5',
-          houseNo: '4',
-          houseArea: '125',
-          houseRoomNum: '三室一厅',
-          houseType: '公寓',
-          houseDirection: '西南',
-          houseSunshineTime: '2小时',
-          housePrice: '2357776',
-        },
-        {
-          buildNo: '1',
-          buildFloor: '5',
-          houseNo: '4',
-          houseArea: '125',
-          houseRoomNum: '三室一厅',
-          houseType: '公寓',
-          houseDirection: '西南',
-          houseSunshineTime: '2小时',
-          housePrice: '2357776',
-        },
-        {
-          buildNo: '1',
-          buildFloor: '5',
-          houseNo: '4',
-          houseArea: '125',
-          houseRoomNum: '三室一厅',
-          houseType: '公寓',
-          houseDirection: '西南',
-          houseSunshineTime: '2小时',
-          housePrice: '2357776',
-        },
-        {
-          buildNo: '1',
-          buildFloor: '5',
-          houseNo: '4',
-          houseArea: '125',
-          houseRoomNum: '三室一厅',
-          houseType: '公寓',
-          houseDirection: '西南',
-          houseSunshineTime: '2小时',
-          housePrice: '2357776',
-        },
-      ],
+      user: app.globalData.userInfo.nickName,
+      buildId: options.buildId,
+      salespersonName: '泠大哥',
+      salespersonLevel: '特级金牌置业专家',
+      salespersonTitle: ['免费获取激活码','一对一专业咨询','麻辣选房至六折']
     });
     this.setWatermark();
   },
   setWatermark() {
-    var name_xx = '麻辣选房' + this.data.buildId;
+    var name_xx = '麻辣选房' + this.data.user;
     var ctx = wx.createCanvasContext('watermark');
 
     ctx.rotate((45 * Math.PI) / 180); //设置文字的旋转角度，角度为45°；
@@ -225,34 +41,37 @@ Page({
     for (let j = 1; j < 10; j++) {
       //用for循环达到重复输出文字的效果，这个for循环代表纵向循环
       ctx.beginPath();
-      ctx.setFontSize(14);
+      ctx.setFontSize(12);
       ctx.setFillStyle('rgba(169,169,169,.2)');
 
       ctx.fillText(name_xx, 0, 50 * j);
       for (let i = 1; i < 10; i++) {
         //这个for循环代表横向循环，
         ctx.beginPath();
-        ctx.setFontSize(14);
+        ctx.setFontSize(12);
         ctx.setFillStyle('rgba(169,169,169,.2)');
-        ctx.fillText(name_xx, 80 * i, 50 * j);
+        ctx.fillText(name_xx, 100 * i, 50 * j);
       }
     } //两个for循环的配合，使得文字充满斜对角线的左下部分
 
     //对斜对角线以右部分进行文字的填充逻辑同上
     for (let j = 0; j < 10; j++) {
       ctx.beginPath();
-      ctx.setFontSize(14);
+      ctx.setFontSize(12);
       ctx.setFillStyle('rgba(169,169,169,.2)');
 
       ctx.fillText(name_xx, 0, -50 * j);
       for (let i = 1; i < 10; i++) {
         ctx.beginPath();
-        ctx.setFontSize(14);
+        ctx.setFontSize(12);
         ctx.setFillStyle('rgba(169,169,169,.2)');
-        ctx.fillText(name_xx, 80 * i, -50 * j);
+        ctx.fillText(name_xx, 100 * i, -50 * j);
       }
     }
-    ctx.draw()
+    ctx.draw();
+  },
+  sendMessage () {
+    console.log('发送消息给销售')
   },
   closePopup() {
     this.setData({
@@ -276,13 +95,13 @@ Page({
       listActiveNames: event.detail,
     });
   },
-  onCoditionChange(event) {
+  onConditionChange(event) {
     this.setData({
       activeNames: event.detail,
     });
   },
   onFloorChange(event) {
-    const _k1 = `condtionObj.name`;
+    const _k1 = `conditionObj.name`;
     this.setData({
       [_k1]: event.detail,
     });

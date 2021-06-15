@@ -1,7 +1,11 @@
 /* pages/search/search.wxss */
-.build-active {
-  background: #a5daef;
+.search-container{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
 }
+
 .share-btn-icon-box {
   text-align: center;
   font-size: 24rpx;
@@ -10,6 +14,8 @@
   height: 48rpx;
   width: 48rpx;
 }
+
+
 .ad-box {
   height: 150rpx;
   width: 750rpx;
@@ -19,16 +25,17 @@
   width: 100%;
 }
 
+
 .build-box {
+  flex:1;
   width: 100vw;
+  overflow: hidden;
 }
 .build-list {
   height: 150rpx;
   width: 100%;
   display: flex;
   border-bottom: 1rpx solid #f5f5f5;
-  text-align: center;
-  line-height: 150rpx;
 }
 .build-no-data {
   height: 150rpx;
@@ -49,8 +56,8 @@
 }
 .build-list-status {
   position: absolute;
-  top: 6%;
-  right: 6%;
+  top: 10%;
+  right: 8%;
 }
 .build-list-base {
   flex: 1;
@@ -65,7 +72,7 @@
   margin-right: 10rpx;
 }
 .build-list-handle {
-  width: 150rpx;
+  width: 140rpx;
   text-align: center;
   line-height: 150rpx;
 }

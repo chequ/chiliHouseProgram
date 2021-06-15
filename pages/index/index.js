@@ -51,9 +51,9 @@ Page({
         status: 4,
       },
     ],
-    buildList: [
+    originBuildList: [
       {
-        buildId:'11',
+        buildId: '111',
         buildPreview: '../../assets/images/index/yunzhou.jpg',
         name: '麓湖生态城沄洲二期',
         houseCount: '335',
@@ -63,7 +63,7 @@ Page({
         payStatus: true,
       },
       {
-        buildId:'22',
+        buildId: '222',
         buildPreview: '../../assets/images/index/wankeParkCity.jpg',
         name: '万科公园城二期',
         houseCount: '454',
@@ -73,7 +73,7 @@ Page({
         payStatus: true,
       },
       {
-        buildId:'33',
+        buildId: '333',
         buildPreview: '../../assets/images/index/nanyang.jpg',
         name: '南阳御龙府',
         houseCount: '224',
@@ -83,7 +83,7 @@ Page({
         payStatus: false,
       },
       {
-        buildId:'44',
+        buildId: '44',
         buildPreview: '../../assets/images/index/yunzhou.jpg',
         name: '山河玖璋',
         houseCount: '335',
@@ -93,7 +93,7 @@ Page({
         payStatus: true,
       },
       {
-        buildId:'55',
+        buildId: '55',
         buildPreview: '../../assets/images/index/wankeParkCity.jpg',
         name: '源滩麒麟荟',
         houseCount: '454',
@@ -103,7 +103,7 @@ Page({
         payStatus: true,
       },
       {
-        buildId:'66',
+        buildId: '66',
         buildPreview: '../../assets/images/index/nanyang.jpg',
         name: '鑫苑城',
         houseCount: '224',
@@ -113,44 +113,110 @@ Page({
         payStatus: false,
       },
     ],
+    buildList: [
+      {
+        buildId: '11',
+        buildPreview: '../../assets/images/index/yunzhou.jpg',
+        name: '麓湖生态城沄洲二期',
+        houseCount: '335',
+        buildNo: '4、8、9',
+        status: 1,
+        statusName: '已选房',
+        payStatus: true,
+      },
+      {
+        buildId: '22',
+        buildPreview: '../../assets/images/index/wankeParkCity.jpg',
+        name: '万科公园城二期',
+        houseCount: '454',
+        buildNo: '1、5、8、12',
+        status: 2,
+        statusName: '选房中',
+        payStatus: true,
+      },
+      {
+        buildId: '33',
+        buildPreview: '../../assets/images/index/nanyang.jpg',
+        name: '南阳御龙府',
+        houseCount: '224',
+        buildNo: '2号楼',
+        status: 3,
+        statusName: '将选房',
+        payStatus: false,
+      },
+      {
+        buildId: '44',
+        buildPreview: '../../assets/images/index/yunzhou.jpg',
+        name: '山河玖璋',
+        houseCount: '335',
+        buildNo: '4、8、9',
+        status: 1,
+        statusName: '已选房',
+        payStatus: true,
+      },
+      {
+        buildId: '55',
+        buildPreview: '../../assets/images/index/wankeParkCity.jpg',
+        name: '源滩麒麟荟',
+        houseCount: '454',
+        buildNo: '1、5、8、12',
+        status: 2,
+        statusName: '选房中',
+        payStatus: true,
+      },
+      {
+        buildId: '66',
+        buildPreview: '../../assets/images/index/nanyang.jpg',
+        name: '鑫苑城',
+        houseCount: '224',
+        buildNo: '2号楼',
+        status: 3,
+        statusName: '将选房',
+        payStatus: false,
+      },
+    ],
+    loading: false,
     showShare: false,
+    noMore: false,
+    loadingFailed: false,
+    pageNo: 1,
     options: [
       { name: '微信', icon: 'wechat', openType: 'share' },
       { name: '复制链接', icon: 'link' },
-      { name: '分享海报', icon: 'poster' }
+      { name: '分享海报', icon: 'poster' },
     ],
   },
   onLoad() {
     app.getAuthorization();
     this.getMyBuildingData();
-    this.setData({
-      myBuildingData: [
-        {
-          name: '山河峯荟',
-          buildId: '2020001',
-        },
-        {
-          name: '南阳长治御龙府',
-          buildId: '2020002',
-        },
-        {
-          name: '招商时代公园',
-          buildId: '2020101',
-        },
-        {
-          name: '未来公园城',
-          buildId: '2020102',
-        },
-        {
-          name: '招商时代公园',
-          buildId: '2020101',
-        },
-        {
-          name: '未来公园城',
-          buildId: '2020102',
-        },
-      ],
-    });
+    // this.setData({
+    //   myBuildingData: [
+    //     {
+    //       name: '山河峯荟',
+    //       buildId: '2020001',
+    //     },
+    //     {
+    //       name: '南阳长治御龙府',
+    //       buildId: '2020002',
+    //     },
+    //     {
+    //       name: '招商时代公园',
+    //       buildId: '2020101',
+    //     },
+    //     {
+    //       name: '未来公园城',
+    //       buildId: '2020102',
+    //     },
+    //     {
+    //       name: '招商时代公园',
+    //       buildId: '2020101',
+    //     },
+    //     {
+    //       name: '未来公园城',
+    //       buildId: '2020102',
+    //     },
+    //   ],
+    // });
   },
   getAuthorization() {
     wx.getSetting({
@@ -185,23 +251,155 @@ Page({
     });
   },
   getCountTypeList(e) {
-    let temp = this.data.buildList.map(el => {
-      el.status = e.target.dataset.item.status;
-      el.statusName = e.target.dataset.item.countName;
-      return el
-    });
+    let temp;
+    if (e.target.dataset.item.status !== 4) {
+      temp = this.data.originBuildList.filter((el) => {
+        if (el.status === e.target.dataset.item.status) {
+          return el;
+        }
+      });
+    } else {
+      temp = this.data.originBuildList.filter((el) => {
+        if (el.payStatus) {
+          return el;
+        }
+      });
+    }
     this.setData({ buildList: temp });
   },
   getBuildingList(event) {
     if (app.globalData.userInfo) {
+      console.log(event)
       wx.navigateTo({
         url:
           '/pages/buildingList/buildingList?buildId=' +
-          event.target.dataset.item.buildid +
+          event.target.dataset.item.buildId +
           '&name=' +
           event.target.dataset.item.name,
       });
     }
+  },
+  //到达底部
+  scrollToLower: function (e) {
+    if (!this.data.loading && this.data.pageNo <=5) {
+      this.setData({
+        loading: true,
+        loadingFailed: false,
+        pageNo: this.data.pageNo + 1,
+      });
+      this.getData(true);
+    }
+  },
+  //请求数据
+  getData(isPage) {
+    let params = {
+      pageNum: this.data.pageNo,
+      pageSize: 30,
+    };
+    //请求
+    setTimeout(() => {
+      let round = Math.round(Math.random());
+      let addData = round
+        ? [
+            {
+              buildId: '441',
+              buildPreview: '../../assets/images/index/yunzhou.jpg',
+              name: '山河玖璋',
+              houseCount: '335',
+              buildNo: '4、8、9',
+              status: 1,
+              statusName: '已选房',
+              payStatus: true,
+            },
+            {
+              buildId: '551',
+              buildPreview: '../../assets/images/index/wankeParkCity.jpg',
+              name: '源滩麒麟荟',
+              houseCount: '454',
+              buildNo: '1、5、8、12',
+              status: 2,
+              statusName: '选房中',
+              payStatus: true,
+            },
+            {
+              buildId: '661',
+              buildPreview: '../../assets/images/index/nanyang.jpg',
+              name: '鑫苑城',
+              houseCount: '224',
+              buildNo: '2号楼',
+              status: 3,
+              statusName: '将选房',
+              payStatus: false,
+            },
+            {
+              buildId: '442',
+              buildPreview: '../../assets/images/index/yunzhou.jpg',
+              name: '山河玖璋',
+              houseCount: '335',
+              buildNo: '4、8、9',
+              status: 1,
+              statusName: '已选房',
+              payStatus: true,
+            },
+            {
+              buildId: '553',
+              buildPreview: '../../assets/images/index/wankeParkCity.jpg',
+              name: '源滩麒麟荟',
+              houseCount: '454',
+              buildNo: '1、5、8、12',
+              status: 2,
+              statusName: '选房中',
+              payStatus: true,
+            },
+            {
+              buildId: '662',
+              buildPreview: '../../assets/images/index/nanyang.jpg',
+              name: '鑫苑城',
+              houseCount: '224',
+              buildNo: '2号楼',
+              status: 3,
+              statusName: '将选房',
+              payStatus: false,
+            },
+          ]
+        : [];
+      this.setData({
+        loading: false,
+      });
+      if (!round) {
+        //返回失败
+        this.setData({
+          loadingFailed: true,
+        });
+        return false;
+      }
+      if (round) {
+        if (isPage) {
+          //下一页的数据拼接在原有数据后面
+          this.setData({
+            buildList: this.data.buildList.concat(addData),
+          });
+        } else {
+          //第一页数据直接赋值
+          this.setData({
+            buildList: addData,
+          });
+        }
+        //如果返回的数据为空，那么就没有下一页了
+        if (this.data.pageNo > 5 ) {
+          this.setData({
+            noMore: true,
+            loadingFailed: false,
+          });
+        }
+      }
+      // } else {
+      //   //返回失败
+      //   this.setData({
+      //     loadingFailed: true,
+      //   });
+      // }
+    }, 1000);
   },
   goSearch() {
     wx.navigateTo({

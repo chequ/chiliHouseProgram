@@ -1,20 +1,129 @@
 /**buildingList.wxss**/
-.building-list-container{
+.building-list-container {
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-.watermark-box{
+/* 水印 */
+.watermark-box {
   height: 100vh;
   width: 100%;
   position: absolute;
+  z-index: -1;
 }
-.watermark-box canvas{
+.watermark-box canvas {
   height: 100vh;
   width: 100%;
 }
-.house-list {
+
+.search-box {
+  display: flex;
+  border-radius: 4rpx;
+  background: #ffffff;
+  margin: 10rpx 10rpx 0 10rpx;
+  padding: 8rpx;
+  box-sizing: border-box;
+}
+.search-con {
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  flex: 1;
+}
+.share-btn-icon-box {
+  margin-left: -15rpx;
+  text-align: center;
+  width: 56rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.share-btn-icon {
+  height: 48rpx;
+  width: 48rpx;
+}
+
+.sale-ad-box {
+  height: 200rpx;
+  width: 100vw;
+  padding: 15rpx;
+  box-sizing: border-box;
+}
+
+.sale-box {
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+}
+.salesperson-profile-photo {
+  height: 170rpx;
+  width: 170rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+  border-radius: 50%;
+  position: relative;
+}
+.salesperson-profile-photo image {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.salesperson-profile-photo view {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #48d1cc;
+  padding: 2rpx 8rpx;
+  border-radius: 8rpx;
+  color: #ffffff;
+}
+.sale-feature-list {
+  flex: 1;
+  font-size: 12px;
+}
+.salesperson-info {
+  display: flex;
+  height: 30rpx;
+  line-height: 30rpx;
+  margin: 10rpx;
+}
+.salesperson-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 8rpx;
+}
+.salesperson-serve {
+  float: left;
+  width: 100%;
+}
+.salesperson-title {
+  display: inline-block;
+  height: 30rpx;
+  line-height: 30rpx;
+  margin: 0 8rpx;
+  background-color: #f4a460;
+  border-radius: 8rpx;
+  color: #ffffff;
+  padding: 5rpx;
+  margin-top: 10rpx;
+}
+.our-ewm {
+  height: 170rpx;
+  width: 170rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.our-ewm image {
+  height: 100%;
+  width: 100%;
+}
+/* .house-list {
   flex: 1;
   overflow-y: auto;
   padding-bottom: 10rpx;
@@ -82,4 +191,4 @@
 }
 .house-detail-box .van-collapse-item__content{
   padding:0;
-}
+} */

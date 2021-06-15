@@ -1,6 +1,5 @@
 <!-- pages/search/search.wxml -->
-<!-- index.wxml -->
-<view class="index-container">
+<view class="search-container">
   <van-search placeholder="请输入搜索内容" show-action clearable model:value="{{ value }}" focus="true" bind:search="onSearch" bind:cancel="onCancel"></van-search>
   <!-- <van-nav-bar title="我的楼盘" right-text="添加楼盘" safe-area-inset-top="false" bind:click-right="addBuilding" custom-style="padding-top: 0" /> -->
   <view class="ad-box">
