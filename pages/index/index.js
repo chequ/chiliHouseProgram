@@ -275,7 +275,9 @@ Page({
           '/pages/buildingList/buildingList?buildId=' +
           event.target.dataset.item.buildId +
           '&name=' +
-          event.target.dataset.item.name,
+          event.target.dataset.item.name + 
+          '&payStatus=' +
+          event.target.dataset.item.payStatus,
       });
     }
   },

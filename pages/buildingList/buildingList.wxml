@@ -4,7 +4,15 @@
     <canvas canvas-id="watermark" style='width:100%;height:100vh;'></canvas>
   </view>
   <view class="search-box">
-    <view class="search-con">{{ title }}</view>
+    <view class="share-btn-icon-box btn-set-box" bindtap="showPopup">
+      <van-icon name="filter-o" color="#808080" size="48rpx" />
+    </view>
+    <view class="search-con">
+      {{ title }}
+      <view>
+        {{ payType }}
+      </view>
+    </view>
     <view class="share-btn-icon-box" bindtap="onShare">
       <image src="../../assets/images/pagesIcon/share.png" class="share-btn-icon" />
     </view>
@@ -38,20 +46,46 @@
   </view>
   <view class="building-table-box">
     <view class="table-head">
-      <view class="" wx:for="{{ defualtChar }}" wx:key="index" >
+      <view wx:for="{{ defualtChar }}" wx:key="index" data-idx="{{ index }}" bindtap="sortChar">
         {{ item.name }}
-        <van-icon name="arrow-up" wx:if="{{ condition }}"/>
-        <van-icon name="arrow-down" wx:if="{{ !condition }}" />
+        <van-icon name="arrow-up" wx:if="{{ tapChar === index && sortUp }}" />
+        <van-icon name="arrow-down" wx:if="{{ tapChar === index && !sortUp }}" />
       </view>
     </view>
     <view class="table-box">
-      <view wx:for="25" class="table-con" wx:key="index">
-        <view class="table" wx:for="{{ tableData }}" wx:key="index" >
-          {{ item.value }}
+      <scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height:100%">
+        <view wx:for="{{ tableData }}" class="table-con" wx:for-index="idx" wx:for-item="item" wx:key="idx">
+          <view class="table" wx:key="index" >
+            {{ item.floor }}
+          </view>
+          <view class="table" wx:key="index" >
+            {{ item.area }}
+          </view>
+          <view class="table" wx:key="index" >
+            {{ item.total }}
+          </view>
+          <view class="table" wx:key="index" >
+            {{ item.price }}
+          </view>
+          <view class="table" wx:key="index" >
+            {{ item.houseType }}
+          </view>
+          <view class="table" wx:key="index" >
+            {{ item.sun }}
+          </view>
         </view>
+        <view style="text-align: center;margin: 10px;">
+          <view wx:if="{{ loading }}">加载中...</view>
+          <view wx:if="{{ noMore }}">没有更多了</view>
+          <view wx:if="{{ loadingFailed }}" bindtap="scrollToLower">数据加载失败,请点击此处重新加载</view>
+        </view>
+      </scroll-view>
+      <view class="noPay" wx:if="{{ noPay }}">
+        <button type="primary">联系销售获取此楼盘码</button>
       </view>
     </view>
   </view>
+  <van-share-sheet show="{{ showShare }}" cancel-text="取消" title="立即分享给好友" options="{{ options }}" bind:select="onSelect" bind:close="onClose" />
   <!-- <view class="list-box" wx:if="{{!isList}}">
     <view class="list-table-box" wx:for="{{tableData}}" wx:for-item="FIR" wx:key='FIRIdx' wx:for-index="FIRIdx">
       <view wx:for="{{FIR.floorData}}" class="list-table" wx:for-item="SEC" wx:key='SECIdx' wx:for-index="SECIdx">
@@ -88,7 +122,7 @@
   </view> -->
   <van-popup
     round
-    show="{{show}}"
+    show="{{ show }}"
     position="right"
     custom-class="house-condition-check"
     bind:click-overlay="closePopup"

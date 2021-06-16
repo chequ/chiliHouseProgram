@@ -30,6 +30,16 @@
   line-height: 64rpx;
   text-align: center;
   flex: 1;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.search-con view {
+  display: inline;
+  font-size: 24rpx;
+  background: green;
+  color: #ffffff;
+  padding: 6rpx;
+  border-radius: 6rpx;
 }
 .share-btn-icon-box {
   margin-left: -15rpx;
@@ -38,6 +48,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.btn-set-box {
+  margin-left: 0;
 }
 .share-btn-icon {
   height: 48rpx;
@@ -125,42 +138,59 @@
   height: 100%;
   width: 100%;
 }
-.building-table-box{
+.building-table-box {
   flex: 1;
   padding: 5rpx;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
-.building-table-box .table-head{
+.building-table-box .table-head {
   height: 40rpx;
   line-height: 40rpx;
   padding: 0 10rpx;
-  background: #ffffff;
+  margin-bottom: 10rpx;
+  background: #afeeee;
+  border-radius: 10rpx;
   display: flex;
 }
-.building-table-box .table-head view{
+.building-table-box .table-head view {
   font-size: 24rpx;
-  flex:1;
+  flex: 1;
   text-align: center;
 }
-.table-box{
-  flex:1;
-  overflow: auto;
+.table-box {
+  flex: 1;
+  overflow-y: auto;
   border-top: 2rpx solid #ccc;
   border-left: 2rpx solid #ccc;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
-.building-table-box .table-con{
+.building-table-box .table-con {
   height: 40rpx;
   line-height: 40rpx;
   display: flex;
 }
-.building-table-box .table-con view{
+.building-table-box .table-con view {
   font-size: 24rpx;
   border-right: 2rpx solid #ccc;
   border-bottom: 2rpx solid #ccc;
   text-align: center;
-  flex:1;
+  flex: 1;
+}
+.table-box .noPay {
+  position: fixed;
+  width: 95%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.table-box .noPay button {
+  margin: 15rpx 0;
 }
 /* .house-list {
   flex: 1;
