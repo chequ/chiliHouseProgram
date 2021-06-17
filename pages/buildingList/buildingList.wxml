@@ -85,49 +85,86 @@
       </view>
     </view>
   </view>
-  <van-share-sheet show="{{ showShare }}" cancel-text="取消" title="立即分享给好友" options="{{ options }}" bind:select="onSelect" bind:close="onClose" />
-  <!-- <view class="list-box" wx:if="{{!isList}}">
-    <view class="list-table-box" wx:for="{{tableData}}" wx:for-item="FIR" wx:key='FIRIdx' wx:for-index="FIRIdx">
-      <view wx:for="{{FIR.floorData}}" class="list-table" wx:for-item="SEC" wx:key='SECIdx' wx:for-index="SECIdx">
-        <view class="list-table-house" wx:if="{{SEC.floor}}" >
-          <view><text decode="{{true}}">&ensp;</text></view>
-          <view>{{SEC.floor}}</view>
-          <view><text decode="{{true}}">&ensp;</text></view>
+  <van-popup
+    round
+    closeable
+    close-icon="close"
+    show="{{ show }}"
+    position="bottom"
+    custom-class="house-condition-check"
+    bind:close="closePopup"
+    bind:click-overlay="closePopup"
+  >
+    <view class="house-condition-box">
+      <view class="house-condition-title">
+        选择条件过滤
+      </view>
+      <view class="house-condition">
+        <van-checkbox-group value="{{ result }}" bind:change="onChange">
+          <van-cell-group>
+            <view
+              wx:for="{{ conditionArr }}"
+              wx:key="index"
+            >
+              <van-cell
+                title="{{ item.title }}"
+                value-class="value-class"
+                clickable
+                bind:click="toggle"
+                data-index="index"
+              >
+                <van-checkbox
+                  catch:tap="noop"
+                  class="checkboxes-{{ index }}"
+                  name="{{ index }}"
+                />
+              </van-cell>
+              <view wx:if="{{ item.type === 'checkbox' }}">
+                <van-checkbox-group wx:if="{{ item.checked }}" :value="{{ conditionObj.buildNoList }}" direction="horizontal" bind:change="onFloorChange">
+                  <van-checkbox
+                    wx:for="{{ item.conditionData.list }}"
+                    wx:for-index="idx"
+                    wx:for-item="list"
+                    wx:key="idx"
+                    name="{{ list.name }}"
+                  >{{ list.label }}</van-checkbox>
+                </van-checkbox-group>
+              </view>
+              <view wx:if="{{ item.type === 'input' }}">
+                <view wx:if="{{ item.checked }}">
+                  <input type="text" />
+                  <input type="text" />
+                </view>
+              </view>
+            </view>
+          </van-cell-group>
+        </van-checkbox-group>
+      </view>
+      <view class="house-condition-btn">
+        <view class="reset-btn">
+          <van-button type="warning" round block bind:click=""> 重 置 </van-button>
         </view>
-        <view class="list-table-house" wx:if="{{!SEC.floor}}" >
-          <view>{{SEC.houseType}}</view>
-          <view>{{SEC.houseRoomNum}}</view>
-          <view>{{SEC.housePrice}}</view>
+        <view class="confirm-btn">
+          <van-button type="primary" round block bind:click="getHouseList"> 确 定 </van-button>
         </view>
       </view>
     </view>
-  </view> -->
-  <!-- <view class="house-list" wx:if="{{isList}}">
-    <van-collapse accordion value="{{ listActiveNames }}" is-link="false" bind:change="onListChange">
-      <van-collapse-item class="house-detail-box" title="{{'房号：' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
-        <van-grid direction="horizontal" column-num="2">
-          <van-grid-item text="{{ '户型：' + item.houseRoomNum }}"/>
-          <van-grid-item text="{{ '面积：' + item.houseArea }}"/>
-        </van-grid>
-        <van-grid direction="horizontal" column-num="2">
-          <van-grid-item text="{{ '住宅性质：' + item.houseType }}"/>
-          <van-grid-item text="{{ '朝向：' + item.houseDirection }}"/>
-        </van-grid>
-        <van-grid direction="horizontal" column-num="2">
-          <van-grid-item text="{{ '日照时间：' + item.houseSunshineTime }}"/>
-          <van-grid-item text="{{ '总价：' + item.housePrice }}"/>
-        </van-grid>
-      </van-collapse-item>
-    </van-collapse>
-  </view> -->
-  <van-popup
+  </van-popup>
+  <van-share-sheet show="{{ showShare }}" cancel-text="取消" title="立即分享给好友" options="{{ options }}" bind:select="onSelect" bind:close="onClose" />
+  <!-- <van-popup
     round
+    closeable
+    close-icon="close"
     show="{{ show }}"
-    position="right"
+    position="bottom"
     custom-class="house-condition-check"
+    bind:close="closePopup"
     bind:click-overlay="closePopup"
   >
-    <view class="house-condition_box">
+    <view class="house-condition-box">
+      <view class="house-condition-title">
+        选择条件过滤
+      </view>
       <view class="house-condition">
         <van-collapse value="{{ activeNames }}" bind:change="onCoditionChange">
           <van-collapse-item title="选择楼栋" name="1">
@@ -163,5 +200,39 @@
         </view>
       </view>
     </view>
-  </van-popup>
+  </van-popup> -->
+  <!-- <view class="list-box" wx:if="{{!isList}}">
+    <view class="list-table-box" wx:for="{{tableData}}" wx:for-item="FIR" wx:key='FIRIdx' wx:for-index="FIRIdx">
+      <view wx:for="{{FIR.floorData}}" class="list-table" wx:for-item="SEC" wx:key='SECIdx' wx:for-index="SECIdx">
+        <view class="list-table-house" wx:if="{{SEC.floor}}" >
+          <view><text decode="{{true}}">&ensp;</text></view>
+          <view>{{SEC.floor}}</view>
+          <view><text decode="{{true}}">&ensp;</text></view>
+        </view>
+        <view class="list-table-house" wx:if="{{!SEC.floor}}" >
+          <view>{{SEC.houseType}}</view>
+          <view>{{SEC.houseRoomNum}}</view>
+          <view>{{SEC.housePrice}}</view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <!-- <view class="house-list" wx:if="{{isList}}">
+    <van-collapse accordion value="{{ listActiveNames }}" is-link="false" bind:change="onListChange">
+      <van-collapse-item class="house-detail-box" title="{{'房号：' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
+        <van-grid direction="horizontal" column-num="2">
+          <van-grid-item text="{{ '户型：' + item.houseRoomNum }}"/>
+          <van-grid-item text="{{ '面积：' + item.houseArea }}"/>
+        </van-grid>
+        <van-grid direction="horizontal" column-num="2">
+          <van-grid-item text="{{ '住宅性质：' + item.houseType }}"/>
+          <van-grid-item text="{{ '朝向：' + item.houseDirection }}"/>
+        </van-grid>
+        <van-grid direction="horizontal" column-num="2">
+          <van-grid-item text="{{ '日照时间：' + item.houseSunshineTime }}"/>
+          <van-grid-item text="{{ '总价：' + item.housePrice }}"/>
+        </van-grid>
+      </van-collapse-item>
+    </van-collapse>
+  </view> -->
 </view>

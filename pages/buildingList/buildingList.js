@@ -17,9 +17,126 @@ Page({
     checked: [],
     tableData: [],
     listData: [],
+    result: ['1', '3'],
     conditionObj: {
       buildNoList: [1, 2],
     },
+    conditionArr: [
+      {
+        title:'选择楼栋',
+        type:'checkbox',
+        checked: false,
+        conditionData: {
+          list: [
+            {
+              label: '1栋',
+              name: '1'
+            },
+            {
+              label: '2栋',
+              name: '2'
+            }
+          ]
+        }
+      },
+      {
+        title:'选择房号位',
+        type:'checkbox',
+        checked: false,
+        conditionData: {
+          list: [
+            {
+              label: 'A户·1号位',
+              name: '1'
+            },
+            {
+              label: 'B户·2号位',
+              name: '2'
+            }
+          ]
+        }
+      },
+      {
+        title:'选择建筑面积',
+        type:'checkbox',
+        checked: false,
+        conditionData: {
+          list: [
+            {
+              label: '138平',
+              name: '1'
+            },
+            {
+              label: '99平',
+              name: '2'
+            }
+          ]
+        }
+      },
+      {
+        title:'选择户型',
+        type:'checkbox',
+        checked: false,
+        conditionData: {
+          list: [
+            {
+              label: '套三',
+              name: '1'
+            },
+            {
+              label: '套四',
+              name: '2'
+            }
+          ]
+        }
+      },
+      {
+        title:'选择房屋类型',
+        type:'checkbox',
+        checked: false,
+        conditionData: {
+          list: [
+            {
+              label: '住宅',
+              name: '1'
+            },
+            {
+              label: '公寓',
+              name: '2'
+            }
+          ]
+        }
+      },
+      {
+        title:'选择朝向',
+        type:'checkbox',
+        checked: false,
+        conditionData: {
+          list: [
+            {
+              label: '东北',
+              name: '1'
+            },
+            {
+              label: '南向',
+              name: '2'
+            }
+          ]
+        }
+      },
+      {
+        title:'输入均价范围',
+        type:'input',
+        checked: false,
+        conditionData: {}
+      },
+      {
+        title:'输入总价范围',
+        type:'input',
+        checked: false,
+        conditionData: {}
+      }
+    ],
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     backUrl: '#ffffff',
     tapChar: 0,
@@ -37,6 +154,21 @@ Page({
     ],
   },
   onLoad(options) {
+    this.data.conditionArr.forEach((origin,idx) => {
+      let exg = this.data.result.find(i => {
+        return i == idx
+      })
+      let _key = `conditionArr[${idx}].checked`;
+      if(exg){
+        this.setData({
+          [_key]: true
+        });
+      }else{
+        this.setData({
+          [_key]: false
+        });
+      }
+    })
     this.setData({
       title: options.name,
       user: app.globalData.userInfo.nickName,
@@ -356,6 +488,34 @@ Page({
     }
     ctx.draw();
   },
+  onChange(event) {
+    this.setData({
+      result: event.detail
+    });
+    this.data.conditionArr.forEach((origin,idx) => {
+      let exg = event.detail.find(i => {
+        return i == idx
+      })
+      let _key = `conditionArr[${idx}].checked`;
+      if(exg){
+        this.setData({
+          [_key]: true
+        });
+      }else{
+        this.setData({
+          [_key]: false
+        });
+      }
+    })
+  },
+
+  toggle(event) {
+    const { index } = event.currentTarget.dataset;
+    const checkbox = this.selectComponent(`.checkboxes-${index}`);
+    checkbox.toggle();
+  },
+
+  noop() {},
   onShare() {
     this.setData({ showShare: true });
   },
