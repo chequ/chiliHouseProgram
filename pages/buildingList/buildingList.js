@@ -128,13 +128,35 @@ Page({
         title:'输入均价范围',
         type:'input',
         checked: false,
-        conditionData: {}
+        conditionData: {
+          list: [
+            {
+              label: '最低单价',
+              name: '1'
+            },
+            {
+              label: '最高单价',
+              name: '2'
+            }
+          ]
+        }
       },
       {
         title:'输入总价范围',
         type:'input',
         checked: false,
-        conditionData: {}
+        conditionData: {
+          list: [
+            {
+              label: '最低总价',
+              name: '1'
+            },
+            {
+              label: '最高总价',
+              name: '2'
+            }
+          ]
+        }
       }
     ],
     canIUse: wx.canIUse('button.open-type.getUserInfo'),

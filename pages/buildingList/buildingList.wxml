@@ -17,13 +17,6 @@
       <image src="../../assets/images/pagesIcon/share.png" class="share-btn-icon" />
     </view>
   </view>
-  <!-- <van-nav-bar
-    title="{{ title }}"
-    right-text="条件筛选"
-    safe-area-inset-top="false"
-    bind:click-right="showPopup"
-    custom-style="padding-top: 0;"
-  /> -->
   <view class="sale-ad-box">
     <view class="sale-box">
       <view class="salesperson-profile-photo">
@@ -122,6 +115,7 @@
               <view wx:if="{{ item.type === 'checkbox' }}">
                 <van-checkbox-group wx:if="{{ item.checked }}" :value="{{ conditionObj.buildNoList }}" direction="horizontal" bind:change="onFloorChange">
                   <van-checkbox
+                    custom-class="check-box"
                     wx:for="{{ item.conditionData.list }}"
                     wx:for-index="idx"
                     wx:for-item="list"
@@ -131,9 +125,16 @@
                 </van-checkbox-group>
               </view>
               <view wx:if="{{ item.type === 'input' }}">
-                <view wx:if="{{ item.checked }}">
-                  <input type="text" />
-                  <input type="text" />
+                <view class='input-box' wx:if="{{ item.checked }}">
+                  <van-field
+                    wx:for="{{ item.conditionData.list }}"
+                    wx:for-item="list" 
+                    value="{{ value }}"
+                    label="{{ list.label }}（元）"
+                    placeholder="请输入{{ list.label }}"
+                    border="{{ false }}"
+                    bind:change="onChange"
+                  />
                 </view>
               </view>
             </view>

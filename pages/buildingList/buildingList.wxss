@@ -219,6 +219,12 @@
   overflow-y: auto;
   padding-bottom: 10rpx;
 }
+.check-box {
+  padding: 15rpx 60rpx;
+}
+.input-box {
+  padding: 15rpx 60rpx;
+}
 .house-condition-check{
   height: 100%;
   width: 60%; 
