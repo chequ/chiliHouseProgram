@@ -1,7 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp();
-
+import Toast from '@vant/weapp/toast/toast';
 Page({
   data: {
     title: '一房一价',
@@ -13,19 +13,18 @@ Page({
     buildId: '',
     user: '',
     payStatus: false,
-    activeNames: ['1'],
+    // activeNames: ['1'],
     checked: [],
     tableData: [],
     listData: [],
     result: ['1', '3'],
-    conditionObj: {
-      buildNoList: [1, 2],
-    },
     conditionArr: [
       {
         title:'选择楼栋',
         type:'checkbox',
         checked: false,
+        key: 'floor',
+        value: [],
         conditionData: {
           list: [
             {
@@ -40,9 +39,11 @@ Page({
         }
       },
       {
-        title:'选择房号位',
+        title:'选择户型',
         type:'checkbox',
         checked: false,
+        key: 'household',
+        value: [],
         conditionData: {
           list: [
             {
@@ -60,6 +61,8 @@ Page({
         title:'选择建筑面积',
         type:'checkbox',
         checked: false,
+        key: 'area',
+        value: [],
         conditionData: {
           list: [
             {
@@ -74,26 +77,11 @@ Page({
         }
       },
       {
-        title:'选择户型',
+        title:'选择房屋属性',
         type:'checkbox',
         checked: false,
-        conditionData: {
-          list: [
-            {
-              label: '套三',
-              name: '1'
-            },
-            {
-              label: '套四',
-              name: '2'
-            }
-          ]
-        }
-      },
-      {
-        title:'选择房屋类型',
-        type:'checkbox',
-        checked: false,
+        key: 'houseType',
+        value: [],
         conditionData: {
           list: [
             {
@@ -111,6 +99,8 @@ Page({
         title:'选择朝向',
         type:'checkbox',
         checked: false,
+        key: 'towards',
+        value: [],
         conditionData: {
           list: [
             {
@@ -128,6 +118,8 @@ Page({
         title:'输入均价范围',
         type:'input',
         checked: false,
+        key: 'avePrice',
+        value: [],
         conditionData: {
           list: [
             {
@@ -145,6 +137,8 @@ Page({
         title:'输入总价范围',
         type:'input',
         checked: false,
+        key: 'totalPrice',
+        value: [],
         conditionData: {
           list: [
             {
@@ -211,15 +205,15 @@ Page({
         },
         {
           name: '总价',
-          key: 'total'
+          key: 'totalPrice'
         },
         {
           name: '均价',
-          key: 'price'
+          key: 'avePrice'
         },
         {
           name: '户型',
-          key: 'houseType'
+          key: 'household'
         },
         {
           name: '日照',
@@ -510,7 +504,7 @@ Page({
     }
     ctx.draw();
   },
-  onChange(event) {
+  onConditionChange(event) {
     this.setData({
       result: event.detail
     });
@@ -551,7 +545,7 @@ Page({
     this.onClose();
   },
   sendMessage() {
-    console.log('发送消息给销售')
+    Toast.success('发送消息给销售');
   },
   sortChar(e) {
     if (this.data.tapChar !== undefined && e.target.dataset.idx !== undefined && this.data.tapChar !== e.target.dataset.idx){
@@ -648,7 +642,6 @@ Page({
         // }
       }, 1000);
     } else {
-      console.log(this.data.payStatus)
       this.setData({
         noPay: true
       })
@@ -671,22 +664,37 @@ Page({
       show: true,
     });
   },
-  onListChange(event) {
-    this.setData({
-      listActiveNames: event.detail,
-    });
+  // onListChange(event) {
+  //   this.setData({
+  //     listActiveNames: event.detail,
+  //   });
+  // },
+  onInputChange (event) {
+    this.data.conditionArr.forEach((el,idx) => {
+      if (el.key === event.target.dataset.key) {
+        const _k1 = `conditionArr[${idx}].value[${event.target.dataset.idx}]`;
+        this.setData({
+          [_k1]: event.detail,
+        });
+      }
+    })
   },
-  onConditionChange(event) {
-    this.setData({
-      activeNames: event.detail,
-    });
+  // onConditionChange(event) {
+  //   this.setData({
+  //     activeNames: event.detail,
+  //   });
+  // },
+  onCheckChange(event) {
+    this.data.conditionArr.forEach((el,idx) => {
+      if (el.key === event.target.dataset.key) {
+        const _k1 = `conditionArr[${idx}].value`;
+        this.setData({
+          [_k1]: event.detail,
+        });
+      }
+    })
   },
-  onFloorChange(event) {
-    const _k1 = `conditionObj.name`;
-    this.setData({
-      [_k1]: event.detail,
-    });
-  },
+  moveHandle () {},
   getHouseList() {
     this.closePopup();
   },

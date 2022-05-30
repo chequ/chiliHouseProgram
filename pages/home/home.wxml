@@ -1,10 +1,10 @@
-<!--home.wxml-->
+<!-- home.wxml -->
 <view>
   <view class="user-box">
     <view class="user-photo">
-      <van-image height="100%" width="100%" src="{{photo}}" lazy-load="true" round/>
+      <van-image height="100%" width="100%" src="{{photo}}" lazy-load="true" round />
     </view>
-    <view class="user-name">{{name}}</view>
+    <view class="user-name">{{name || "微信用户"}}</view>
   </view>
-  <van-cell title="{{item.title}}" data-id="{{item.id}}" data-url="{{item.url}}" wx:key="index" is-link wx:for="{{userList}}" bind:click="go"/>
+  <van-cell title="{{item.title}}" data-id="{{item.id}}" data-url="{{item.url}}" wx:key="index" is-link wx:for="{{userList}}" bind:click="go" />
 </view>

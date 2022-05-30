@@ -31,7 +31,7 @@
         "iconPath": "assets/images/pagesIcon/message.png",
         "selectedIconPath": "assets/images/pagesIcon/message-active.png",
         "pagePath": "pages/contact/contact",
-        "text": "联系"
+        "text": "回答"
       },
       {
         "iconPath": "assets/images/pagesIcon/myself.png",

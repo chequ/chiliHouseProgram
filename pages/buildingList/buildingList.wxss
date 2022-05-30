@@ -198,7 +198,7 @@
   padding-bottom: 10rpx;
 } */
 .house-condition-box {
-  height: 100%;
+  height: 80vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -215,35 +215,47 @@
   flex: none !important;
 }
 .house-condition {
+  box-sizing: border-box;
   flex: 1;
-  overflow-y: auto;
+  overflow: hidden;
   padding-bottom: 10rpx;
+}
+.house-condition-con {
+  overflow-y: auto;
+  height: 100%;
 }
 .check-box {
   padding: 15rpx 60rpx;
 }
 .input-box {
-  padding: 15rpx 60rpx;
+  padding: 15rpx 28rpx;
 }
-.house-condition-check{
+/* .house-condition-check{
   height: 100%;
   width: 60%; 
-}
+} */
 .house-condition-btn {
+  border-top: 1px solid #ccc;
   height: 100rpx;
   display: flex;
 }
 .confirm-btn{
   width: 50%;
-  padding-top: 12rpx;
+  padding-top: 6rpx;
   padding-left: 10rpx;
   padding-right: 20rpx;
+  padding-bottom: 6rpx;
+  text-align: center;
+  line-height: 88rpx;
 }
 .reset-btn{
   width: 50%;
-  padding-top: 12rpx;
+  padding-bottom: 6rpx;
+  padding-top: 6rpx;
   padding-left: 10rpx;
   padding-right: 20rpx;
+  text-align: center;
+  line-height: 88rpx;
 }
 
 /* .list-box{
