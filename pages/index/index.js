@@ -6,10 +6,11 @@ Page({
   data: {
     myBuildingData: [],
     buttonColor: {
-      houseStatus1: '#cccccc',
+      houseStatus0: '#F4A460',
+      houseStatus1: '#B0C4DE',
       houseStatus2: '#87CEFA',
-      houseStatus3: '#FFA500',
-      houseStatus4: 'green',
+      houseStatus3: '#AFEEEE',
+      houseStatus4: '#7FFFD4',
     },
     adList: [
       {
@@ -26,6 +27,12 @@ Page({
       },
     ],
     countData: [
+      {
+        count: 11545,
+        countName: '全部',
+        type: 'all',
+        status: 0,
+      },
       {
         count: 10621,
         countName: '已选房',
@@ -189,34 +196,6 @@ Page({
   onLoad() {
     app.getAuthorization();
     this.getMyBuildingData();
-    // this.setData({
-    //   myBuildingData: [
-    //     {
-    //       name: '山河峯荟',
-    //       buildId: '2020001',
-    //     },
-    //     {
-    //       name: '南阳长治御龙府',
-    //       buildId: '2020002',
-    //     },
-    //     {
-    //       name: '招商时代公园',
-    //       buildId: '2020101',
-    //     },
-    //     {
-    //       name: '未来公园城',
-    //       buildId: '2020102',
-    //     },
-    //     {
-    //       name: '招商时代公园',
-    //       buildId: '2020101',
-    //     },
-    //     {
-    //       name: '未来公园城',
-    //       buildId: '2020102',
-    //     },
-    //   ],
-    // });
   },
   getAuthorization() {
     wx.getSetting({
@@ -252,7 +231,9 @@ Page({
   },
   getCountTypeList(e) {
     let temp;
-    if (e.target.dataset.item.status !== 4) {
+    if (e.target.dataset.item.status === 0) {
+      temp = this.data.originBuildList;
+    } else if (e.target.dataset.item.status !== 4) {
       temp = this.data.originBuildList.filter((el) => {
         if (el.status === e.target.dataset.item.status) {
           return el;
@@ -269,13 +250,13 @@ Page({
   },
   getBuildingList(event) {
     if (app.globalData.userInfo) {
-      console.log(event)
+      console.log(event);
       wx.navigateTo({
         url:
           '/pages/buildingList/buildingList?buildId=' +
           event.target.dataset.item.buildId +
           '&name=' +
-          event.target.dataset.item.name + 
+          event.target.dataset.item.name +
           '&payStatus=' +
           event.target.dataset.item.payStatus,
       });
@@ -283,7 +264,7 @@ Page({
   },
   //到达底部
   scrollToLower: function (e) {
-    if (!this.data.loading && this.data.pageNo <=5) {
+    if (!this.data.loading && this.data.pageNo <= 5) {
       this.setData({
         loading: true,
         loadingFailed: false,
@@ -388,7 +369,7 @@ Page({
           });
         }
         //如果返回的数据为空，那么就没有下一页了
-        if (this.data.pageNo > 5 ) {
+        if (this.data.pageNo > 5) {
           this.setData({
             noMore: true,
             loadingFailed: false,

@@ -10,7 +10,7 @@
   height: 100vh;
   width: 100%;
   position: absolute;
-  z-index: -1;
+  z-index: -10086;
 }
 .watermark-box canvas {
   height: 100vh;
@@ -21,8 +21,7 @@
   display: flex;
   border-radius: 4rpx;
   background: #ffffff;
-  margin: 10rpx 10rpx 0 10rpx;
-  padding: 8rpx;
+  padding: 18rpx 18rpx 8 18rpx;
   box-sizing: border-box;
 }
 .search-con {
@@ -204,7 +203,7 @@
   flex-direction: column;
 }
 .house-condition-title {
-  height: 88rpx;
+  height: 100%;
   padding-left: 15rpx;
   line-height: 88rpx;
   font-size: 32rpx;
@@ -256,6 +255,285 @@
   padding-right: 20rpx;
   text-align: center;
   line-height: 88rpx;
+}
+
+/* .list-box{
+  width: 98%;
+  height: 100vh;
+  margin: 0 1%;
+  overflow: auto;
+  background: #cccccc;
+}
+.list-table-box{
+  height: 210rpx;
+  white-space: nowrap;
+}
+.list-table{
+  display: inline-block;
+  width: 400rpx;
+  border-bottom: 1rpx solid #dddddd;
+  border-right: 1rpx solid #dddddd;
+  text-align: center;
+}
+.list-table-floor{
+  height: 210rpx;
+  line-height: 210rpx;
+}
+.list-table-house{
+  height: 210rpx;
+}
+.list-table-house view{
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.house-detail-box .van-collapse-item__content{
+  padding:0;
+} */
+/**buildingList.wxss**/
+.building-list-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* 水印 */
+.watermark-box {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: -10086;
+}
+.watermark-box canvas {
+  height: 100vh;
+  width: 100%;
+}
+
+.search-box {
+  display: flex;
+  border-radius: 4rpx;
+  background: #ffffff;
+  padding: 18rpx 18rpx 8 18rpx;
+  box-sizing: border-box;
+}
+.search-con {
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  flex: 1;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.search-con view {
+  display: inline;
+  font-size: 24rpx;
+  background: green;
+  color: #ffffff;
+  padding: 6rpx;
+  border-radius: 6rpx;
+}
+.share-btn-icon-box {
+  margin-left: -15rpx;
+  text-align: center;
+  width: 56rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.btn-set-box {
+  margin-left: 0;
+}
+.share-btn-icon {
+  height: 48rpx;
+  width: 48rpx;
+}
+
+.sale-ad-box {
+  height: 230rpx;
+  width: 100vw;
+  padding: 15rpx;
+  box-sizing: border-box;
+}
+
+.sale-box {
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+}
+.salesperson-profile-photo {
+  height: 180rpx;
+  width: 180rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+  border-radius: 50%;
+  position: relative;
+  margin-top: 10rpx;
+}
+.salesperson-profile-photo image {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.salesperson-profile-photo view {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #48d1cc;
+  padding: 2rpx 8rpx;
+  border-radius: 8rpx;
+  color: #ffffff;
+}
+.sale-feature-list {
+  flex: 1;
+  font-size: 24rpx;
+}
+.salesperson-info {
+  display: flex;
+  height: 30rpx;
+  line-height: 30rpx;
+  margin: 10rpx;
+}
+.salesperson-name {
+  font-weight: bold;
+  font-size: 32rpx;
+  margin-right: 8rpx;
+}
+.salesperson-serve {
+  float: left;
+  width: 100%;
+}
+.salesperson-title {
+  display: inline-block;
+  height: 30rpx;
+  line-height: 30rpx;
+  margin: 0 8rpx;
+  background-color: #f4a460;
+  border-radius: 8rpx;
+  color: #ffffff;
+  padding: 5rpx;
+  margin-top: 10rpx;
+}
+.our-ewm {
+  height: 180rpx;
+  width: 180rpx;
+  padding: 10rpx;
+  margin-top: 10rpx;
+  box-sizing: border-box;
+}
+.our-ewm image {
+  height: 100%;
+  width: 100%;
+}
+.building-table-box {
+  flex: 1;
+  padding: 5rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.building-table-box .table-head {
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  margin-bottom: 10rpx;
+  background: #afeeee;
+  border-radius: 10rpx;
+  display: flex;
+}
+.building-table-box .table-head view {
+  font-size: 24rpx;
+  flex: 1;
+  text-align: center;
+}
+.table-box {
+  flex: 1;
+  overflow-y: auto;
+  border-top: 2rpx solid #ccc;
+  border-left: 2rpx solid #ccc;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.building-table-box .table-con {
+  height: 40rpx;
+  line-height: 40rpx;
+  display: flex;
+}
+.building-table-box .table-con view {
+  font-size: 24rpx;
+  border-right: 2rpx solid #ccc;
+  border-bottom: 2rpx solid #ccc;
+  text-align: center;
+  flex: 1;
+}
+.table-box .noPay {
+  position: fixed;
+  width: 95%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.table-box .noPay button {
+  margin: 15rpx 0;
+}
+/* .house-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 10rpx;
+} */
+.house-condition-box {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.house-condition-title {
+  height: 88rpx;
+  padding-left: 15rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.value-class {
+  flex: none !important;
+}
+.house-condition {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 10rpx;
+}
+.check-box {
+  padding: 15rpx 60rpx;
+}
+.input-box {
+  padding: 15rpx 60rpx;
+}
+.house-condition-check{
+  height: 100%;
+  width: 60%; 
+}
+.house-condition-btn {
+  height: 100rpx;
+  display: flex;
+}
+.confirm-btn{
+  width: 50%;
+  padding-top: 12rpx;
+  padding-left: 10rpx;
+  padding-right: 20rpx;
+}
+.reset-btn{
+  width: 50%;
+  padding-top: 12rpx;
+  padding-left: 10rpx;
+  padding-right: 20rpx;
 }
 
 /* .list-box{
