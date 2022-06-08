@@ -192,6 +192,7 @@ Page({
       { name: '复制链接', icon: 'link' },
       { name: '分享海报', icon: 'poster' },
     ],
+    adShow: true, // 开屏广告
   },
   onLoad() {
     app.getAuthorization();
@@ -249,17 +250,26 @@ Page({
     this.setData({ buildList: temp });
   },
   getBuildingList(event) {
+    console.log(event);
+    wx.navigateTo({
+      url:
+        '/pages/buildingList/buildingList?buildId=' +
+        event.target.dataset.item.buildId +
+        '&name=' +
+        event.target.dataset.item.name +
+        '&payStatus=' +
+        event.target.dataset.item.payStatus,
+    });
     if (app.globalData.userInfo) {
-      console.log(event);
-      wx.navigateTo({
-        url:
-          '/pages/buildingList/buildingList?buildId=' +
-          event.target.dataset.item.buildId +
-          '&name=' +
-          event.target.dataset.item.name +
-          '&payStatus=' +
-          event.target.dataset.item.payStatus,
-      });
+      // wx.navigateTo({
+      //   url:
+      //     '/pages/buildingList/buildingList?buildId=' +
+      //     event.target.dataset.item.buildId +
+      //     '&name=' +
+      //     event.target.dataset.item.name +
+      //     '&payStatus=' +
+      //     event.target.dataset.item.payStatus,
+      // });
     }
   },
   //到达底部
@@ -401,4 +411,10 @@ Page({
     Toast(e.detail.name);
     this.onClose();
   },
+  // 关闭开屏广告
+  onAdClose () {
+    this.setData({
+      adShow: false
+    })
+  }
 });

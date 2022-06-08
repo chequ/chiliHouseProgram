@@ -65,6 +65,15 @@
       </view>
     </scroll-view>
   </view>
+  <van-popup show="{{ adShow }}" closeable bind:close="onAdClose" custom-style="height:80%;width:80%;border-radius:10rpx">
+    <view class="open-ad-box" hover-class="none" hover-stop-propagation="false">
+      <van-image width="100%" height="100%" fit="cover" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+      <!-- <view class="" hover-class="none" hover-stop-propagation="false">
+        <text>{{time}}S</text>
+        <text class="" selectable="false" space="false" decode="false">跳过</text>
+      </view> -->
+    </view>
+  </van-popup>
   <van-share-sheet show="{{ showShare }}" cancel-text="取消" title="立即分享给好友" options="{{ options }}" bind:select="onSelect" bind:close="onClose" />
   <!-- <van-nav-bar title="我的楼盘" right-text="添加楼盘" safe-area-inset-top="false" bind:click-right="addBuilding" custom-style="padding-top: 0" /> -->
   <!-- <van-grid column-num="3">

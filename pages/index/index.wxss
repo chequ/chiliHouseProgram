@@ -104,3 +104,8 @@
   border-radius: 8rpx;
   margin: 10rpx;
 }
+
+.open-ad-box {
+  height: 100%;
+  width: 100%;
+}
