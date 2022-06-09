@@ -105,7 +105,7 @@
                   value-class="value-class"
                   clickable
                   bind:click="toggle"
-                  data-index="index"
+                  data-index="{{index}}"
                 >
                   <van-checkbox
                     catch:tap="noop"

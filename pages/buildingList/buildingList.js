@@ -513,13 +513,15 @@ Page({
         return i == idx
       })
       let _key = `conditionArr[${idx}].checked`;
+      let _val = `conditionArr[${idx}].value`;
       if(exg){
         this.setData({
-          [_key]: true
+          [_key]: true,
         });
       }else{
         this.setData({
-          [_key]: false
+          [_key]: false,
+          [_val]: []
         });
       }
     })
