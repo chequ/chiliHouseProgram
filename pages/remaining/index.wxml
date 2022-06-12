@@ -1,0 +1,127 @@
+<!-- pages/remaining/index.wxml -->
+<view class="remaining-container">
+  <van-nav-bar title="{{ title }}" left-text="{{ listOrTable }}" safe-area-inset-top="false" bind:click-right="showPopup" bind:click-left="showChange" custom-style="padding-top: 0">
+    <van-icon wx:if="{{isList}}" name="filter-o" color="#808080" size="48rpx" slot="right"/>
+  </van-nav-bar>
+  <van-tabs active="{{ activeTab }}" wx:if="{{!isList}}">
+    <van-tab wx:for="{{8}}" wx:key="index"title="{{item+1}}栋">
+      <view class="list-box">
+        <view class="list-table-header-box">
+          <view class="list-table-header first">
+            <view class="list-table-header-house">楼层</view>
+          </view>
+          <view class="house-no">
+            <view class="house-no-title">房号位</view>
+            <view class="house-no-con">
+              <view class="list-table-header" wx:for="{{floorHouseNum}}" wx:key='index'>
+                <view class="list-table-header-house">{{'0'+(item+1)}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="list-table-box" wx:for="{{tableData}}" wx:for-item="FIR" wx:key='FIRIdx' wx:for-index="FIRIdx">
+          <view wx:for="{{FIR.floorData}}" class="{{SECIdx === 0 ? 'list-table first' : 'list-table'}}" wx:for-item="SEC" wx:key='SECIdx' wx:for-index="SECIdx">
+            <view class="list-table-house" wx:if="{{SEC.floor}}">
+              <view>
+                <text decode="{{true}}">&ensp;</text>
+              </view>
+              <view>{{SEC.floor}}</view>
+              <view>
+                <text decode="{{true}}">&ensp;</text>
+              </view>
+            </view>
+            <view class="{{SEC.saled ? 'list-table-house saled' : 'list-table-house'}}" wx:if="{{!SEC.floor}}">
+              <view>{{SEC.houseArea}}m²</view>
+              <view>{{SEC.housePrice}}元/m²</view>
+              <view>{{SEC.houseNum}}</view>
+              <view class="tags">
+                <view class="{{SEC.renovated ? 'tureStatus' : 'falseStatus'}}">{{SEC.renovated?'精':'清'}}</view>
+                <view class="{{SEC.houseType === '住宅' ? 'tureStatus' : 'falseStatus'}}">{{SEC.houseType === "住宅"?'住':'公'}}</view>
+                <view class="{{SEC.saled ? 'falseStatus' : 'tureStatus'}}">{{SEC.saled?'已':'未'}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+  <view class="house-list" wx:if="{{isList}}">
+    <view class="house-con" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
+      <view>
+        <text class="margin-r-15">{{'房号：' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}</text>
+        <text>{{ '总价：' + item.housePrice }}</text>
+      </view>
+      <view>
+        <text class="margin-r-15">{{ '户型：' + item.houseNum }}</text>
+        <text class="margin-r-15">{{ '单价：' + item.housePrice }}</text>
+        <text>{{ '面积：' + item.houseArea }}</text>
+      </view>
+      <view>
+        <text class="margin-r-15">{{ '朝向：' + item.houseDirection }}</text>
+        <text class="margin-r-15">{{ '住宅性质：' + item.houseType }}</text>
+        <text>{{ '日照时间：' + item.houseSunshineTime }}</text>
+      </view>
+      
+    </view>
+    <!-- <van-collapse accordion value="{{ listActiveNames }}" is-link="false" bind:change="onListChange">
+      <van-collapse-item custom-class="aa" title="{{'房号：' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
+        <van-grid direction="horizontal" column-num="2">
+          <van-grid-item text="{{ '户型：' + item.houseNum }}" content-class="bb"/>
+          <van-grid-item text="{{ '面积：' + item.houseArea }}" content-class="bb"/>
+        </van-grid>
+        <van-grid direction="horizontal" column-num="2">
+          <van-grid-item text="{{ '住宅性质：' + item.houseType }}" content-class="bb"/>
+          <van-grid-item text="{{ '朝向：' + item.houseDirection }}" content-class="bb"/>
+        </van-grid>
+        <van-grid direction="horizontal" column-num="2">
+          <van-grid-item text="{{ '日照时间：' + item.houseSunshineTime }}" content-class="bb"/>
+          <van-grid-item text="{{ '总价：' + item.housePrice }}" content-class="bb"/>
+        </van-grid>
+      </van-collapse-item>
+    </van-collapse> -->
+  </view>
+  <van-popup
+    round
+    show="{{show}}"
+    position="right"
+    custom-class="house-condition-check"
+    bind:click-overlay="closePopup"
+  >
+    <view class="house-condition_box">
+      <view class="house-condition">
+        <van-collapse value="{{ activeNames }}" bind:change="onCoditionChange">
+          <van-collapse-item title="选择楼栋" name="1">
+            <van-checkbox-group value="{{ condtionObj.floor }}" direction="horizontal" bind:change="onFloorChange">
+              <van-checkbox name="1">1栋</van-checkbox>
+              <van-checkbox name="2">2栋</van-checkbox>
+            </van-checkbox-group>
+          </van-collapse-item>
+          <van-collapse-item title="选择房号" name="2">内容</van-collapse-item>
+          <van-collapse-item title="选择建筑面积" name="3"
+            >内容</van-collapse-item
+          >
+          <van-collapse-item title="选择户型" name="4">内容</van-collapse-item>
+          <van-collapse-item title="选择房屋类型" name="5"
+            >内容</van-collapse-item
+          >
+          <van-collapse-item title="选择朝向" name="6">内容</van-collapse-item>
+          <van-collapse-item title="选择日照" name="7">内容</van-collapse-item>
+          <van-collapse-item title="输入均价范围" name="8"
+            >内容</van-collapse-item
+          >
+          <van-collapse-item title="输入总价范围" name="9"
+            >内容</van-collapse-item
+          >
+        </van-collapse>
+      </view>
+      <view class="house-condition-btn">
+        <view class="reset-btn">
+          <van-button type="warning" round block bind:click=""> 重 置 </van-button>
+        </view>
+        <view class="confirm-btn">
+          <van-button type="primary" round block bind:click="getHouseList"> 确 定 </van-button>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+</view>

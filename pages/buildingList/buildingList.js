@@ -187,7 +187,7 @@ Page({
     })
     this.setData({
       title: options.name,
-      user: app.globalData.userInfo.nickName,
+      user: app.globalData.userInfo.nickName || '',
       payStatus: options.payStatus,
       payType: options.payStatus === 'true' ? '激活' : '预览',
       buildId: options.buildId,

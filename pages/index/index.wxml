@@ -50,12 +50,10 @@
           </view>
         </view>
         <view class="build-list-handle">
-          <view style="background:{{ item.payStatus ? 'green' : '#87CEFA' }}" data-item="{{item}}" bindtap="getBuildingList">
-            {{ item.payStatus ? '查看' : '预览' }}
+          <view wx:if="{{item.status !== 3}}" style="background:#87CEFA" data-item="{{item}}" bindtap="getRemainingList">剩余</view>
+          <view style="background:{{ item.payStatus ? '#7FFFD4' : '#B0C4DE' }}" data-item="{{item}}" bindtap="getBuildingList">
+            {{ item.payStatus ? '选房' : '预览' }}
           </view>
-          <!-- <van-button color="{{ item.payStatus ? 'green' : '#87CEFA' }}" data-item="{{item}}" size="small" bind:click="getBuildingList" custom-style="margin:5%">
-            {{ item.payStatus ? '查看' : '预览' }}
-          </van-button> -->
         </view>
       </view>
       <view style="text-align: center;margin: 10px;">

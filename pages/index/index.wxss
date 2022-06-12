@@ -83,10 +83,17 @@
 }
 .build-list-base {
   flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .build-list-base view {
   height: 50rpx;
   line-height: 50rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .build-list-base view text {
   border: 1rpx solid #a9a9a9;
@@ -96,11 +103,14 @@
 .build-list-handle {
   color:#ffffff;
   text-align: center;
-  line-height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .build-list-handle view{
   display: inline;
-  padding: 10rpx 15rpx;
+  padding: 2rpx 15rpx;
   border-radius: 8rpx;
   margin: 10rpx;
 }

@@ -192,7 +192,7 @@ Page({
       { name: '复制链接', icon: 'link' },
       { name: '分享海报', icon: 'poster' },
     ],
-    adShow: true, // 开屏广告
+    adShow: false, // 开屏广告
   },
   onLoad() {
     app.getAuthorization();
@@ -249,8 +249,30 @@ Page({
     }
     this.setData({ buildList: temp });
   },
+  // 剩余房源
+  getRemainingList (event) {
+    wx.navigateTo({
+      url:
+        '/pages/remaining/index?buildId=' +
+        event.target.dataset.item.buildId +
+        '&name=' +
+        event.target.dataset.item.name +
+        '&payStatus=' +
+        event.target.dataset.item.payStatus,
+    });
+    if (app.globalData.userInfo) {
+      // wx.navigateTo({
+      //   url:
+      //     '/pages/buildingList/buildingList?buildId=' +
+      //     event.target.dataset.item.buildId +
+      //     '&name=' +
+      //     event.target.dataset.item.name +
+      //     '&payStatus=' +
+      //     event.target.dataset.item.payStatus,
+      // });
+    }
+  },
   getBuildingList(event) {
-    console.log(event);
     wx.navigateTo({
       url:
         '/pages/buildingList/buildingList?buildId=' +
