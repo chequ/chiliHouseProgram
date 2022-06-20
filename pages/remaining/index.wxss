@@ -15,9 +15,54 @@
 }
 .house-con {
   padding: 10rpx;
+  position: relative;
 }
 .house-con view{
   margin: 10rpx 0;
+}
+.house-con .house-header {
+  display: flex;
+}
+.house-con .house-filed {
+  display: flex;
+}
+.house-con .house-filed text {
+  width: 50%;
+  padding-left: 10rpx;
+}
+.house-con .detail{
+  position: absolute;
+  right: 5rpx;
+  top: -5rpx;
+}
+.detail-show {
+  height: auto;
+  overflow: auto;
+}
+.detail-hide {
+  height: 70rpx;
+  overflow: hidden;
+}
+.add-compared {
+  border: 1rpx solid #a9a9a9;
+  border-radius: 10rpx;
+}
+.house-con .tags {
+  position: absolute;
+  top: 0;
+  right: 37rpx;
+  width: 150rpx;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.house-con .tags view{
+  border-radius: 50%;
+  height: 37rpx;
+  width: 37rpx;
+  padding: 5rpx;
+  line-height: 28rpx;
+  margin-left: 3rpx;
+  color: #fff;
 }
 .house-con .margin-r-15{
   margin-right: 30rpx;

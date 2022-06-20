@@ -1,10 +1,10 @@
 <!-- pages/remaining/index.wxml -->
 <view class="remaining-container">
   <van-nav-bar title="{{ title }}" left-text="{{ listOrTable }}" safe-area-inset-top="false" bind:click-right="showPopup" bind:click-left="showChange" custom-style="padding-top: 0">
-    <van-icon wx:if="{{isList}}" name="filter-o" color="#808080" size="48rpx" slot="right"/>
+    <van-icon wx:if="{{isList}}" name="filter-o" color="#808080" size="48rpx" slot="right" />
   </van-nav-bar>
   <van-tabs active="{{ activeTab }}" wx:if="{{!isList}}">
-    <van-tab wx:for="{{8}}" wx:key="index"title="{{item+1}}栋">
+    <van-tab wx:for="{{8}}" wx:key="index" title="{{item+1}}栋">
       <view class="list-box">
         <view class="list-table-header-box">
           <view class="list-table-header first">
@@ -35,9 +35,15 @@
               <view>{{SEC.housePrice}}元/m²</view>
               <view>{{SEC.houseNum}}</view>
               <view class="tags">
-                <view class="{{SEC.renovated ? 'tureStatus' : 'falseStatus'}}">{{SEC.renovated?'精':'清'}}</view>
-                <view class="{{SEC.houseType === '住宅' ? 'tureStatus' : 'falseStatus'}}">{{SEC.houseType === "住宅"?'住':'公'}}</view>
-                <view class="{{SEC.saled ? 'falseStatus' : 'tureStatus'}}">{{SEC.saled?'已':'未'}}</view>
+                <view class="{{SEC.renovated ? 'tureStatus' : 'falseStatus'}}">
+                  {{SEC.renovated?'精':'清'}}
+                </view>
+                <view class="{{SEC.houseType === '住宅' ? 'tureStatus' : 'falseStatus'}}">
+                  {{SEC.houseType === "住宅"?'住':'公'}}
+                </view>
+                <view class="{{SEC.saled ? 'falseStatus' : 'tureStatus'}}">
+                  {{SEC.saled?'已':'未'}}
+                </view>
               </view>
             </view>
           </view>
@@ -46,44 +52,124 @@
     </van-tab>
   </van-tabs>
   <view class="house-list" wx:if="{{isList}}">
-    <view class="house-con" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
-      <view>
-        <text class="margin-r-15">{{'房号：' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}</text>
-        <text>{{ '总价：' + item.housePrice }}</text>
+    <view class="{{openDetailIdx === idx ? 'house-con detail-show':'house-con detail-hide'}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
+      <view class="house-header">
+        <text class="margin-r-15">{{'房号:' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}</text>
+        <!-- <text class="margin-r-15">{{ '单价：' + item.housePrice }}</text> -->
+        <text class="margin-r-15">{{ '总价:' + item.housePrice }}</text>
+        <text class="add-compared" data-idx="{{idx}}" data-item="{{item}}" bindtap="addCompared">对比</text>
+        <view class="tags">
+          <view class="{{item.renovated ? 'tureStatus' : 'falseStatus'}}">
+            {{item.renovated?'精':'清'}}
+          </view>
+          <view class="{{item.houseType === '住宅' ? 'tureStatus' : 'falseStatus'}}">
+            {{item.houseType === "住宅"?'住':'公'}}
+          </view>
+          <view class="{{item.saled ? 'falseStatus' : 'tureStatus'}}">{{item.saled?'已':'未'}}</view>
+        </view>
       </view>
-      <view>
-        <text class="margin-r-15">{{ '户型：' + item.houseNum }}</text>
-        <text class="margin-r-15">{{ '单价：' + item.housePrice }}</text>
+      <view class="house-filed">
+        <text>{{ '户型：' + item.houseNum }}</text>
+        <text>{{ '住宅性质：' + item.houseType }}</text>
+      </view>
+      <view class="house-filed">
         <text>{{ '面积：' + item.houseArea }}</text>
+        <text>{{ '朝向：' + item.houseDirection }}</text>
       </view>
-      <view>
-        <text class="margin-r-15">{{ '朝向：' + item.houseDirection }}</text>
-        <text class="margin-r-15">{{ '住宅性质：' + item.houseType }}</text>
+      <view class="house-filed">
         <text>{{ '日照时间：' + item.houseSunshineTime }}</text>
       </view>
-      
+      <view class="detail">
+        <van-icon wx:if="{{openDetailIdx === idx}}" data-idx="{{idx}}" data-item="{{item}}" bind:click="hideDetail" name="arrow-up" />
+        <van-icon wx:else data-idx="{{idx}}" data-item="{{item}}" bind:click="showDetail" name="arrow-down" />
+      </view>
     </view>
-    <!-- <van-collapse accordion value="{{ listActiveNames }}" is-link="false" bind:change="onListChange">
-      <van-collapse-item custom-class="aa" title="{{'房号：' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
-        <van-grid direction="horizontal" column-num="2">
-          <van-grid-item text="{{ '户型：' + item.houseNum }}" content-class="bb"/>
-          <van-grid-item text="{{ '面积：' + item.houseArea }}" content-class="bb"/>
-        </van-grid>
-        <van-grid direction="horizontal" column-num="2">
-          <van-grid-item text="{{ '住宅性质：' + item.houseType }}" content-class="bb"/>
-          <van-grid-item text="{{ '朝向：' + item.houseDirection }}" content-class="bb"/>
-        </van-grid>
-        <van-grid direction="horizontal" column-num="2">
-          <van-grid-item text="{{ '日照时间：' + item.houseSunshineTime }}" content-class="bb"/>
-          <van-grid-item text="{{ '总价：' + item.housePrice }}" content-class="bb"/>
-        </van-grid>
-      </van-collapse-item>
-    </van-collapse> -->
   </view>
   <van-popup
     round
+    closeable
+    close-icon="close"
+    show="{{ show }}"
+    position="bottom"
+    custom-class="house-condition-check"
+    bind:close="closePopup"
+    bind:click-overlay="closePopup"
+  >
+    <view class="house-condition-box">
+      <view class="house-condition-title">
+        选择条件过滤
+      </view>
+      <view class="house-condition">
+        <scroll-view scroll-y lower-threshold="100" style="height:100%" class="house-condition-con">
+          <van-checkbox-group value="{{ result }}" bind:change="onConditionChange">
+            <van-cell-group>
+              <view
+                wx:for="{{ conditionArr }}"
+                wx:key="index"
+              >
+                <van-cell
+                  title="{{ item.title }}"
+                  value-class="value-class"
+                  clickable
+                  bind:click="toggle"
+                  data-index="{{index}}"
+                >
+                  <van-checkbox
+                    catch:tap="noop"
+                    class="checkboxes-{{ index }}"
+                    name="{{ index }}"
+                  />
+                </van-cell>
+                <view wx:if="{{ item.type === 'checkbox' }}">
+                  <van-checkbox-group wx:if="{{ item.checked }}" value="{{ item.value }}" direction="horizontal" data-key="{{ item.key }}" bind:change="onCheckChange">
+                    <van-checkbox
+                      custom-class="check-box"
+                      wx:for="{{ item.conditionData.list }}"
+                      wx:for-index="checkIdx"
+                      wx:for-item="check"
+                      wx:key="checkIdx"
+                      name="{{ check.name }}"
+                    >{{ check.label }}</van-checkbox>
+                  </van-checkbox-group>
+                </view>
+                <view wx:if="{{ item.type === 'input' }}">
+                  <view class='input-box' wx:if="{{ item.checked }}">
+                    <van-field
+                      type="number"
+                      wx:for="{{ item.conditionData.list }}"
+                      wx:for-item="input"
+                      wx:for-index="inputIdx"
+                      wx:key="inputIdx"
+                      model:value="{{ item.value[inputIdx] }}"
+                      label="{{ input.label }}(元):"
+                      placeholder="请输入{{ input.label }}"
+                      border="{{ true }}"
+                      data-key="{{ item.key }}"
+                      data-idx="{{ inputIdx }}"
+                      bind:confirm="onInputChange"
+                      bind:input="onInputChange"
+                    />
+                  </view>
+                </view>
+              </view>
+            </van-cell-group>
+          </van-checkbox-group>
+        </scroll-view>
+      </view>      
+      <view class="house-condition-btn">
+        <view class="reset-btn">
+          <van-button type="warning" size="small" round bind:click="" custom-style="width:200rpx;height: 70rpx;line-height: 70rpx;"> 重 置 </van-button>
+        </view>
+        <view class="confirm-btn">
+          <van-button type="primary" size="small" round bind:click="getHouseList" custom-style="width:200rpx;height: 70rpx;line-height: 70rpx;"> 确 定 </van-button>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+  <!-- <van-popup
+    round
     show="{{show}}"
-    position="right"
+    position="bottom"
     custom-class="house-condition-check"
     bind:click-overlay="closePopup"
   >
@@ -123,5 +209,5 @@
         </view>
       </view>
     </view>
-  </van-popup>
+  </van-popup> -->
 </view>
