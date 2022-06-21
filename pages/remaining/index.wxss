@@ -46,13 +46,15 @@
 .add-compared {
   border: 1rpx solid #a9a9a9;
   border-radius: 10rpx;
+  margin-right: 15rpx;
 }
 .house-con .tags {
   position: absolute;
   top: 0;
   right: 37rpx;
-  width: 150rpx;
+  width: 200rpx;
   display: flex;
+  align-items: center;
   flex-direction: row-reverse;
 }
 .house-con .tags view{
@@ -199,4 +201,31 @@
 }
 .bb{
   padding:0
+}
+
+.compare-box{
+  position: fixed;
+  right: -45rpx;
+  bottom: 30%;
+  height: 250rpx;
+  width: 45rpx;
+  background-color: #87CEFA;
+  color: #fff;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 5rpx 0 0 5rpx;
+}
+.compare-box.check{
+  position: fixed;
+  right: 0rpx;
+  bottom: 30%;
+  height: 250rpx;
+  width: 45rpx;
+  background-color: #87CEFA;
+  color: #fff;
+  text-align: center;
+  line-height: 50rpx;
+  border-top-left-radius:10rpx;
+  border-bottom-left-radius:10rpx;
+  transition: 2s;
 }

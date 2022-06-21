@@ -156,6 +156,7 @@ Page({
         }
       }
     ], // 过滤条件
+    compareData: [], // 对比数量
   },
   onLoad(options) {
     let that = this
@@ -322,6 +323,7 @@ Page({
       floorHouseNum: that.mostHouseFloor(backTableData),
       listData:[
         {
+          houseId: 1,
           buildNo: '100',
           buildFloor:'500',
           houseNo: '4000',
@@ -335,6 +337,7 @@ Page({
           saled: false,
         },
         {
+          houseId: 2,
           buildNo: '1',
           buildFloor:'5',
           houseNo: '4',
@@ -348,6 +351,7 @@ Page({
           saled: true,
         },
         {
+          houseId: 3,
           buildNo: '1',
           buildFloor:'5',
           houseNo: '4',
@@ -361,6 +365,7 @@ Page({
           saled: false,
         },
         {
+          houseId: 4,
           buildNo: '1',
           buildFloor:'5',
           houseNo: '4',
@@ -374,6 +379,7 @@ Page({
           saled: false,
         },
         {
+          houseId: 5,
           buildNo: '1',
           buildFloor:'5',
           houseNo: '4',
@@ -387,6 +393,7 @@ Page({
           saled: false,
         },
         {
+          houseId: 6,
           buildNo: '1',
           buildFloor:'5',
           houseNo: '4',
@@ -400,6 +407,7 @@ Page({
           saled: false,
         },
         {
+          houseId: 7,
           buildNo: '1',
           buildFloor:'5',
           houseNo: '4',
@@ -512,5 +520,20 @@ Page({
         });
       }
     })
+  },
+  // 加入对比
+  addCompared (e) {
+    let addObj = e.target.dataset.item
+    let temp = false
+    this.data.compareData.forEach(el=>{
+      if (el.houseId === addObj.houseId){
+        temp = true
+      }
+    })
+    if (!temp){
+      this.setData({
+        compareData: this.data.compareData.concat(addObj)
+      })
+    }
   },
 })

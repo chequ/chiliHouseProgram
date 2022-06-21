@@ -57,7 +57,6 @@
         <text class="margin-r-15">{{'房号:' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}</text>
         <!-- <text class="margin-r-15">{{ '单价：' + item.housePrice }}</text> -->
         <text class="margin-r-15">{{ '总价:' + item.housePrice }}</text>
-        <text class="add-compared" data-idx="{{idx}}" data-item="{{item}}" bindtap="addCompared">对比</text>
         <view class="tags">
           <view class="{{item.renovated ? 'tureStatus' : 'falseStatus'}}">
             {{item.renovated?'精':'清'}}
@@ -66,6 +65,7 @@
             {{item.houseType === "住宅"?'住':'公'}}
           </view>
           <view class="{{item.saled ? 'falseStatus' : 'tureStatus'}}">{{item.saled?'已':'未'}}</view>
+          <text class="add-compared" data-idx="{{idx}}" data-item="{{item}}" bindtap="addCompared">对比</text>
         </view>
       </view>
       <view class="house-filed">
@@ -85,87 +85,51 @@
       </view>
     </view>
   </view>
-  <van-popup
-    round
-    closeable
-    close-icon="close"
-    show="{{ show }}"
-    position="bottom"
-    custom-class="house-condition-check"
-    bind:close="closePopup"
-    bind:click-overlay="closePopup"
-  >
+  <van-popup round closeable close-icon="close" show="{{ show }}" position="bottom" custom-class="house-condition-check" bind:close="closePopup" bind:click-overlay="closePopup">
     <view class="house-condition-box">
-      <view class="house-condition-title">
-        选择条件过滤
-      </view>
+      <view class="house-condition-title">选择条件过滤</view>
       <view class="house-condition">
         <scroll-view scroll-y lower-threshold="100" style="height:100%" class="house-condition-con">
           <van-checkbox-group value="{{ result }}" bind:change="onConditionChange">
             <van-cell-group>
-              <view
-                wx:for="{{ conditionArr }}"
-                wx:key="index"
-              >
-                <van-cell
-                  title="{{ item.title }}"
-                  value-class="value-class"
-                  clickable
-                  bind:click="toggle"
-                  data-index="{{index}}"
-                >
-                  <van-checkbox
-                    catch:tap="noop"
-                    class="checkboxes-{{ index }}"
-                    name="{{ index }}"
-                  />
+              <view wx:for="{{ conditionArr }}" wx:key="index">
+                <van-cell title="{{ item.title }}" value-class="value-class" clickable bind:click="toggle" data-index="{{index}}">
+                  <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ index }}" />
                 </van-cell>
                 <view wx:if="{{ item.type === 'checkbox' }}">
                   <van-checkbox-group wx:if="{{ item.checked }}" value="{{ item.value }}" direction="horizontal" data-key="{{ item.key }}" bind:change="onCheckChange">
-                    <van-checkbox
-                      custom-class="check-box"
-                      wx:for="{{ item.conditionData.list }}"
-                      wx:for-index="checkIdx"
-                      wx:for-item="check"
-                      wx:key="checkIdx"
-                      name="{{ check.name }}"
-                    >{{ check.label }}</van-checkbox>
+                    <van-checkbox custom-class="check-box" wx:for="{{ item.conditionData.list }}" wx:for-index="checkIdx" wx:for-item="check" wx:key="checkIdx" name="{{ check.name }}">
+                      {{ check.label }}
+                    </van-checkbox>
                   </van-checkbox-group>
                 </view>
                 <view wx:if="{{ item.type === 'input' }}">
                   <view class='input-box' wx:if="{{ item.checked }}">
-                    <van-field
-                      type="number"
-                      wx:for="{{ item.conditionData.list }}"
-                      wx:for-item="input"
-                      wx:for-index="inputIdx"
-                      wx:key="inputIdx"
-                      model:value="{{ item.value[inputIdx] }}"
-                      label="{{ input.label }}(元):"
-                      placeholder="请输入{{ input.label }}"
-                      border="{{ true }}"
-                      data-key="{{ item.key }}"
-                      data-idx="{{ inputIdx }}"
-                      bind:confirm="onInputChange"
-                      bind:input="onInputChange"
-                    />
+                    <van-field type="number" wx:for="{{ item.conditionData.list }}" wx:for-item="input" wx:for-index="inputIdx" wx:key="inputIdx" model:value="{{ item.value[inputIdx] }}" label="{{ input.label }}(元):" placeholder="请输入{{ input.label }}" border="{{ true }}" data-key="{{ item.key }}" data-idx="{{ inputIdx }}" bind:confirm="onInputChange" bind:input="onInputChange" />
                   </view>
                 </view>
               </view>
             </van-cell-group>
           </van-checkbox-group>
         </scroll-view>
-      </view>      
+      </view>
       <view class="house-condition-btn">
         <view class="reset-btn">
-          <van-button type="warning" size="small" round bind:click="" custom-style="width:200rpx;height: 70rpx;line-height: 70rpx;"> 重 置 </van-button>
+          <van-button type="warning" size="small" round bind:click="" custom-style="width:200rpx;height: 70rpx;line-height: 70rpx;">
+            重 置
+          </van-button>
         </view>
         <view class="confirm-btn">
-          <van-button type="primary" size="small" round bind:click="getHouseList" custom-style="width:200rpx;height: 70rpx;line-height: 70rpx;"> 确 定 </van-button>
+          <van-button type="primary" size="small" round bind:click="getHouseList" custom-style="width:200rpx;height: 70rpx;line-height: 70rpx;">
+            确 定
+          </van-button>
         </view>
       </view>
     </view>
   </van-popup>
+  <view class="{{compareData.length > 0 ? 'compare-box check':'compare-box'}}">
+    加入对比{{compareData.length}}
+  </view>
   <!-- <van-popup
     round
     show="{{show}}"
