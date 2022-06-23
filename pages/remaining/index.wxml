@@ -127,9 +127,17 @@
       </view>
     </view>
   </van-popup>
-  <view class="{{compareData.length > 0 ? 'compare-box check':'compare-box'}}">
-    加入对比{{compareData.length}}
+  <view class="{{compareData.length > 0 ? 'compare-box check':'compare-box'}}" bindtap="compareDetailShow">
+    加入对比<text>{{compareData.length}}</text>
   </view>
+  <van-popup
+    show="{{ compareDetailStatus }}"
+    closeable
+    round
+    close-icon="close"
+    custom-style="height: 80%;width:80%;padding:10rpx" 
+    bind:close="onCompareClose"
+  >内容</van-popup>
   <!-- <van-popup
     round
     show="{{show}}"

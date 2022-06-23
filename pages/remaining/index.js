@@ -157,6 +157,7 @@ Page({
       }
     ], // 过滤条件
     compareData: [], // 对比数量
+    compareDetailStatus: false, //对比弹窗
   },
   onLoad(options) {
     let that = this
@@ -536,4 +537,16 @@ Page({
       })
     }
   },
+  // 对比弹窗打开
+  compareDetailShow () {
+    this.setData({
+      compareDetailStatus: true
+    })
+  },
+  // 对比弹窗关闭
+  onCompareClose () {
+    this.setData({
+      compareDetailStatus: false
+    })
+  }
 })

@@ -205,27 +205,28 @@
 
 .compare-box{
   position: fixed;
-  right: -45rpx;
+  right: -75rpx;
   bottom: 30%;
-  height: 250rpx;
-  width: 45rpx;
-  background-color: #87CEFA;
-  color: #fff;
-  text-align: center;
-  line-height: 50rpx;
-  border-radius: 5rpx 0 0 5rpx;
-}
-.compare-box.check{
-  position: fixed;
-  right: 0rpx;
-  bottom: 30%;
-  height: 250rpx;
-  width: 45rpx;
+  height: 160rpx;
+  width: 75rpx;
+  padding: 0 8rpx;
   background-color: #87CEFA;
   color: #fff;
   text-align: center;
   line-height: 50rpx;
   border-top-left-radius:10rpx;
   border-bottom-left-radius:10rpx;
+}
+.compare-box.check{
+  right: 0rpx;
   transition: 2s;
+}
+.compare-box text{
+  border: 1rpx solid #fff;
+  border-radius: 50%;
+  display: block;
+  height: 40rpx;
+  width: 40rpx;
+  line-height: 40rpx;
+  margin-left: 6rpx;
 }
