@@ -65,7 +65,7 @@
             {{item.houseType === "住宅"?'住':'公'}}
           </view>
           <view class="{{item.saled ? 'falseStatus' : 'tureStatus'}}">{{item.saled?'已':'未'}}</view>
-          <text class="add-compared" data-idx="{{idx}}" data-item="{{item}}" bindtap="addCompared">对比</text>
+          <text class="{{item.isCompare ? 'add-compared compare-active' : 'add-compared'}}" data-idx="{{idx}}" data-item="{{item}}" bindtap="addCompared">对比</text>
         </view>
       </view>
       <view class="house-filed">
@@ -135,9 +135,10 @@
     closeable
     round
     close-icon="close"
-    custom-style="height: 80%;width:80%;padding:10rpx" 
+    custom-style="height: 80%;width:80%;padding:20rpx" 
     bind:close="onCompareClose"
   >内容</van-popup>
+  <van-toast id="van-toast" />
   <!-- <van-popup
     round
     show="{{show}}"

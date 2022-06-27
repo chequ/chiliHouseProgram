@@ -48,6 +48,9 @@
   border-radius: 10rpx;
   margin-right: 15rpx;
 }
+.compare-active{
+  background: #87CEFA;
+}
 .house-con .tags {
   position: absolute;
   top: 0;
