@@ -54,7 +54,9 @@
   <view class="house-list" wx:if="{{isList}}">
     <view class="{{openDetailIdx === idx ? 'house-con detail-show':'house-con detail-hide'}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
       <view class="house-header">
-        <text class="margin-r-15">{{'房号:' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}</text>
+        <text class="margin-r-15">
+          {{'房号:' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}
+        </text>
         <!-- <text class="margin-r-15">{{ '单价：' + item.housePrice }}</text> -->
         <text class="margin-r-15">{{ '总价:' + item.housePrice }}</text>
         <view class="tags">
@@ -65,7 +67,9 @@
             {{item.houseType === "住宅"?'住':'公'}}
           </view>
           <view class="{{item.saled ? 'falseStatus' : 'tureStatus'}}">{{item.saled?'已':'未'}}</view>
-          <text class="{{item.isCompare ? 'add-compared compare-active' : 'add-compared'}}" data-idx="{{idx}}" data-item="{{item}}" bindtap="addCompared">对比</text>
+          <text class="{{item.isCompare ? 'add-compared compare-active' : 'add-compared'}}" data-idx="{{idx}}" data-item="{{item}}" bindtap="addCompared">
+            对比
+          </text>
         </view>
       </view>
       <view class="house-filed">
@@ -128,16 +132,57 @@
     </view>
   </van-popup>
   <view class="{{compareData.length > 0 ? 'compare-box check':'compare-box'}}" bindtap="compareDetailShow">
-    加入对比<text>{{compareData.length}}</text>
+    加入对比
+    <text>{{compareData.length}}</text>
   </view>
-  <van-popup
-    show="{{ compareDetailStatus }}"
-    closeable
-    round
-    close-icon="close"
-    custom-style="height: 80%;width:80%;padding:20rpx" 
-    bind:close="onCompareClose"
-  >内容</van-popup>
+  <van-popup show="{{ compareDetailStatus }}" closeable round close-icon="close" custom-style="height: 80%;width:80%;padding:0 20rpx 20rpx 20rpx" bind:close="onCompareClose">
+    <view class="compare-popup-box">
+      <view class="title">房源对比</view>
+      <view class="content">
+        <view class="list-table-header-box">
+          <view class="list-table-header first">
+            <view class="list-table-header-house">楼层</view>
+          </view>
+          <view class="house-no">
+            <view class="house-no-con">
+              <view class="list-table-header" wx:for="{{floorHouseNum}}" wx:key='index'>
+                <view class="list-table-header-house">{{'0'+(item+1)}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="list-table-box" wx:for="{{tableData}}" wx:for-item="FIR" wx:key='FIRIdx' wx:for-index="FIRIdx">
+          <view wx:for="{{FIR.floorData}}" class="{{SECIdx === 0 ? 'list-table first' : 'list-table'}}" wx:for-item="SEC" wx:key='SECIdx' wx:for-index="SECIdx">
+            <view class="list-table-house" wx:if="{{SEC.floor}}">
+              <view>
+                <text decode="{{true}}">&ensp;</text>
+              </view>
+              <view>{{SEC.floor}}</view>
+              <view>
+                <text decode="{{true}}">&ensp;</text>
+              </view>
+            </view>
+            <view class="{{SEC.saled ? 'list-table-house saled' : 'list-table-house'}}" wx:if="{{!SEC.floor}}">
+              <view>{{SEC.houseArea}}m²</view>
+              <view>{{SEC.housePrice}}元/m²</view>
+              <view>{{SEC.houseNum}}</view>
+              <view class="tags">
+                <view class="{{SEC.renovated ? 'tureStatus' : 'falseStatus'}}">
+                  {{SEC.renovated?'精':'清'}}
+                </view>
+                <view class="{{SEC.houseType === '住宅' ? 'tureStatus' : 'falseStatus'}}">
+                  {{SEC.houseType === "住宅"?'住':'公'}}
+                </view>
+                <view class="{{SEC.saled ? 'falseStatus' : 'tureStatus'}}">
+                  {{SEC.saled?'已':'未'}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
   <van-toast id="van-toast" />
   <!-- <van-popup
     round

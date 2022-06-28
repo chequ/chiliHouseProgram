@@ -50,6 +50,8 @@
 }
 .compare-active{
   background: #87CEFA;
+  border: 1rpx solid #87CEFA;
+  color: #fff;
 }
 .house-con .tags {
   position: absolute;
@@ -219,10 +221,11 @@
   line-height: 50rpx;
   border-top-left-radius:10rpx;
   border-bottom-left-radius:10rpx;
+  transition: 1s;
 }
 .compare-box.check{
   right: 0rpx;
-  transition: 2s;
+  transition: 1s;
 }
 .compare-box text{
   border: 1rpx solid #fff;
@@ -232,4 +235,33 @@
   width: 40rpx;
   line-height: 40rpx;
   margin-left: 6rpx;
+}
+
+.compare-popup-box{
+  height: 100%;
+}
+
+.compare-popup-box .title{
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.compare-popup-box .content{
+  width: 98%;
+  margin: 0 1%;
+  overflow: auto;
+  margin-top: 5rpx;
+  background: #b7f5f4;
+  font-size: 24rpx;
+}
+
+.compare-popup-box .list-table-header-house{
+  width: 80rpx;
+  height: 165rpx;
+  line-height: 165rpx;
+}
+
+.compare-popup-box .house-no-con .list-table-header{
+  height: 168rpx;
+  line-height: 168rpx;
 }

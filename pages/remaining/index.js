@@ -363,7 +363,7 @@ Page({
           housePrice: '2357776',
           renovated: true,
           saled: true,
-          isCompare: true,
+          isCompare: false,
         },
         {
           houseId: 3,
@@ -545,32 +545,25 @@ Page({
   addCompared(e) {
     let addObj = e.target.dataset.item;
     let index = e.target.dataset.idx;
-    let temp = -1;
-    this.data.compareData.findIndex((el) => {
-      return el.houseId === addObj.houseId
+    let temp = this.data.compareData.findIndex((el) => {
+      return el.houseId === addObj.houseId;
     });
-    // this.data.compareData.forEach((el) => {
-    //   if (el.houseId === addObj.houseId) {
-    //     temp = true;
-    //   }
-    // });
-    console.log(temp);
     if (temp === -1) {
-      if (this.data.compareData.length > 1) {
+      if (this.data.compareData.length > 4) {
         Toast('暂时不支持两个房源以的上对比');
         return;
       }
-      let _key = `listData${index}.isCompare`;
+      let _key = `listData[${index}].isCompare`;
       this.setData({
         compareData: this.data.compareData.concat(addObj),
-        [_key]: !this.data.listData[index].isCompare,
+        [_key]: true,
       });
     } else {
-      let _key = `listData${index}.isCompare`;
-      this.data.compareData.splice(temp,1)
+      let _key = `listData[${index}].isCompare`;
+      this.data.compareData.splice(temp, 1);
       this.setData({
         compareData: this.data.compareData,
-        [_key]: !this.data.listData[index].isCompare,
+        [_key]: false,
       });
     }
   },
