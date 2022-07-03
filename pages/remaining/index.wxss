@@ -1,11 +1,11 @@
 /* pages/remaining/index.wxss */
-.remaining-container{
+.remaining-container {
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-.remaining-container view{
+.remaining-container view {
   box-sizing: border-box;
 }
 .house-list {
@@ -17,7 +17,7 @@
   padding: 10rpx;
   position: relative;
 }
-.house-con view{
+.house-con view {
   margin: 10rpx 0;
 }
 .house-con .house-header {
@@ -30,7 +30,7 @@
   width: 50%;
   padding-left: 10rpx;
 }
-.house-con .detail{
+.house-con .detail {
   position: absolute;
   right: 5rpx;
   top: -5rpx;
@@ -48,9 +48,9 @@
   border-radius: 10rpx;
   margin-right: 15rpx;
 }
-.compare-active{
-  background: #87CEFA;
-  border: 1rpx solid #87CEFA;
+.compare-active {
+  background: #87cefa;
+  border: 1rpx solid #87cefa;
   color: #fff;
 }
 .house-con .tags {
@@ -62,7 +62,7 @@
   align-items: center;
   flex-direction: row-reverse;
 }
-.house-con .tags view{
+.house-con .tags view {
   border-radius: 50%;
   height: 37rpx;
   width: 37rpx;
@@ -71,7 +71,7 @@
   margin-left: 3rpx;
   color: #fff;
 }
-.house-con .margin-r-15{
+.house-con .margin-r-15 {
   margin-right: 30rpx;
 }
 .house-condition_box {
@@ -84,31 +84,31 @@
   overflow-y: auto;
   padding-bottom: 10rpx;
 }
-.house-condition-check{
+.house-condition-check {
   height: 100%;
-  width: 60%; 
+  width: 60%;
   padding: 20rpx 0 10rpx 10rpx;
 }
 .house-condition-btn {
   height: 100rpx;
   display: flex;
 }
-.confirm-btn{
+.confirm-btn {
   width: 50%;
   padding-top: 12rpx;
   padding-left: 10rpx;
   padding-right: 20rpx;
 }
-.reset-btn{
+.reset-btn {
   width: 50%;
   padding-top: 12rpx;
   padding-left: 10rpx;
   padding-right: 20rpx;
 }
-.van-tabs__line{
-  background-color: #b7f5f4!important;
+.van-tabs__line {
+  background-color: #b7f5f4 !important;
 }
-.list-box{
+.list-box {
   width: 98%;
   margin: 0 1%;
   overflow: auto;
@@ -116,20 +116,20 @@
   background: #b7f5f4;
   font-size: 24rpx;
 }
-.list-table-header-box{
+.list-table-header-box {
   display: flex;
 }
-.list-table-header{
+.list-table-header {
   display: inline-block;
   width: 270rpx;
   margin: 2rpx;
   border: 1rpx solid #dddddd;
   text-align: center;
 }
-.list-table-header.first{
+.list-table-header.first {
   width: 80rpx;
 }
-.list-table-header.first .list-table-header-house{
+.list-table-header.first .list-table-header-house {
   width: 80rpx;
   height: 165rpx;
   line-height: 165rpx;
@@ -149,36 +149,36 @@
   white-space: nowrap;
   display: inline-block;
 }
-.house-no-con .list-table-header{
+.house-no-con .list-table-header {
   height: 88rpx;
   line-height: 88rpx;
 }
-.list-table-box{
+.list-table-box {
   white-space: nowrap;
 }
-.list-table{
+.list-table {
   display: inline-block;
   width: 270rpx;
   border: 1rpx solid #dddddd;
   margin: 2rpx;
   text-align: center;
 }
-.list-table.first{
+.list-table.first {
   width: 80rpx;
 }
-.list-table-floor{
+.list-table-floor {
   height: 165rpx;
   line-height: 165rpx;
 }
-.list-table-house{
+.list-table-house {
   height: 165rpx;
   position: relative;
 }
-.saled{
+.saled {
   background-color: #cccccc;
   color: #9e9e9e;
 }
-.list-table-house view{
+.list-table-house view {
   height: 55rpx;
   line-height: 55rpx;
 }
@@ -187,7 +187,7 @@
   top: 0;
   right: 0;
 }
-.list-table-house .tags view{
+.list-table-house .tags view {
   border-radius: 50%;
   height: 32rpx;
   width: 32rpx;
@@ -201,33 +201,33 @@
 .falseStatus {
   background-color: #9e9e9e;
 }
-.aa{
-  padding:0
+.aa {
+  padding: 0;
 }
-.bb{
-  padding:0
+.bb {
+  padding: 0;
 }
 
-.compare-box{
+.compare-box {
   position: fixed;
   right: -75rpx;
   bottom: 30%;
   height: 160rpx;
   width: 75rpx;
   padding: 0 8rpx;
-  background-color: #87CEFA;
+  background-color: #87cefa;
   color: #fff;
   text-align: center;
   line-height: 50rpx;
-  border-top-left-radius:10rpx;
-  border-bottom-left-radius:10rpx;
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
   transition: 1s;
 }
-.compare-box.check{
+.compare-box.check {
   right: 0rpx;
   transition: 1s;
 }
-.compare-box text{
+.compare-box text {
   border: 1rpx solid #fff;
   border-radius: 50%;
   display: block;
@@ -237,31 +237,162 @@
   margin-left: 6rpx;
 }
 
-.compare-popup-box{
-  height: 100%;
+.compare-popup-bg {
+  position: fixed;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.compare-popup-box .title{
+.compare-popup-box {
+  height: 80%;
+  width: 80%;
+  padding: 0 20rpx 20rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.compare-popup-box .title {
   height: 80rpx;
   line-height: 80rpx;
   text-align: center;
 }
-.compare-popup-box .content{
+.compare-popup-box .content {
+  flex:1;
   width: 98%;
   margin: 0 1%;
-  overflow: auto;
   margin-top: 5rpx;
   background: #b7f5f4;
   font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overflow-x: auto;
+  position: relative;
 }
 
-.compare-popup-box .list-table-header-house{
-  width: 80rpx;
+.compare-table-header-box {
+  display: flex;
+}
+.compare-table-header-box.fixed {
+  position:absolute;
+  top: 0;
+  
+}
+.compare-table-header {
+  display: inline-block;
+  width: 270rpx;
+  margin: 2rpx;
+  border: 1rpx solid #dddddd;
+  text-align: center;
+}
+.compare-table-header.first {
+  width: 200rpx;
+  display: flex;
+  flex-direction: column;
+}
+.compare-table-header.first view {
+  width: 250rpx;
+  height: 82rpx;
+  transform: rotateZ(40deg) translateY(13px) translateX(-24px);
+  position: relative;
+}
+
+.compare-table-header.first .house-header {
+  line-height: 2;
+}
+.compare-table-header.first .house-header span {
+  right: 30rpx;
+  top: -30rpx;
+  transform: rotateZ(-40deg);
+}
+.compare-table-header.first .condition-header {
+  border-top: 1px solid #dddddd;
+  text-align: center;
+}
+.compare-table-header.first .condition-header span {
+  right: 120rpx;
+  top: 50rpx;
+  transform: rotateZ(-40deg);
+}
+.compare-table-header.first view span {
+  position: absolute;
+}
+.house-no {
+  display: inline-block;
+  height: 165rpx;
+}
+.house-no-title {
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  border: 1rpx solid #dddddd;
+  margin: 2rpx;
+}
+.house-no-con {
+  white-space: nowrap;
+  display: inline-block;
+}
+.house-no-con .compare-table-header {
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.compare-table-box {
+  flex: 1;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.compare-table-content {
+  white-space: nowrap;
+}
+.compare-table {
+  display: inline-block;
+  width: 270rpx;
+  border: 1rpx solid #dddddd;
+  margin: 2rpx;
+  text-align: center;
+}
+.compare-table.first {
+  width: 200rpx;
+}
+.compare-table-floor {
   height: 165rpx;
   line-height: 165rpx;
 }
+.compare-table-house {
+  height: 165rpx;
+  position: relative;
+}
+.saled {
+  background-color: #cccccc;
+  color: #9e9e9e;
+}
+.compare-table-house view {
+  height: 55rpx;
+  line-height: 55rpx;
+}
+.compare-table-house .tags {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/* .compare-popup-box .compare-table-header-house{
+  width: 200rpx;
+  height: 165rpx;
+  line-height: 165rpx;
+} */
 
-.compare-popup-box .house-no-con .list-table-header{
+.compare-popup-box .house-no-con .compare-table-header {
   height: 168rpx;
   line-height: 168rpx;
 }

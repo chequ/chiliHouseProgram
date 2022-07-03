@@ -135,54 +135,94 @@
     加入对比
     <text>{{compareData.length}}</text>
   </view>
-  <van-popup show="{{ compareDetailStatus }}" closeable round close-icon="close" custom-style="height: 80%;width:80%;padding:0 20rpx 20rpx 20rpx" bind:close="onCompareClose">
+  <view class="compare-popup-bg" wx:if="{{ compareDetailStatus }}">
     <view class="compare-popup-box">
       <view class="title">房源对比</view>
       <view class="content">
-        <view class="list-table-header-box">
-          <view class="list-table-header first">
-            <view class="list-table-header-house">楼层</view>
+        <view class="compare-table-header-box">
+          <view class="compare-table-header first">
+            <view class="house-header">
+              <span>房源</span>
+            </view>
+            <view class="condition-header">
+              <span>条件</span>
+            </view>
           </view>
           <view class="house-no">
             <view class="house-no-con">
-              <view class="list-table-header" wx:for="{{floorHouseNum}}" wx:key='index'>
-                <view class="list-table-header-house">{{'0'+(item+1)}}</view>
+              <view class="compare-table-header" wx:for="{{floorHouseNum}}" wx:key='index'>
+                <view class="compare-table-header-house">{{'0'+(item+1)}}</view>
               </view>
             </view>
           </view>
         </view>
-        <view class="list-table-box" wx:for="{{tableData}}" wx:for-item="FIR" wx:key='FIRIdx' wx:for-index="FIRIdx">
-          <view wx:for="{{FIR.floorData}}" class="{{SECIdx === 0 ? 'list-table first' : 'list-table'}}" wx:for-item="SEC" wx:key='SECIdx' wx:for-index="SECIdx">
-            <view class="list-table-house" wx:if="{{SEC.floor}}">
-              <view>
-                <text decode="{{true}}">&ensp;</text>
+        <view class="compare-table-box">
+          <view class="compare-table-content" wx:for="{{tableData}}" wx:for-item="FIR" wx:key='FIRIdx' wx:for-index="FIRIdx">
+            <view wx:for="{{FIR.floorData}}" class="{{SECIdx === 0 ? 'compare-table first' : 'compare-table'}}" wx:for-item="SEC" wx:key='SECIdx' wx:for-index="SECIdx">
+              <view class="compare-table-house" wx:if="{{SEC.floor}}">
+                <view>
+                  <text decode="{{true}}">&ensp;</text>
+                </view>
+                <view>{{SEC.floor}}</view>
+                <view>
+                  <text decode="{{true}}">&ensp;</text>
+                </view>
               </view>
-              <view>{{SEC.floor}}</view>
-              <view>
-                <text decode="{{true}}">&ensp;</text>
-              </view>
-            </view>
-            <view class="{{SEC.saled ? 'list-table-house saled' : 'list-table-house'}}" wx:if="{{!SEC.floor}}">
-              <view>{{SEC.houseArea}}m²</view>
-              <view>{{SEC.housePrice}}元/m²</view>
-              <view>{{SEC.houseNum}}</view>
-              <view class="tags">
-                <view class="{{SEC.renovated ? 'tureStatus' : 'falseStatus'}}">
-                  {{SEC.renovated?'精':'清'}}
-                </view>
-                <view class="{{SEC.houseType === '住宅' ? 'tureStatus' : 'falseStatus'}}">
-                  {{SEC.houseType === "住宅"?'住':'公'}}
-                </view>
-                <view class="{{SEC.saled ? 'falseStatus' : 'tureStatus'}}">
-                  {{SEC.saled?'已':'未'}}
-                </view>
+              <view class="{{SEC.saled ? 'compare-table-house saled' : 'compare-table-house'}}" wx:if="{{!SEC.floor}}">
+                <view>{{SEC.houseArea}}m²</view>
+                <view>{{SEC.housePrice}}元/m²</view>
+                <view>{{SEC.houseNum}}</view>
               </view>
             </view>
           </view>
         </view>
       </view>
     </view>
-  </van-popup>
+  </view>
+  <!-- <van-popup show="{{ compareDetailStatus }}" closeable round close-icon="close" custom-style="height: 80%;width:80%;padding:0 20rpx 20rpx 20rpx" bind:close="onCompareClose">
+    <view class="compare-popup-box">
+      <view class="title">房源对比</view>
+      <view class="content">
+        <view class="compare-table-header-box">
+          <view class="compare-table-header first">
+            <view class="house-header">
+              <span>房源</span>
+            </view>
+            <view class="condition-header">
+              <span>条件</span>
+            </view>
+          </view>
+          <view class="house-no">
+            <view class="house-no-con">
+              <view class="compare-table-header" wx:for="{{floorHouseNum}}" wx:key='index'>
+                <view class="compare-table-header-house">{{'0'+(item+1)}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="compare-table-box">
+          <view class="compare-table-content" wx:for="{{tableData}}" wx:for-item="FIR" wx:key='FIRIdx' wx:for-index="FIRIdx">
+            <view wx:for="{{FIR.floorData}}" class="{{SECIdx === 0 ? 'compare-table first' : 'compare-table'}}" wx:for-item="SEC" wx:key='SECIdx' wx:for-index="SECIdx">
+              <view class="compare-table-house" wx:if="{{SEC.floor}}">
+                <view>
+                  <text decode="{{true}}">&ensp;</text>
+                </view>
+                <view>{{SEC.floor}}</view>
+                <view>
+                  <text decode="{{true}}">&ensp;</text>
+                </view>
+              </view>
+              <view class="{{SEC.saled ? 'compare-table-house saled' : 'compare-table-house'}}" wx:if="{{!SEC.floor}}">
+                <view>{{SEC.houseArea}}m²</view>
+                <view>{{SEC.housePrice}}元/m²</view>
+                <view>{{SEC.houseNum}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-popup> -->
   <van-toast id="van-toast" />
   <!-- <van-popup
     round
