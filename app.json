@@ -9,7 +9,24 @@
     "pages/aboutUs/aboutUs",
     "pages/contact/contact",
     "pages/search/search",
-    "pages/remaining/index"
+    "pages/qaIndex/qaIndex",
+    "pages/remaining/index",
+    "pages/mine/mine",
+    "pages/account/account",
+    "pages/detailed/detailed",
+    "pages/inform/inform",
+    "pages/share/share",
+    "pages/qaSearch/qaSearch",
+    "pages/notify/notify",
+    "pages/story/story",
+    "pages/logs/logs",
+    "pages/quest/quest",
+    "pages/listques/listques",
+    "pages/listshares/listshares",
+    "pages/answer/answer",
+    "pages/listans/listans",
+    "pages/cash/cash",
+    "pages/hisAnswer/hisAnswer"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -31,13 +48,13 @@
       {
         "iconPath": "assets/images/pagesIcon/message.png",
         "selectedIconPath": "assets/images/pagesIcon/message-active.png",
-        "pagePath": "pages/contact/contact",
+        "pagePath": "pages/qaIndex/qaIndex",
         "text": "回答"
       },
       {
         "iconPath": "assets/images/pagesIcon/myself.png",
         "selectedIconPath": "assets/images/pagesIcon/myself-active.png",
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/mine/mine",
         "text": "我的"
       }
     ]
@@ -66,5 +83,10 @@
     "van-icon": "@vant/weapp/icon/index",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index"
-  }
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
 }

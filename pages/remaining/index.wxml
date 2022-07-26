@@ -54,9 +54,7 @@
   <view class="house-list" wx:if="{{isList}}">
     <view class="{{openDetailIdx === idx ? 'house-con detail-show':'house-con detail-hide'}}" name="{{idx}}" wx:key="idx" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
       <view class="house-header">
-        <text class="margin-r-15">
-          {{'房号:' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}
-        </text>
+        <text class="margin-r-15">{{'房号:' + item.buildNo + '-'+ item.buildFloor + '-' + item.houseNo}}</text>
         <!-- <text class="margin-r-15">{{ '单价：' + item.housePrice }}</text> -->
         <text class="margin-r-15">{{ '总价:' + item.housePrice }}</text>
         <view class="tags">
@@ -67,9 +65,7 @@
             {{item.houseType === "住宅"?'住':'公'}}
           </view>
           <view class="{{item.saled ? 'falseStatus' : 'tureStatus'}}">{{item.saled?'已':'未'}}</view>
-          <text class="{{item.isCompare ? 'add-compared compare-active' : 'add-compared'}}" data-idx="{{idx}}" data-item="{{item}}" bindtap="addCompared">
-            对比
-          </text>
+          <text class="{{item.isCompare ? 'add-compared compare-active' : 'add-compared'}}" data-idx="{{idx}}" data-item="{{item}}" bindtap="addCompared">对比</text>
         </view>
       </view>
       <view class="house-filed">
