@@ -1,6 +1,6 @@
 <view class="about">
   <view class="master-info">
-    <image src="{{userInfo.avatarUrl}}"></image>
+    <!-- <image src="{{userInfo.avatarUrl}}"></image> -->
     <view class="master-intro">{{ques}} </view>
     <view class="master-intro">{{quesq}} </view>
     <image src="{{famImg}}"></image>

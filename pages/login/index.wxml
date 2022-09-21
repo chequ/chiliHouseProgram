@@ -1,0 +1,25 @@
+<!-- pages/login/index.wxml -->
+<view class="akeylogin">
+    <view class="login-bg-box">
+        <view class="login-click" bindtap="closeLogin"></view>
+        <view class="login-box">
+            <view class="login-btn-box" hover-class="none" hover-stop-propagation="false">
+                <!-- <button class="login-btn" open-type="{{isSelect ? 'getPhoneNumber' : ''}}" bindgetphonenumber="{{isSelect ? 'getPhoneNumber' : ''}}" bindtap="{{isSelect ? '' : 'ystoast'}}">
+                    <text class="" selectable="false" space="false" decode="false">微信授权登录</text>
+                </button> -->
+                <view class="login-btn" bindtap="{{isLogin ? '' : 'ystoast' }}">
+                    <text class="" selectable="false" space="false" decode="false">微信授权登录</text>
+                </view>
+            </view>
+            <view class="yszc">
+                <image wx:if="{{!isSelect}}" bindtap="selectFunc" src="../../static/img/login/select1.png"></image>
+                <image wx:if="{{isSelect}}" bindtap="selectFunc" src="../../static/img/login/select2.png"></image>
+                <view class="text">
+                    <text class="ydtext">我已阅读并同意</text>
+                    <text class="yszctext" bindtap="toyszc">《隐私协议》、</text>
+                    <text class="yszctext" bindtap="tofwxy">《服务条款》</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

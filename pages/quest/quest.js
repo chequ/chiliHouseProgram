@@ -10,8 +10,8 @@ Page({
    isFree: '￥1.00', //默认付费人民币一元
    is_free: 0,
    ischange:0,
-   ques: '<-我问',// 页面内容设置
-   quesq: 'TA答->                                ',// 页面内容设置
+   ques: '向辣哥提问',// 页面内容设置
+   quesq: '',// 页面内容设置
    famImg:null,//名人头像
    famName:null,//名人姓名
    userInfo: {},//用户信息

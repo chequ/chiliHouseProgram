@@ -10,6 +10,8 @@
   width: 128rpx;
   height: 128rpx;
   margin: 30rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 50%;
   border-radius: 50%;
 }
 

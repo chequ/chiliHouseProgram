@@ -195,8 +195,8 @@ Page({
     adShow: false, // 开屏广告
   },
   onLoad() {
-    app.getAuthorization();
-    this.getMyBuildingData();
+    // app.getAuthorization();
+    // this.getMyBuildingData();
   },
   getAuthorization() {
     wx.getSetting({
@@ -215,20 +215,11 @@ Page({
     });
   },
   getMyBuildingData() {
-    wx.request({
-      url: 'http://localhost:5050/login',
-      data: {
-        name: 'lin',
-        pwd: 'no',
-      },
-      method: 'POST',
-      success: (res) => {
-        console.log('成功', res);
-      },
-      err: (err) => {
-        console.log(err);
-      },
-    });
+    if (app.globalData.userInfo) {
+      console.log(111);
+    } else {
+      wx.navigateTo({ url: 'pages/login/index', events: { url: '..' } });
+    }
   },
   getCountTypeList(e) {
     let temp;
@@ -250,16 +241,24 @@ Page({
     this.setData({ buildList: temp });
   },
   // 剩余房源
-  getRemainingList (event) {
-    wx.navigateTo({
-      url:
-        '/pages/remaining/index?buildId=' +
-        event.target.dataset.item.buildId +
-        '&name=' +
-        event.target.dataset.item.name +
-        '&payStatus=' +
-        event.target.dataset.item.payStatus,
-    });
+  getRemainingList(event) {
+    if (app.openId) {
+      wx.navigateTo({
+        url:
+          '/pages/remaining/index?buildId=' +
+          event.target.dataset.item.buildId +
+          '&name=' +
+          event.target.dataset.item.name +
+          '&payStatus=' +
+          event.target.dataset.item.payStatus,
+      });
+    } else {
+      wx.setStorageSync('params',event.target.dataset.item)
+      wx.navigateTo({
+        url: '/pages/login/index?url=/pages/remaining/index'
+      });
+    }
+
     if (app.globalData.userInfo) {
       // wx.navigateTo({
       //   url:
@@ -434,9 +433,9 @@ Page({
     this.onClose();
   },
   // 关闭开屏广告
-  onAdClose () {
+  onAdClose() {
     this.setData({
-      adShow: false
-    })
-  }
+      adShow: false,
+    });
+  },
 });

@@ -1,7 +1,11 @@
 /* pages/aboutUs/aboutUs.wxss */
+.about-us-box{
+  padding: 5rpx 10rpx;
+}
 .about-us{
+  width: 100%;
   line-height: 60rpx;
-  font-size: 30rpx;
+  font-size: 24rpx;
 }
 .about-us-logo{
   margin-top: 40rpx;

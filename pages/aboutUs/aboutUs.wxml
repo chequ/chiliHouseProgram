@@ -1,13 +1,12 @@
 <!--pages/aboutUs/aboutUs.wxml-->
-<view>
+<view class="about-us-box">
   <text decode="{{true}}" class="about-us">&ensp;&ensp;&ensp;&ensp;麻辣选房是由一群刚需选房而发展的新锐媒体，刚上线就赢得了广大购房者的追捧与热爱。其代表性在于对各个新盘的一房一价分析、楼盘点评、户型点评...</text>
-  <view class="about-us-logo">
+  <!-- <view class="about-us-logo">
     <van-image
       round
       width="10rem"
       height="10rem"
       src="https://img.yzcdn.cn/vant/cat.jpeg"
     />
-  </view>
-  
+  </view> -->
 </view>

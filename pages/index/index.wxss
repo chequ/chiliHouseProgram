@@ -8,6 +8,7 @@
 
 .search-box {
   display: flex;
+  background: #fff;
 }
 .search-con {
   flex: 1;

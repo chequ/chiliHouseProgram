@@ -1,7 +1,7 @@
 import md5 from './md5.js'
 
 // const baseUrl = 'http://10.100.24.59:8082'; // dev
-const baseUrl = 'http://10.100.24.148:8080'; // 本地
+const baseUrl = 'http://localhost:8110'; // 本地
 
 const headerFunc = function() {
   let ts = +new Date();
@@ -45,7 +45,9 @@ const request = ({ url = '', param = {}, ...other } = {}) => {
         }
         if (res.statusCode >= 200 && res.statusCode < 300) {
           resolve(res.data)
-        } else {
+        } else if(res.statusCode == 10029){
+          
+        }else {
           wx.showToast({
             title: res.message,
             icon: 'none'

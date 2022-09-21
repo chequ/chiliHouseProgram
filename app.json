@@ -26,7 +26,8 @@
     "pages/answer/answer",
     "pages/listans/listans",
     "pages/cash/cash",
-    "pages/hisAnswer/hisAnswer"
+    "pages/hisAnswer/hisAnswer",
+    "pages/login/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
