@@ -192,7 +192,7 @@ Page({
       { name: '复制链接', icon: 'link' },
       { name: '分享海报', icon: 'poster' },
     ],
-    adShow: false, // 开屏广告
+    adShow: true, // 开屏广告
   },
   onLoad() {
     // app.getAuthorization();
