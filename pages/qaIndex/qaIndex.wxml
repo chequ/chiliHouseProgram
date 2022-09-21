@@ -1,23 +1,25 @@
-<view class="top-tab flex-wrp flex-tab">
-  <van-tabs type="card" bind:click="onClick">
+<view class="{{isFilter?'filter-box has-filter':'filter-box no-filter'}}">
+  <view class="filter-name">
+    <span>排序方式</span>
+    <van-icon name="cross" size="20" bind:click="closeFilter"/>
+  </view>
+  <van-tabs active="{{ active }}" line-width="0" tab-class="all-tab" tab-active-class="tab-active">
     <van-tab title="免费优先"></van-tab>
     <van-tab title="获赞数"></van-tab>
   </van-tabs>
-  <!-- <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
-    {{itemName}}
-  </view> -->
 </view>
-<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-  <view class="search flex-wrp">
-    <view class="search-left flex-item">
-      <image src="../../images/search-index.png"></image>
-      <input placeholder="搜索问题" bindinput="searchInput" placeholder-class="search-placeholder" />
+<view class="top-tab flex-wrp flex-tab">
+  <view class="search-box">
+    <view class="search-con">
+      <van-search value="{{ searchVal }}" placeholder="请输入搜索问题" bind:search="onSearch" bind:cancel="onCancel"></van-search>
     </view>
-    <view class="search-right flex-item" bindtap="search">
-      <image src="../../images/lighting.png"></image>
+    <view class="sort-btn-icon-box" bindtap="onFilter">
+      <van-icon name="filter-o" size="20" class="sort-btn-icon" />
     </view>
   </view>
-  <view wx:if="{{feed_length!=0}}">
+</view>
+<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view wx:if="{{feed_length!=0}}" class="list-box">
     <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item">
       <view class="feed-item" bindtap="bindStory" data-ansimg="{{item.ans_img}}" data-ansname="{{item.ans_username}}" data-anscontent="{{item.ans_content}}" data-quesname="{{item.ques_username}}" data-quesimg="{{item.ques_img}}" data-quescontent="{{item.ques_content}}" data-anstime="{{item.ans_time}}" data-isanswer="{{item.is_answer}}" data-ans_liked="{{item.ans_liked}}" data-ques_is_free="{{item.ques_is_free}}">
         <view class="feed-source">
@@ -25,7 +27,7 @@
             <view class="avatar" wx:if="{{item.is_answer}}">
               <image src="{{item.ans_img}}"></image>
             </view>
-            <text decode="{{true}}" wx:if="{{item.is_answer}}">{{item.ans_username}}  &nbsp; 回答了 &nbsp;</text>
+            <text decode="{{true}}" wx:if="{{item.is_answer}}">{{item.ans_username}}  &nbsp; 回答了 &nbsp; </text>
             <view class="avatar">
               <image src="{{item.ques_img}}"></image>
             </view>
@@ -68,7 +70,7 @@
       </view>
     </block>
   </view>
-  <view wx:elif="{{feed_length==0}}">
+  <view wx:elif="{{feed_length==0}}" class="list-box">
     <text class="noinfo">抱歉，无相关信息！</text>
   </view>
 </scroll-view>

@@ -7,6 +7,9 @@ Page({
     currentNavtab: 0, //默认选择的模式index
     isanswer: 0, //是否已经回答
     feed_length: 0,
+    searchVal: '', // 搜索的内容
+    active: 0, // 选择的排序方式
+    isFilter: false,
   },
   /**
    * 初次加载页面数据
@@ -66,13 +69,13 @@ Page({
   /**
    * 搜索栏，可进行模糊化查询
    */
-  search: function () {
+  onSearch: function (e) {
     var that = this;
-    console.log('...' + this.data.topic);
+    console.log('...', e.detail);
     wx.request({
       url: 'https://stupidant.cn/queswerServer/searchQuestions',
       data: {
-        topic: this.data.topic,
+        topic: e.detail,
       },
       header: {
         'Content-Type': 'applciation/json',
@@ -85,6 +88,24 @@ Page({
         });
         console.log(e);
       },
+    });
+  },
+  // 清除搜索内容
+  onCancel() {
+    this.setData({
+      searchVal: '',
+    });
+  },
+  // 开启过滤
+  onFilter() {
+    this.setData({
+      isFilter: true,
+    });
+  },
+  // 关闭过滤条件
+  closeFilter() {
+    this.setData({
+      isFilter: false,
     });
   },
   searchInput: function (e) {
