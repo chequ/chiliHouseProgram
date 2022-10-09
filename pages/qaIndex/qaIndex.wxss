@@ -84,3 +84,18 @@
   padding: 170rpx;
   color: #666;
 }
+
+.go-question{
+  position: fixed;
+  bottom: 20%;
+  right: 10%;
+  display: flex;
+  background: #d7f0f0;
+  border: 1rpx solid #666;
+  border-radius: 10rpx;
+  padding: 8rpx;
+  flex-direction: column;
+}
+.go-question .tip{ 
+  font-size: 24rpx;
+}

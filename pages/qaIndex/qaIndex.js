@@ -253,4 +253,10 @@ Page({
         data.ans_liked,
     });
   },
+  // 去提问
+  goQuestion () {
+    wx.navigateTo({
+      url: '/pages/quest/quest'
+    })
+  }
 });

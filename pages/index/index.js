@@ -192,11 +192,14 @@ Page({
       { name: '复制链接', icon: 'link' },
       { name: '分享海报', icon: 'poster' },
     ],
-    adShow: true, // 开屏广告
+    adShow: false, // 开屏广告
   },
   onLoad() {
     // app.getAuthorization();
     // this.getMyBuildingData();
+    this.setData({
+      adShow: true
+    })
   },
   getAuthorization() {
     wx.getSetting({

@@ -10,12 +10,23 @@ Page({
    isFree: '￥1.00', //默认付费人民币一元
    is_free: 0,
    ischange:0,
-   ques: '向辣哥提问',// 页面内容设置
-   quesq: '',// 页面内容设置
+   quesq: '2222',// 页面内容设置
    famImg:null,//名人头像
    famName:null,//名人姓名
    userInfo: {},//用户信息
-   hiddenToast: true
+   hiddenToast: true,
+   answerList: [
+    {
+      img: 'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
+      id: 1,
+      name: '辣哥',
+    },
+    {
+      img: 'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
+      id: 2,
+      name: '辣鸡',
+    }
+   ], // 回答人列表
   },
   /**
    * 登录加载数据
