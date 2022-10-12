@@ -6,21 +6,36 @@
     <image src="{{famImg}}"></image> -->
   </view>
 </view>
-
+<view class="queset-swiper-box" hover-class="none" hover-stop-propagation="false">
+  <van-icon name="arrow-left" bind:click="swiperLeft" />
+  <swiper class="queset-swiper" :indicator-dots="{{false}}" easing-function="easeInOutCubic" :circular="{{false}}" :vertical="{{true}}" bindchange="" :current="{{current}}">
+    <swiper-item class="queset-swiper-item" item-id="" wx:for="{{answerList}}" wx:key="index">
+      <image src="{{item.img}}" alt="" />
+      <view class="name">{{item.name}}</view>
+    </swiper-item>
+  </swiper>
+  <van-icon name="arrow" bind:click="swiperRight" />
+</view>
 <form bindsubmit="bindFormSubmit">
   <view class="quiz-wrapper">
     <toast hidden="{{hiddenToast}}" duration="2000" bindchange="toastHidden">提问已发送</toast>
     <view class="quiz-input">
-      <textarea placeholder="请在这告诉ta吧（请控制字数在140以内）" maxlength="140" name="question"></textarea>
+      <textarea placeholder="请在这告诉ta吧（请控制字数在300以内）" maxlength="300" name="question" auto-height></textarea>
     </view>
-
     <view class="quiz-info">
-      <checkbox-group bindchange="checkChange">
-        <checkbox value="1" />是否免费
-      </checkbox-group>
+      <!-- <checkbox-group bindchange="checkChange">
+        <checkbox value="1" />
+        是否免费
+      </checkbox-group> -->
+       <van-field
+        input-class="reward"
+        input-align="center"
+        value="{{ value }}"
+        placeholder="请输入悬赏金"
+        bind:change="onChange"
+      />
     </view>
-
-    <view class="quiz-cost">{{isFree}}</view>
+    <!-- <view class="quiz-cost">{{isFree}}</view> -->
     <button class="submit" form-type="submit">准备好了</button>
   </view>
 </form>

@@ -107,3 +107,36 @@
   font-size: 20rpx;
   border-radius: 10rpx;
 }
+
+.queset-swiper-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 30rpx;
+}
+
+.queset-swiper {
+  height: 240rpx;
+  width: 300rpx;
+}
+
+.queset-swiper-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.queset-swiper-item image {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 50%;
+}
+.queset-swiper-item .name {
+  font-size: 24rpx;
+}
+
+.reward{
+  color: #f85f48!important;
+}

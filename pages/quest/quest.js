@@ -25,8 +25,19 @@ Page({
       img: 'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
       id: 2,
       name: '辣鸡',
+    },
+    {
+      img: 'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
+      id: 3,
+      name: '辣3',
+    },
+    {
+      img: 'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
+      id: 4,
+      name: '辣4',
     }
    ], // 回答人列表
+   current: 0,
   },
   /**
    * 登录加载数据
@@ -41,6 +52,19 @@ Page({
     console.log(e)
   },
   
+  // 轮播向左
+  swiperLeft() {
+    this.setData({
+      current: this.data.current === 0 ? this.data.answerList.length - 1 : this.data.current - 1
+    })
+  },
+
+  // 轮播向右
+  swiperRight() {
+    this.setData({
+      current: this.data.current === this.data.answerList.length - 1 ? 0 : this.data.current + 1
+    })
+  },
   bindFormSubmit: function (e) {
     var that = this;
     wx.getUserInfo({
