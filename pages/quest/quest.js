@@ -1,43 +1,41 @@
 var app = getApp();
-var util = require('../../utils/util.js');
-
-var app = getApp()
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-   isFree: '￥1.00', //默认付费人民币一元
-   is_free: 0,
-   ischange:0,
-   quesq: '2222',// 页面内容设置
-   famImg:null,//名人头像
-   famName:null,//名人姓名
-   userInfo: {},//用户信息
-   hiddenToast: true,
-   answerList: [
-    {
-      img: 'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
-      id: 1,
-      name: '辣哥',
-    },
-    {
-      img: 'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
-      id: 2,
-      name: '辣鸡',
-    },
-    {
-      img: 'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
-      id: 3,
-      name: '辣3',
-    },
-    {
-      img: 'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
-      id: 4,
-      name: '辣4',
-    }
-   ], // 回答人列表
-   current: 0,
+    userInfo: {}, //用户信息
+    hiddenToast: true, // 是否显示提示框
+    price: 1, // 回答金额
+    answerList: [
+      {
+        img:
+          'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
+        id: 1,
+        name: '辣哥',
+      },
+      {
+        img:
+          'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
+        id: 2,
+        name: '辣鸡',
+      },
+      {
+        img:
+          'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
+        id: 3,
+        name: '辣3',
+      },
+      {
+        img:
+          'https://img.zcool.cn/community/01a2a35906dec9a801214550412547.jpg@1280w_1l_2o_100sh.jpg',
+        id: 4,
+        name: '辣4',
+      },
+    ], // 回答人列表
+    currentIndex: 0, // 页面swiper的current索引
+    index: 0, // 当前swiper的current索引
+    flag: true, // swiper切换动画是否完成
   },
   /**
    * 登录加载数据
@@ -45,26 +43,97 @@ Page({
   onLoad: function (e) {
     var that = this;
     that.setData({
-      famImg: e.img,
-      famName: e.name,
-      userInfo: app.globalData.userInfo
-    })
-    console.log(e)
-  },
-  
-  // 轮播向左
-  swiperLeft() {
-    this.setData({
-      current: this.data.current === 0 ? this.data.answerList.length - 1 : this.data.current - 1
-    })
+      userInfo: app.globalData.userInfo,
+    });
   },
 
-  // 轮播向右
-  swiperRight() {
-    this.setData({
-      current: this.data.current === this.data.answerList.length - 1 ? 0 : this.data.current + 1
-    })
+  /**
+   * 左滑选择回答人
+   */
+  toLeft: function (e) {
+
+    if (!this.data.flag) {
+      // 如果动画还未完成，不执行
+
+      return;
+    } else {
+      // 修改按钮切换不可用状态
+
+      this.setData({
+        flag: false,
+      });
+
+      var index = this.data.index;
+
+      if (index > 0) {
+        this.setData({
+          currentIndex: index - 1,
+        });
+      } else {
+        this.setData({
+          currentIndex: this.data.answerList.length - 1,
+        });
+      }
+    }
   },
+
+  /**
+   * 右滑选择回答人
+   */
+
+  toRight: function (e) {
+
+    if (!this.data.flag) {
+      // 如果动画还未完成，不执行
+
+      return;
+    } else {
+      // 修改按钮切换不可用状态
+
+      this.setData({
+        flag: false,
+      });
+
+      var index = this.data.index;
+
+      if (index >= this.data.answerList.length - 1) {
+        this.setData({
+          currentIndex: 0,
+        });
+      } else {
+        this.setData({
+          currentIndex: index + 1,
+        });
+      }
+    }
+  },
+
+  /**
+   * 选择对应的回答人
+   */
+  changeIndex: function (e) {
+    // 切换过程绑定
+
+    this.setData({
+      index: e.detail.current,
+    });
+  },
+
+  /**
+   * 动画是否完成
+   */
+  changeFinish: function (e) {
+    // 动画完全完成
+
+    // 修改按钮切换可用状态
+
+    this.setData({
+      flag: true,
+    });
+  },
+  /**
+   * 提交提问
+   */
   bindFormSubmit: function (e) {
     var that = this;
     wx.getUserInfo({
@@ -72,48 +141,29 @@ Page({
         wx.request({
           url: 'https://stupidant.cn/queswerServer/addQuest',
           data: {
-             ques_userName: res.userInfo.nickName,
-             is_free: that.data.is_free,
+            ques_userName: res.userInfo.nickName,
             'question.content': e.detail.value.question,
-            'question.quesd_username': that.data.famName,
-            'question.is_free': that.data.is_free,
+            'question.quesd_username': that.data.answerList[that.data.currentIndex],
           },
           header: {
-            "Content-Type": "applciation/json"
+            'Content-Type': 'applciation/json',
           },
-          method: "GET",
+          method: 'GET',
           success: function (e) {
             that.setData({
-              hiddenToast: false
-            })
+              hiddenToast: false,
+            });
           },
-        })
-      }
-    })
+        });
+      },
+    });
   },
   /**
-   * 免费与付费之间切换（支持重复操作）
+   * 完成提问
    */
-  checkChange: function (e) {
-    var that = this;
-    if (that.data.ischange % 2 == 0) {
-      that.setData({
-        isFree: '￥0.00',
-        is_free: 1,
-        ischange: that.data.ischange + 1
-      })
-    } else {
-      that.setData({
-        isFree: '￥1.00',
-        is_free: 0,
-        ischange: that.data.ischange + 1
-      })
-    }
-  },
   toastHidden: function () {
     wx.switchTab({
       url: '../mine/mine',
-    })
+    });
   },
-
-})
+});

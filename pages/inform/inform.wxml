@@ -55,7 +55,7 @@
     </view>
   </view>
 
-  <view class="master-info" bindtap="toPerson" wx:if="{{ques_is_free < 3}}">
+  <!-- <view class="master-info" bindtap="toPerson" wx:if="{{ques_is_free < 3}}">
     <image src="{{ansimg}}"></image>
     <view class="master-brief">
       <view class="master-user">{{ansname}}</view>
@@ -71,5 +71,5 @@
     <view wx:elif="{{ismine==1}}">
       <view class="master-follow">本尊</view>
     </view>
-  </view>
+  </view> -->
 </view>
