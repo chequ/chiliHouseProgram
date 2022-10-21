@@ -39,6 +39,9 @@
   padding: 10rpx 0 30rpx 90rpx;
   font-size: 28rpx;
 }
+.ans-btn{
+  text-align: center;
+}
 
 .ans-wrapper {
   display: flex;
@@ -127,4 +130,9 @@
 .like-info image {
   width: 50rpx;
   height: 50rpx;
+}
+
+.answer-box {
+  height: 100%;
+  width: 100%;
 }

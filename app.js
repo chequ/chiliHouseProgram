@@ -4,6 +4,7 @@ App({
   phone: '',
   appId: '',
   openId: '',
+  self_answer: true,
   onLaunch() {
     // 展示本地存储能力
     // const logs = wx.getStorageSync('logs') || [];
