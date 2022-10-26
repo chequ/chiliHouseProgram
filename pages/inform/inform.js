@@ -31,7 +31,24 @@ Page({
     follow: '关注ta',
     ismine: 0,
     self_answer: false, // 当前用户是否有回答的权限
+    hiddenAnswerToast: true, // 回答成功提示
+    comments: [
+      {
+        name: '张三',
+        content: '辣哥说得太好了'
+      },
+      {
+        name: '张四',
+        content: '辣哥说得太好了'
+      },
+      {
+        name: '张王',
+        content: '辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了'
+      }
+    ], //评论列表
     answering: false, // 回答问题弹窗
+    commenting: false,// 评论
+    repling: false, // 回复评论
   },
   /**
    * 回答弹窗开启
@@ -50,12 +67,51 @@ Page({
     });
   },
   /**
-   * 点击相关按钮引发的吐司效果
+   * 确认回答成功
    */
-  toastHidden: function () {
+  toastAnswerHidden: function () {
     var that = this;
     that.setData({
       hiddenAnswerToast: true,
+    });
+  },
+  /**
+   * 评论弹窗关闭
+   */
+  onCommentClose() {
+    this.setData({
+      commenting: false,
+    });
+  },
+  /**
+   * 评论
+   */
+  goComment () {
+
+  },
+  /**
+   * 确认回答成功
+   */
+  toastAnswerHidden: function () {
+    var that = this;
+    that.setData({
+      hiddenAnswerToast: true,
+    });
+  },
+  /**
+   * 回复评论
+   */
+  goReplay () {
+    this.setData({
+      repling: true,
+    });
+  },
+  /**
+   * 回复评论弹窗关闭
+   */
+  onReplyClose() {
+    this.setData({
+      commenting: false,
     });
   },
   hiddenToast: function () {
@@ -315,6 +371,75 @@ Page({
               follow: '已关注',
             });
           },
+        });
+      },
+    });
+  },
+  /**
+   * 提交回答
+   */
+  bindAnswerFormSubmit: function (e) {
+    var that = this;
+    wx.request({
+      url: 'https://stupidant.cn/queswerServer/addQuest',
+      data: {
+        ques_userName: res.userInfo.nickName,
+        'question.content': e.detail.value.question,
+        'question.quesd_username': that.data.answerList[that.data.currentIndex],
+      },
+      header: {
+        'Content-Type': 'applciation/json',
+      },
+      method: 'GET',
+      success: function (e) {
+        that.setData({
+          hiddenAnswerToast: false,
+        });
+      },
+    });
+  },
+  /**
+   * 提交评论
+   */
+  bindCommentFormSubmit: function (e) {
+    var that = this;
+    wx.request({
+      url: 'https://stupidant.cn/queswerServer/addQuest',
+      data: {
+        ques_userName: res.userInfo.nickName,
+        'question.content': e.detail.value.question,
+        'question.quesd_username': that.data.answerList[that.data.currentIndex],
+      },
+      header: {
+        'Content-Type': 'applciation/json',
+      },
+      method: 'GET',
+      success: function (e) {
+        that.setData({
+          hiddenAnswerToast: false,
+        });
+      },
+    });
+  },
+  /**
+   * 提交评论回复
+   */
+  bindReplyFormSubmit: function (e) {
+    var that = this;
+    wx.request({
+      url: 'https://stupidant.cn/queswerServer/addQuest',
+      data: {
+        ques_userName: res.userInfo.nickName,
+        'question.content': e.detail.value.question,
+        'question.quesd_username': that.data.answerList[that.data.currentIndex],
+      },
+      header: {
+        'Content-Type': 'applciation/json',
+      },
+      method: 'GET',
+      success: function (e) {
+        that.setData({
+          hiddenAnswerToast: false,
         });
       },
     });

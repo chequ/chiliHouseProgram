@@ -6,6 +6,7 @@
   <van-tabs active="{{ active }}" line-width="0" tab-class="all-tab" tab-active-class="tab-active">
     <van-tab title="免费优先"></van-tab>
     <van-tab title="获赞数"></van-tab>
+    <van-tab title="未回答"></van-tab>
   </van-tabs>
 </view>
 <view class="top-tab flex-wrp flex-tab">

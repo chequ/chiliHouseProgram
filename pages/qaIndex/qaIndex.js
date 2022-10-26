@@ -216,17 +216,18 @@ Page({
   bindStory: function (e) {
     var $data = e.currentTarget.dataset;
     let that = this;
-    if (app.globalData.userInfo) {
-      that.navToDetail($data);
-    } else {
-      wx.getUserProfile({
-        desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-        success: (res) => {
-          app.globalData.userInfo = res;
-          that.navToDetail($data);
-        },
-      });
-    }
+    that.navToDetail($data);
+    // if (app.globalData.userInfo) {
+    //   that.navToDetail($data);
+    // } else {
+    //   wx.getUserProfile({
+    //     desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+    //     success: (res) => {
+    //       app.globalData.userInfo = res;
+    //       that.navToDetail($data);
+    //     },
+    //   });
+    // }
   },
   navToDetail(data) {
     wx.navigateTo({
