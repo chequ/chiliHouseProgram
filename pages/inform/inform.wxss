@@ -175,3 +175,23 @@
 .answer-box button {
   background-color: #cacaca;
 }
+.comment-box {
+  height: 57%;
+  width: 88%;
+  padding: 15% 6% 8% 6%;
+  position: relative;
+}
+.reply-box {
+  height: 57%;
+  width: 88%;
+  padding: 15% 6% 8% 6%;
+  position: relative;
+}
+
+.comment-box button {
+  background-color: #cacaca;
+}
+
+.reply-box button {
+  background-color: #cacaca;
+}

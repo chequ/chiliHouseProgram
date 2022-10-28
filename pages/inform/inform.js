@@ -31,7 +31,6 @@ Page({
     follow: '关注ta',
     ismine: 0,
     self_answer: false, // 当前用户是否有回答的权限
-    hiddenAnswerToast: true, // 回答成功提示
     comments: [
       {
         name: '张三',
@@ -49,6 +48,9 @@ Page({
     answering: false, // 回答问题弹窗
     commenting: false,// 评论
     repling: false, // 回复评论
+    hiddenAnswerToast: true, // 回答成功提示
+    hiddenCommentToast: true, // 评论成功提示
+    hiddenReplyToast: true, // 评论回复成功提示
   },
   /**
    * 回答弹窗开启
@@ -90,12 +92,12 @@ Page({
 
   },
   /**
-   * 确认回答成功
+   * 确认评论成功
    */
-  toastAnswerHidden: function () {
+  toastCommentHidden: function () {
     var that = this;
     that.setData({
-      hiddenAnswerToast: true,
+      hiddenCommentToast: true,
     });
   },
   /**
@@ -111,9 +113,20 @@ Page({
    */
   onReplyClose() {
     this.setData({
-      commenting: false,
+      repling: false,
     });
   },
+
+  /**
+   * 评论回复成功
+   */
+  toastReplyHidden: function () {
+    var that = this;
+    that.setData({
+      hiddenReplyToast: true,
+    });
+  },
+
   hiddenToast: function () {
     var that = this;
     that.setData({
