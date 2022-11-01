@@ -49,7 +49,7 @@
   </view>
   <view class="comments-box">
     <h5>评论</h5>
-    <view class="comment" wx:for="{{comments}}" wx:for-index="idx" wx:for-item="item">
+    <view class="comment" wx:for="{{comments}}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
       <view>{{item.name}}：{{item.content}}</view>
       <view wx:if="{{self_answer}}" class="reply" bindtap="goReplay">回复</view>
     </view>
@@ -72,30 +72,36 @@
     </view>
   </view> -->
   <van-popup show="{{ answering }}" closeable bind:close="onQuestionClose" custom-style="width:80%;border-radius:10rpx">
-    <form class="answer-box" bindsubmit="bindAnswerFormSubmit">
-      <toast hidden="{{hiddenAnswerToast}}" duration="1000" bindchange="toastAnswerHidden">已回答</toast>
-      <view class="quiz-input">
-        <textarea placeholder="请在这回答ta吧（请控制字数在500以内）" maxlength="500" name="question"></textarea>
-      </view>
-      <button class="submit" size="normal" block form-type="submit">就酱回答</button>
-    </form>
+    <view class="answer-box">
+      <form  bindsubmit="bindAnswerFormSubmit">
+        <toast hidden="{{hiddenAnswerToast}}" duration="1000" bindchange="toastAnswerHidden">已回答</toast>
+        <view class="quiz-input">
+          <textarea placeholder="请在这回答ta吧（请控制字数在500以内）" maxlength="500" name="question"></textarea>
+        </view>
+        <button class="submit" size="normal" block form-type="submit">就酱回答</button>
+      </form>
+    </view>
   </van-popup>
   <van-popup show="{{ commenting }}" closeable bind:close="onCommentClose" custom-style="width:80%;border-radius:10rpx">
-    <form class="comment-box" bindsubmit="bindCommentFormSubmit">
-      <toast hidden="{{hiddenCommentToast}}" duration="1000" bindchange="toastCommentHidden">已评论</toast>
-      <view class="quiz-input">
-        <textarea placeholder="请在这回复ta吧（请控制字数在200以内）" maxlength="200" name="comment"></textarea>
-      </view>
-      <button class="submit" size="normal" block form-type="submit">就酱评论</button>
-    </form>
+    <view class="comment-box">
+      <form bindsubmit="bindCommentFormSubmit">
+        <toast hidden="{{hiddenCommentToast}}" duration="1000" bindchange="toastCommentHidden">已评论</toast>
+        <view class="quiz-input">
+          <textarea placeholder="请在这回复ta吧（请控制字数在200以内）" maxlength="200" name="comment"></textarea>
+        </view>
+        <button class="submit" size="normal" block form-type="submit">就酱评论</button>
+      </form>
+    </view>class="reply-box"
   </van-popup>
   <van-popup show="{{ repling }}" closeable bind:close="onReplyClose" custom-style="width:80%;border-radius:10rpx">
-    <form class="reply-box" bindsubmit="bindReplyFormSubmit">
-      <toast hidden="{{hiddenReplyToast}}" duration="1000" bindchange="toastReplyHidden">已回复评论</toast>
-      <view class="quiz-input">
-        <textarea placeholder="请在这回复ta吧（请控制字数在200以内）" maxlength="200" name="reply"></textarea>
-      </view>
-      <button class="submit" size="normal" block form-type="submit">就酱回复</button>
-    </form>
+    <view class="reply-box">
+      <form bindsubmit="bindReplyFormSubmit">
+        <toast hidden="{{hiddenReplyToast}}" duration="1000" bindchange="toastReplyHidden">已回复评论</toast>
+        <view class="quiz-input">
+          <textarea placeholder="请在这回复ta吧（请控制字数在200以内）" maxlength="200" name="reply"></textarea>
+        </view>
+        <button class="submit" size="normal" block form-type="submit">就酱回复</button>
+      </form>
+    </view>
   </van-popup>
 </view>

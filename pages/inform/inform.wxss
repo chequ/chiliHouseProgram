@@ -153,27 +153,14 @@
   font-size: 24rpx;
 }
 
+
+
+
 .answer-box {
   height: 77%;
   width: 88%;
   padding: 15% 6% 8% 6%;
   position: relative;
-}
-.quiz-input {
-  margin-bottom: 15rpx;
-}
-.quiz-input textarea {
-  display: block;
-  border-radius: 10rpx;
-  height: 150rpx;
-  width: 600rpx;
-  padding: 30rpx;
-  background-color: #fafafa;
-  color: #2c2c2c;
-  border: 1rpx solid #ddd;
-}
-.answer-box button {
-  background-color: #cacaca;
 }
 .comment-box {
   height: 57%;
@@ -186,6 +173,26 @@
   width: 88%;
   padding: 15% 6% 8% 6%;
   position: relative;
+}
+.quiz-input {
+  margin-bottom: 15rpx;
+}
+.quiz-input textarea {
+  display: block;
+  border-radius: 10rpx;
+  height: 150rpx;
+  width: auto;
+  box-sizing: border-box;
+  padding: 30rpx;
+  background-color: #fafafa;
+  color: #2c2c2c;
+  border: 1rpx solid #ddd;
+}
+.answer-box .quiz-input textarea {
+  height: 350rpx;
+}
+.answer-box button {
+  background-color: #cacaca;
 }
 
 .comment-box button {
