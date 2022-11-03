@@ -1,15 +1,15 @@
 // components/recording/recording.js
 const recorderManager = wx.getRecorderManager()
 const innerAudioContext = wx.createInnerAudioContext()
-var init
 
-import {
-  postRecording,
-  deleteRecording
-} from '../../../../../config/api/cardUrl'    
-import {
-  uploadAudio
-} from '../../../../../config/basicConfig' //语音保存地址
+
+// import {
+//   postRecording,
+//   deleteRecording
+// } from '../../../../../config/api/cardUrl'    
+// import {
+//   uploadAudio
+// } from '../../../../../config/basicConfig' //语音保存地址
 
 Component({
   /**

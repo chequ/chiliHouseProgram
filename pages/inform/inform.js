@@ -34,7 +34,17 @@ Page({
     comments: [
       {
         name: '张三',
-        content: '辣哥说得太好了'
+        content: '辣哥说得太好了',
+        childrenArr: [
+          {
+            name: '张三',
+            content: '辣哥说得太好了',
+          },
+          {
+            name: '张三',
+            content: '辣哥说得太好了',
+          }
+        ]
       },
       {
         name: '张四',

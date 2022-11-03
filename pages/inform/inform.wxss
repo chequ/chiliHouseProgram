@@ -146,10 +146,22 @@
   margin-top: 20rpx;
   display: flex;
   justify-content: space-between;
+  padding: 0 8rpx;
+  font-size: 24rpx;
+  /* align-items: center; */
+}
+.comments-box .name {
+  color: #f85f48;
 }
 
 .comments-box .reply{
-  min-width: 50rpx;
+  min-width: 55rpx;
+  font-size: 24rpx;
+}
+
+
+.comments-box .reply{
+  min-width: 55rpx;
   font-size: 24rpx;
 }
 
@@ -189,7 +201,7 @@
   border: 1rpx solid #ddd;
 }
 .answer-box .quiz-input textarea {
-  height: 350rpx;
+  height: 400rpx;
 }
 .answer-box button {
   background-color: #cacaca;

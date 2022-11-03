@@ -48,9 +48,9 @@
     </view>
   </view>
   <view class="comments-box">
-    <h5>评论</h5>
+    <h4>评论</h4>
     <view class="comment" wx:for="{{comments}}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
-      <view>{{item.name}}：{{item.content}}</view>
+      <view><view class="name">{{item.name}}：</view><view class="content">{{item.content}}</view></view>
       <view wx:if="{{self_answer}}" class="reply" bindtap="goReplay">回复</view>
     </view>
   </view>
