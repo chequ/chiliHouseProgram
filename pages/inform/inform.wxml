@@ -50,9 +50,25 @@
   <view class="comments-box">
     <h4>评论</h4>
     <view class="comment" wx:for="{{comments}}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
-      <view><view class="name">{{item.name}}：</view><view class="content">{{item.content}}</view></view>
+      <view>
+        <view class="comment-con">
+          <view class="name">{{item.name}}:</view>
+          <view class="content">{{item.content}}</view>
+        </view>
+        <view class="comment-child-box">
+          <view wx:if="{{item.childrenArr}}" class="comment-child" wx:for="{{item.childrenArr}}" wx:for-index="idx-c" wx:for-item="item-c" wx:key="idx-c">
+            <view class="comment-con">
+              <view class="name">{{item.name}}:</view>
+              <view class="content">{{item.content}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
       <view wx:if="{{self_answer}}" class="reply" bindtap="goReplay">回复</view>
     </view>
+  </view>
+  <view class="go-comment-btn">
+    <van-button type="primary" size="normal" block bind:click="goComment">我也要评论</van-button>
   </view>
   <!-- <view class="master-info" bindtap="toPerson" wx:if="{{ques_is_free < 3}}">
     <image src="{{ansimg}}"></image>
@@ -91,7 +107,7 @@
         </view>
         <button class="submit" size="normal" block form-type="submit">就酱评论</button>
       </form>
-    </view>class="reply-box"
+    </view>
   </van-popup>
   <van-popup show="{{ repling }}" closeable bind:close="onReplyClose" custom-style="width:80%;border-radius:10rpx">
     <view class="reply-box">

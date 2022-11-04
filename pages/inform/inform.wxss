@@ -138,6 +138,9 @@
   margin-bottom: 30rpx;
 }
 
+.comments-box .comment-con {
+  display: flex;
+}
 .comments-box h5{
   margin-bottom: 20rpx;
 }
@@ -152,6 +155,20 @@
 }
 .comments-box .name {
   color: #f85f48;
+  min-width: 50rpx;
+  word-break: break-all;
+}
+.comments-box .content{
+  word-break: break-all;
+  padding: 0 8rpx;
+}
+
+.comments-box .comment-child-box{
+  padding: 0 20rpx;
+}
+
+.comments-box .comment-child-box .comment-con{
+  margin-top: 10rpx;
 }
 
 .comments-box .reply{
@@ -213,4 +230,8 @@
 
 .reply-box button {
   background-color: #cacaca;
+}
+
+.go-comment-btn{
+  
 }

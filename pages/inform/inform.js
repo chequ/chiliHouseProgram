@@ -34,15 +34,18 @@ Page({
     comments: [
       {
         name: '张三',
+        id: 33,
         content: '辣哥说得太好了',
         childrenArr: [
           {
             name: '张三',
-            content: '辣哥说得太好了',
+            parentId: 33,
+            content: '辣哥说得太好了22',
           },
           {
-            name: '张三',
-            content: '辣哥说得太好了',
+            name: '张ddddafadsf三',
+            parentId: 33,
+            content: '辣哥说得太好了333',
           }
         ]
       },
@@ -51,7 +54,7 @@ Page({
         content: '辣哥说得太好了'
       },
       {
-        name: '张王',
+        name: '张ddddafadsf三',
         content: '辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了'
       }
     ], //评论列表
