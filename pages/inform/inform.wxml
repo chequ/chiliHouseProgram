@@ -48,7 +48,12 @@
     </view>
   </view>
   <view class="comments-box">
-    <h4>评论</h4>
+    <h4>
+      <view class="title">评论</view>
+      <view class="go-comment-btn">
+        <van-button type="primary" size="small" bind:click="goComment">去评论</van-button>
+      </view>
+    </h4>
     <view class="comment" wx:for="{{comments}}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
       <view>
         <view class="comment-con">
@@ -66,9 +71,6 @@
       </view>
       <view wx:if="{{self_answer}}" class="reply" bindtap="goReplay">回复</view>
     </view>
-  </view>
-  <view class="go-comment-btn">
-    <van-button type="primary" size="normal" block bind:click="goComment">我也要评论</van-button>
   </view>
   <!-- <view class="master-info" bindtap="toPerson" wx:if="{{ques_is_free < 3}}">
     <image src="{{ansimg}}"></image>
@@ -101,9 +103,9 @@
   <van-popup show="{{ commenting }}" closeable bind:close="onCommentClose" custom-style="width:80%;border-radius:10rpx">
     <view class="comment-box">
       <form bindsubmit="bindCommentFormSubmit">
-        <toast hidden="{{hiddenCommentToast}}" duration="1000" bindchange="toastCommentHidden">已评论</toast>
+        <toast hidden="{{hiddenCommentToast}}" duration="5" bindchange="toastCommentHidden">已评论</toast>
         <view class="quiz-input">
-          <textarea placeholder="请在这回复ta吧（请控制字数在200以内）" maxlength="200" name="comment"></textarea>
+          <textarea placeholder="请在这评论ta吧（请控制字数在200以内）" maxlength="200" name="comment"></textarea>
         </view>
         <button class="submit" size="normal" block form-type="submit">就酱评论</button>
       </form>

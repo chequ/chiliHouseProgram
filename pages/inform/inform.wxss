@@ -141,10 +141,15 @@
 .comments-box .comment-con {
   display: flex;
 }
-.comments-box h5{
+.comments-box h4{
   margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
 }
 
+.go-comment-btn{
+  
+}
 .comments-box .comment{
   margin-top: 20rpx;
   display: flex;
@@ -230,8 +235,4 @@
 
 .reply-box button {
   background-color: #cacaca;
-}
-
-.go-comment-btn{
-  
 }

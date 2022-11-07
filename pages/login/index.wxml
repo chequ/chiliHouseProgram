@@ -12,8 +12,8 @@
                 </view>
             </view>
             <view class="yszc">
-                <image wx:if="{{!isSelect}}" bindtap="selectFunc" src="../../static/img/login/select1.png"></image>
-                <image wx:if="{{isSelect}}" bindtap="selectFunc" src="../../static/img/login/select2.png"></image>
+                <image wx:if="{{!isSelect}}" bindtap="selectFunc" src="../../assets/images/login/select1.png"></image>
+                <image wx:if="{{isSelect}}" bindtap="selectFunc" src="../../assets/images/login/select2.png"></image>
                 <view class="text">
                     <text class="ydtext">我已阅读并同意</text>
                     <text class="yszctext" bindtap="toyszc">《隐私协议》、</text>

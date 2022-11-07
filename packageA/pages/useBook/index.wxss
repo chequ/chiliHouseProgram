@@ -1,0 +1,38 @@
+.use-book {
+  margin: 10rpx 20rpx;
+}
+.use-book image{
+  width: 100%;
+}
+.title {
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 800;
+  color: #000000;
+  line-height: 44rpx;
+  margin: 40rpx 0;
+}
+
+.details {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #000000;
+  line-height: 1.5;
+
+}
+
+.detail-item {
+  margin-bottom: 30rpx;
+}
+
+.textIndex {
+  text-indent: 60rpx;
+}
+.img-box{
+  display: flex;
+  justify-content: center;
+}
+.detail-item img{
+  text-indent: 0;
+  max-width: 100%;
+}

@@ -1,0 +1,41 @@
+<view class="use-book">
+    <view class="title">AR导航使用介绍</view>
+    <view class="details">
+      <view class="detail-item">什么是AR导航？</view>
+      <view class="detail-item">AR导航可以将路线和转弯箭头等信息展示在您所在的真实实景中，更简单易懂的引导您行走。</view>
+      <view class="detail-item">1.抬起手机使用AR导航，放平手机使用普通导航</view>
+      <view class="detail-item">进入AR导航页面后，抬起手机可使用AR导航模式，放平手机可使用普通平面导航模式，为了您的安全起见，建议在地下停车场等车辆较多的地方放下手机，注意步行安全。</view>
+      <view class="detail-item img-box">
+        <image mode="widthFix" src="https://ecoverse.189.cn:8090/mod/ar/useBook/prepare.png" alt="" srcset=""></image>
+      </view>
+      <view class="detail-item">2.跟随AR路线行走</view>
+      <view class="detail-item">AR导航开始后，您可以跟随实景中的路线指引来行走。如果AR导航开始后，您的手机中没有路线，可跟随路线指引的指示标，找到路线。</view>
+      <view class="detail-item img-box">
+        <image mode="widthFix" src="https://ecoverse.189.cn:8090/mod/ar/useBook/start.png" alt="" srcset=""></image>
+      </view>
+      <view class="detail-item">3.引导图标介绍</view>
+      <view class="detail-item">在路线的转弯处，您可以看到如图示的转弯啊箭头图标，可在此处转弯。</view>
+      <view class="detail-item img-box">
+        <image mode="widthFix" src="https://ecoverse.189.cn:8090/mod/ar/useBook/going.png" alt="" srcset=""></image>
+      </view>
+      <view class="detail-item">如果您的路线需要乘坐直梯或扶梯，那么在直梯或扶梯附近可以看到如图所示的乘坐直梯或扶梯图标，可在此处上直梯或扶梯。</view>
+      <view class="detail-item img-box">
+        <image mode="widthFix" src="https://ecoverse.189.cn:8090/mod/ar/useBook/lift.png" alt="" srcset=""></image>
+      </view>
+      <view class="detail-item">到达终点后，您可以在终点处看到如图所示的终点图标。</view>
+      <view class="detail-item img-box">
+        <image mode="widthFix" src="https://ecoverse.189.cn:8090/mod/ar/useBook/over.png" alt="" srcset=""></image>
+      </view>
+      <view class="detail-item img-box">
+        <image mode="widthFix" src="https://ecoverse.189.cn:8090/mod/ar/useBook/vision.png" alt="" srcset=""></image>
+      </view>
+      <view class="detail-item">常见问题</view>
+      <view class="detail-item">1.AR实景中的箭头图标位置不准确</view>
+      <view class="detail-item">如果您的手机未抬起或长时间平放，那么实景中的路线图标、指示图标无法根据实景进行显示，请您举起手机3秒后会纠正当前路线。</view>
+      <view class="detail-item">2.AR导航路线方向不准</view>
+      <view class="detail-item">路线方向和罗盘方向可能受场景变化等因素导致方向不准，如果您使用发现AR导航路线方向不准确或罗盘方向不准，可以尝试拿着手机画8字进行方向校正：</view>
+      <view class="detail-item img-box">
+        <image mode="widthFix" src="https://ecoverse.189.cn:8090/mod/ar/useBook/change.png" alt="" srcset=""></image>
+      </view>
+    </view>
+  </view>

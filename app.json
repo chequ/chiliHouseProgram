@@ -29,6 +29,12 @@
     "pages/hisAnswer/hisAnswer",
     "pages/login/index"
   ],
+  "subpackages": [
+    {
+      "root": "packageA",
+      "pages": ["pages/useBook/index", "pages/fuwuxy/index", "pages/yszc/index"]
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

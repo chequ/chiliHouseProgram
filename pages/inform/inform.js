@@ -46,20 +46,21 @@ Page({
             name: '张ddddafadsf三',
             parentId: 33,
             content: '辣哥说得太好了333',
-          }
-        ]
+          },
+        ],
       },
       {
         name: '张四',
-        content: '辣哥说得太好了'
+        content: '辣哥说得太好了',
       },
       {
         name: '张ddddafadsf三',
-        content: '辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了'
-      }
+        content:
+          '辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了辣哥说得太好了',
+      },
     ], //评论列表
     answering: false, // 回答问题弹窗
-    commenting: false,// 评论
+    commenting: false, // 评论
     repling: false, // 回复评论
     hiddenAnswerToast: true, // 回答成功提示
     hiddenCommentToast: true, // 评论成功提示
@@ -101,8 +102,10 @@ Page({
   /**
    * 评论
    */
-  goComment () {
-
+  goComment() {
+    this.setData({
+      commenting: true,
+    });
   },
   /**
    * 确认评论成功
@@ -116,7 +119,7 @@ Page({
   /**
    * 回复评论
    */
-  goReplay () {
+  goReplay() {
     this.setData({
       repling: true,
     });
@@ -471,19 +474,19 @@ Page({
     });
   },
   // 录音授权
-  getAuthorize(){
+  getAuthorize() {
     wx.authorize({
       scope: 'scope.record',
       success() {
-        that.stratRecordAudio()
+        that.stratRecordAudio();
       },
       fail() {
         wx.showModal({
           title: '提示',
           content: '您未授权录音，功能将无法使用',
           showCancel: true,
-          confirmText: "授权",
-          confirmColor: "#2D59DF",
+          confirmText: '授权',
+          confirmColor: '#2D59DF',
           success: function (res) {
             if (res.confirm) {
               //确认则打开设置页面（重点）
@@ -496,25 +499,25 @@ Page({
                       content: '您未授权录音，功能将无法使用',
                       showCancel: false,
                       success: function (res) {},
-                    })
+                    });
                   } else {
-                    that.stratRecordAudio()
+                    that.stratRecordAudio();
                   }
                 },
                 fail: function () {
-                  console.log("授权设置录音失败");
-                }
-              })
+                  console.log('授权设置录音失败');
+                },
+              });
             } else if (res.cancel) {
-              console.log("cancel");
+              console.log('cancel');
             }
           },
           fail: function () {
-            console.log("openfail");
-          }
-        })
-      }
-    })
+            console.log('openfail');
+          },
+        });
+      },
+    });
   },
   // 录音相关
   uploadFile() {

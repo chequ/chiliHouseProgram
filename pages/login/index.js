@@ -58,7 +58,7 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'http://localhost:8110/user/login',
+            url: 'http://139.155.79.110:8111/user/login',
             data: {
               jsCode: res.code,
             },
