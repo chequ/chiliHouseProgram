@@ -156,8 +156,11 @@ Page({
         },
       },
     ], // 过滤条件
-    compareData: [], // 对比数量
+    compareData: [], // 对比数据
     compareDetailStatus: false, //对比弹窗
+    compareChar: [], // 对比字段
+    scrollLeft: 0, // 对比房号左滑动距离
+    scrollTop: 0, // 对比房号上滑动距离
   },
   onLoad(options) {
     let that = this;
@@ -467,7 +470,38 @@ Page({
         ],
       },
     ];
+    let compareChar = [
+      {
+        name: '布局',
+        key: 'houseType'
+      },
+      {
+        name: '单价',
+        key: 'houseType'
+      },
+      {
+        name: '总价',
+        key: 'houseType'
+      },
+      {
+        name: '朝向',
+        key: 'houseType'
+      },
+      {
+        name: '客厅布局',
+        key: 'houseType'
+      },
+      {
+        name: '优点',
+        key: 'houseType'
+      },
+      {
+        name: '缺点',
+        key: 'houseType'
+      },
+    ]
     this.setData({
+      compareChar: compareChar,
       title: options.name,
       buildId: options.buildid,
       tableData: backTableData,
@@ -767,7 +801,7 @@ Page({
   },
   // 对比弹窗打开
   compareDetailShow() {
-    if (this.data.compareData.length < 1) {
+    if (this.data.compareData.length <= 1) {
       Toast('必须选择两个或两个以上的房源');
       return;
     }
@@ -780,5 +814,12 @@ Page({
     this.setData({
       compareDetailStatus: false,
     });
+  },
+  // 对比弹窗内容的滚动事件
+  scrollContent (e) {
+    this.setData({
+      scrollLeft: -e.detail.scrollLeft,
+      scrollTop: -e.detail.scrollTop
+    })
   },
 });
